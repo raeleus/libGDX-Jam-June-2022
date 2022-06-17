@@ -7,7 +7,6 @@
     <inherits name="com.badlogic.gdx.graphics.g2d.freetype.freetype-gwt" />
     <inherits name="com.ray3k.tenpatch.tenpatch"/>
     <inherits name="space.earlygrey.shapedrawer"/>
-    <inherits name="com.rafaskoberg.gdx.typinglabel.typinglabel" />
     <inherits name="regexodus"/>
     <inherits name="com.esotericsoftware.spine"/>
     <inherits name="com.ray3k.stripe" />
@@ -18,6 +17,7 @@
     <inherits name="com.badlogic.gdx.controllers.controllers-gwt"/>
     <inherits name="com.dongbat.jbump" />
     <inherits name="com.badlogic.gdx.video.gdx_video_gwt" />
+    <inherits name="textratypist" />
 	<entry-point class="com.ray3k.template.gwt.GwtLauncher" />
 	<set-configuration-property name="gdx.assetpath" value="../assets" />
 	<set-configuration-property name="xsiframe.failIfScriptTag" value="FALSE"/>
