@@ -54,6 +54,21 @@ public class OptionsScreen extends JamScreen {
                 core.transition(new MenuScreen());
             }
         });
+    
+        textButton = stage.getRoot().findActor("reset");
+        textButton.addListener(sndChangeListener);
+        textButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                preferences.putBoolean("wolf", false);
+                preferences.putInteger("dialog", 0);
+                preferences.putInteger("ending", 0);
+                preferences.putInteger("final", 0);
+                preferences.putInteger("second", 0);
+                preferences.putString("achievements", "");
+                preferences.putInteger("tutorial", 0);
+            }
+        });
         
         final Music bgm = bgm_menu;
         Slider slider = stage.getRoot().findActor("bgm");

@@ -1,0 +1,32 @@
+{
+"skeleton": {
+	"hash": "qMddAgtJmTY",
+	"spine": "4.0.64",
+	"x": -36.94,
+	"y": -38.22,
+	"width": 73,
+	"height": 64,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/tile-cliff", "bone": "root", "attachment": "game/tile-cliff" },
+	{ "name": "game/tile-ground", "bone": "root" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/tile-cliff": {
+				"game/tile-cliff": { "x": -0.44, "y": -6.22, "width": 73, "height": 64 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

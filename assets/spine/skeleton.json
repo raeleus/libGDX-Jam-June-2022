@@ -1,0 +1,86 @@
+{
+"skeleton": {
+	"hash": "jU3midoS2D4",
+	"spine": "4.0.64",
+	"x": -29.22,
+	"y": -7.27,
+	"width": 69.76,
+	"height": 49.97,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "game/skeleton-body", "parent": "root", "length": 15.94, "rotation": 3.27, "x": -1.16, "y": 11.18 },
+	{ "name": "game/skeleton-hand", "parent": "game/skeleton-body", "length": 14.11, "rotation": -5.12, "x": 26.44, "y": 0.31 },
+	{ "name": "game/skeleton-hand2", "parent": "game/skeleton-body", "length": 12.29, "rotation": -1.15, "x": -24.95, "y": 1.88 },
+	{ "name": "game/skeleton-head", "parent": "game/skeleton-body", "length": 18.65, "rotation": -3.27, "x": 2.02, "y": 19.47 }
+],
+"slots": [
+	{ "name": "game/skeleton-body", "bone": "game/skeleton-body", "attachment": "game/skeleton-body" },
+	{ "name": "game/skeleton-bow", "bone": "game/skeleton-hand", "attachment": "game/skeleton-bow" },
+	{ "name": "game/skeleton-hand", "bone": "game/skeleton-hand", "attachment": "game/skeleton-hand" },
+	{ "name": "game/skeleton-hand2", "bone": "game/skeleton-hand2", "attachment": "game/skeleton-hand" },
+	{ "name": "game/skeleton-head", "bone": "game/skeleton-head", "attachment": "game/skeleton-head" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/skeleton-body": {
+				"game/skeleton-body": { "x": 1.06, "y": 2.67, "rotation": -3.27, "width": 28, "height": 28 }
+			},
+			"game/skeleton-bow": {
+				"game/skeleton-bow": { "x": -2.73, "y": -0.09, "rotation": 1.85, "width": 9, "height": 26 }
+			},
+			"game/skeleton-hand": {
+				"game/skeleton-hand": { "x": 0.01, "y": -0.45, "rotation": 1.85, "width": 7, "height": 8 }
+			},
+			"game/skeleton-hand2": {
+				"game/skeleton-hand": { "x": 0.47, "y": 0.44, "rotation": -2.12, "width": 7, "height": 8 }
+			},
+			"game/skeleton-head": {
+				"game/skeleton-head": { "x": 1.82, "y": 0.45, "width": 26, "height": 23 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"game/skeleton-hand": {
+				"translate": [
+					{ "x": 11.39, "y": -7.94 },
+					{ "time": 0.1, "x": 12.19, "y": 6.14 },
+					{ "time": 0.2 },
+					{ "time": 0.3, "x": -0.42, "y": -7.26 },
+					{ "time": 0.4, "x": 11.39, "y": -7.94 }
+				]
+			},
+			"game/skeleton-hand2": {
+				"translate": [
+					{},
+					{ "time": 0.1, "x": -0.42, "y": -7.26 },
+					{ "time": 0.2, "x": 11.39, "y": -7.94 },
+					{ "time": 0.3, "x": 12.19, "y": 6.14 },
+					{ "time": 0.4 }
+				]
+			},
+			"game/skeleton-body": {
+				"translate": [
+					{},
+					{ "time": 0.2, "y": 5 },
+					{ "time": 0.4 }
+				]
+			},
+			"game/skeleton-head": {
+				"translate": [
+					{},
+					{ "time": 0.2, "x": 0.23, "y": 4.09 },
+					{ "time": 0.4 }
+				]
+			}
+		}
+	}
+}
+}

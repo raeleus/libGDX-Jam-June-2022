@@ -1,0 +1,86 @@
+{
+"skeleton": {
+	"hash": "vQSWP0Ko/5g",
+	"spine": "4.0.64",
+	"x": -25.91,
+	"y": -11.5,
+	"width": 64.03,
+	"height": 62,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "game/goat-body", "parent": "root", "length": 17.43, "rotation": 1.68, "x": 2.39, "y": 1.97 },
+	{ "name": "game/goat-hand", "parent": "game/goat-body", "length": 13.84, "rotation": -0.62, "x": 23.45, "y": 12.9 },
+	{ "name": "game/goat-hand2", "parent": "game/goat-body", "length": 10.25, "rotation": -1.68, "x": -23.7, "y": 13.51 },
+	{ "name": "game/goat-head", "parent": "game/goat-body", "length": 15.37, "rotation": -1.68, "x": 3.19, "y": 29.9 }
+],
+"slots": [
+	{ "name": "game/goat-body", "bone": "game/goat-body", "attachment": "game/goat-body" },
+	{ "name": "game/goat-staff", "bone": "game/goat-hand", "attachment": "game/goat-staff" },
+	{ "name": "game/goat-hand", "bone": "game/goat-hand", "attachment": "game/goat-hand" },
+	{ "name": "game/goat-hand2", "bone": "game/goat-hand2", "attachment": "game/goat-hand" },
+	{ "name": "game/goat-head", "bone": "game/goat-head", "attachment": "game/goat-head" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/goat-body": {
+				"game/goat-body": { "x": -0.17, "y": 7.54, "rotation": -1.68, "width": 31, "height": 42 }
+			},
+			"game/goat-hand": {
+				"game/goat-hand": { "x": -0.7, "y": 0.49, "rotation": -1.06, "width": 7, "height": 8 }
+			},
+			"game/goat-hand2": {
+				"game/goat-hand": { "x": -0.72, "y": 0.19, "width": 7, "height": 8 }
+			},
+			"game/goat-head": {
+				"game/goat-head": { "x": 1.3, "y": -0.44, "width": 45, "height": 38 }
+			},
+			"game/goat-staff": {
+				"game/goat-staff": { "x": 4.16, "y": -0.64, "rotation": -1.06, "width": 17, "height": 45 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"game/goat-head": {
+				"translate": [
+					{},
+					{ "time": 0.2333, "x": 0.14, "y": 4.61 },
+					{ "time": 0.4333 }
+				]
+			},
+			"game/goat-hand": {
+				"translate": [
+					{},
+					{ "time": 0.1, "x": -0.13, "y": -4.35 },
+					{ "time": 0.2333, "x": 6.02, "y": -4.53 },
+					{ "time": 0.3333, "x": 6.25, "y": 3.4 },
+					{ "time": 0.4333 }
+				]
+			},
+			"game/goat-hand2": {
+				"translate": [
+					{},
+					{ "time": 0.1, "x": -0.13, "y": -4.35 },
+					{ "time": 0.2333, "x": 6.02, "y": -4.53 },
+					{ "time": 0.3333, "x": 6.25, "y": 3.4 },
+					{ "time": 0.4333 }
+				]
+			},
+			"game/goat-body": {
+				"translate": [
+					{},
+					{ "time": 0.2333, "y": 6.15 },
+					{ "time": 0.4333 }
+				]
+			}
+		}
+	}
+}
+}

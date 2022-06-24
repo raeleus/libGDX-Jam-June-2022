@@ -1,0 +1,365 @@
+{
+"skeleton": {
+	"hash": "7cjvBI6+wXw",
+	"spine": "4.0.64",
+	"x": -36.45,
+	"y": -26.55,
+	"width": 78.03,
+	"height": 83.97,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "game/player-body", "parent": "root", "length": 25.9, "x": 1.22, "y": 8.08 },
+	{ "name": "game/player-hand", "parent": "game/player-body", "length": 18.65, "rotation": 1.06, "x": 32.81, "y": 4.14 },
+	{ "name": "game/player-hand2", "parent": "game/player-body", "length": 15.89, "x": -31.43, "y": 2.76 },
+	{ "name": "game/player-head", "parent": "game/player-body", "length": 17.28, "rotation": 2.29, "x": 2.07, "y": 29.01 },
+	{ "name": "game/teleport-01", "parent": "root", "length": 21.54, "x": 2.03, "y": 15.26 },
+	{ "name": "game/blood-pool", "parent": "root", "length": 31.05, "rotation": 1.64, "x": 3.11, "y": -7.07 }
+],
+"slots": [
+	{ "name": "game/blood-pool", "bone": "game/blood-pool", "attachment": "game/blood-pool" },
+	{ "name": "clip", "bone": "root", "attachment": "clip" },
+	{ "name": "game/player-body", "bone": "game/player-body", "attachment": "game/player-body" },
+	{ "name": "game/player-sword", "bone": "game/player-hand2" },
+	{ "name": "game/player-trident", "bone": "game/player-hand" },
+	{ "name": "game/player-hand", "bone": "game/player-hand", "attachment": "game/player-hand" },
+	{ "name": "game/player-hand2", "bone": "game/player-hand2", "attachment": "game/player-hand" },
+	{ "name": "game/player-head", "bone": "game/player-head", "attachment": "game/player-head" },
+	{ "name": "game/teleport-01", "bone": "game/teleport-01" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"clip": {
+				"clip": {
+					"type": "clipping",
+					"end": "clip",
+					"vertexCount": 4,
+					"vertices": [ -67.84, -6.63, 73.18, -5.3, 70.96, 68.31, -69.17, 66.54 ],
+					"color": "ce3a3aff"
+				}
+			},
+			"game/blood-pool": {
+				"game/blood-pool": { "x": 1.41, "y": -2.52, "rotation": -1.64, "width": 51, "height": 34 }
+			},
+			"game/player-body": {
+				"game/player-body": { "x": 1.7, "y": 6.19, "width": 31, "height": 40 }
+			},
+			"game/player-hand": {
+				"game/player-hand": { "x": 0.55, "y": -0.07, "rotation": -1.06, "width": 14, "height": 14 }
+			},
+			"game/player-hand2": {
+				"game/player-hand": { "x": 0.76, "y": -0.09, "width": 14, "height": 14 }
+			},
+			"game/player-head": {
+				"game/player-head": { "x": 0.54, "y": 5.31, "rotation": -2.29, "width": 24, "height": 30 }
+			},
+			"game/player-sword": {
+				"game/player-sword": { "x": -11.64, "y": 21.89, "rotation": 119.91, "width": 59, "height": 26 }
+			},
+			"game/player-trident": {
+				"game/player-trident": { "x": 1.15, "y": 8.09, "rotation": 88.96, "width": 54, "height": 26 }
+			},
+			"game/teleport-01": {
+				"game/teleport-01": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-02": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-03": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-04": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-05": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-06": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-07": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-08": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-09": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-10": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-11": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-12": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-13": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-14": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-15": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-16": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-17": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-18": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-19": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-20": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
+				"game/teleport-21": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"game/player-hand": {
+				"translate": [
+					{},
+					{ "time": 0.1, "y": -5.53 },
+					{ "time": 0.2333, "x": 6.91, "y": -5.53 },
+					{ "time": 0.3333, "x": 6.91, "y": 5.18 },
+					{ "time": 0.4333 }
+				]
+			},
+			"game/player-hand2": {
+				"translate": [
+					{},
+					{ "time": 0.1, "y": -5.53 },
+					{ "time": 0.2333, "x": 6.91, "y": -5.53 },
+					{ "time": 0.3333, "x": 6.91, "y": 5.18 },
+					{ "time": 0.4333 }
+				]
+			},
+			"game/player-head": {
+				"translate": [
+					{ "y": -1.73 },
+					{ "time": 0.2333, "y": 1.73 },
+					{ "time": 0.4333, "y": -1.73 }
+				]
+			},
+			"game/player-body": {
+				"translate": [
+					{},
+					{ "time": 0.2333, "y": 5.87 },
+					{ "time": 0.4333 }
+				]
+			}
+		}
+	},
+	"die": {
+		"bones": {
+			"game/player-body": {
+				"translate": [
+					{ "time": 0.4 },
+					{ "time": 1.2, "y": -68.68 }
+				]
+			},
+			"game/player-hand2": {
+				"translate": [
+					{ "time": 0.4 },
+					{ "time": 1.2, "x": 29.43, "y": -5.62 }
+				]
+			},
+			"game/player-hand": {
+				"translate": [
+					{ "time": 0.4 },
+					{ "time": 1.2, "x": -30.26, "y": 37.53 }
+				]
+			},
+			"game/blood-pool": {
+				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.2667 }
+				]
+			}
+		}
+	},
+	"slash": {
+		"slots": {
+			"game/player-sword": {
+				"attachment": [
+					{ "name": "game/player-sword" },
+					{ "time": 0.5667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"game/player-hand2": {
+				"rotate": [
+					{
+						"value": -34.35,
+						"curve": [ 0.111, -22.71, 0.133, 84.68 ]
+					},
+					{
+						"time": 0.1333,
+						"value": 107.68,
+						"curve": [ 0.133, 119.31, 0.411, 61.87 ]
+					},
+					{
+						"time": 0.4333,
+						"value": 61.87,
+						"curve": [ 0.478, 61.87, 0.522, -30.87 ]
+					},
+					{
+						"time": 0.5667,
+						"value": -30.87,
+						"curve": [ 0.611, -30.87, 0.656, 0 ]
+					},
+					{ "time": 0.7 }
+				],
+				"translate": [
+					{
+						"x": 14.66,
+						"y": 24.08,
+						"curve": [ 0.056, 14.66, 0.084, 13.98, 0.056, 24.08, 0.106, 14.78 ]
+					},
+					{
+						"time": 0.1333,
+						"x": 7.33,
+						"y": 3.14,
+						"curve": [ 0.156, 4.35, 0.411, 7.33, 0.156, -6.42, 0.411, 3.14 ]
+					},
+					{
+						"time": 0.4333,
+						"x": 7.33,
+						"y": 3.14,
+						"curve": [ 0.456, 7.33, 0.544, 20.94, 0.456, 3.14, 0.544, 3.14 ]
+					},
+					{ "time": 0.5667, "x": 20.94, "y": 3.14 },
+					{ "time": 0.7 }
+				]
+			}
+		}
+	},
+	"smack": {
+		"bones": {
+			"game/player-hand2": {
+				"translate": [
+					{},
+					{ "time": 0.1667, "x": 26.17, "y": 6.28 },
+					{
+						"time": 0.3333,
+						"x": -20.94,
+						"y": 14.66,
+						"curve": [ 0.393, -21, 0.474, -9.27, 0.452, 14.41, 0.46, 8.33 ]
+					},
+					{ "time": 0.5 }
+				]
+			},
+			"game/player-body": {
+				"rotate": [
+					{},
+					{ "time": 0.1667, "value": -10.68 },
+					{
+						"time": 0.3333,
+						"value": 5.79,
+						"curve": [ 0.44, 5.92, 0.444, 2.07 ]
+					},
+					{ "time": 0.5 }
+				]
+			}
+		}
+	},
+	"spawn": {
+		"bones": {
+			"game/player-body": {
+				"translate": [
+					{ "y": -68.68 },
+					{ "time": 0.8 }
+				]
+			},
+			"game/player-hand2": {
+				"translate": [
+					{ "x": 29.43, "y": -5.62 },
+					{ "time": 0.8 }
+				]
+			},
+			"game/player-hand": {
+				"translate": [
+					{ "x": -30.26, "y": 37.53 },
+					{ "time": 0.8 }
+				]
+			},
+			"game/blood-pool": {
+				"scale": [
+					{ "time": 0.9 },
+					{ "time": 1.2, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"teleport": {
+		"slots": {
+			"game/player-body": {
+				"attachment": [
+					{ "time": 0.2667, "name": null }
+				]
+			},
+			"game/player-hand": {
+				"attachment": [
+					{ "time": 0.2667, "name": null }
+				]
+			},
+			"game/player-hand2": {
+				"attachment": [
+					{ "time": 0.2667, "name": null }
+				]
+			},
+			"game/player-head": {
+				"attachment": [
+					{ "time": 0.2667, "name": null }
+				]
+			},
+			"game/teleport-01": {
+				"attachment": [
+					{ "name": "game/teleport-01" },
+					{ "time": 0.0667, "name": "game/teleport-02" },
+					{ "time": 0.1333, "name": "game/teleport-03" },
+					{ "time": 0.2, "name": "game/teleport-04" },
+					{ "time": 0.2667, "name": "game/teleport-05" },
+					{ "time": 0.3333, "name": "game/teleport-06" },
+					{ "time": 0.3667, "name": "game/teleport-07" },
+					{ "time": 0.4333, "name": "game/teleport-08" },
+					{ "time": 0.5, "name": "game/teleport-09" },
+					{ "time": 0.5667, "name": "game/teleport-10" },
+					{ "time": 0.6333, "name": "game/teleport-11" },
+					{ "time": 0.7, "name": "game/teleport-12" },
+					{ "time": 0.7667, "name": "game/teleport-13" },
+					{ "time": 0.8333, "name": "game/teleport-14" },
+					{ "time": 0.9, "name": "game/teleport-15" },
+					{ "time": 0.9667, "name": "game/teleport-16" },
+					{ "time": 1, "name": "game/teleport-17" },
+					{ "time": 1.0667, "name": "game/teleport-18" },
+					{ "time": 1.1333, "name": "game/teleport-19" },
+					{ "time": 1.2, "name": "game/teleport-20" },
+					{ "time": 1.2667, "name": "game/teleport-21" },
+					{ "time": 1.3333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"game/teleport-01": {
+				"translate": [
+					{ "x": 1.54, "y": 4.23 }
+				],
+				"scale": [
+					{ "x": 1.923, "y": 1.923 }
+				]
+			}
+		}
+	},
+	"trident": {
+		"slots": {
+			"game/player-trident": {
+				"attachment": [
+					{ "name": "game/player-trident" },
+					{ "time": 0.6667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"game/player-hand": {
+				"translate": [
+					{},
+					{
+						"time": 0.1333,
+						"x": -2.78,
+						"y": 27.8,
+						"curve": [ 0.2, -2.78, 0.333, 0, 0.442, 27.68, 0.381, 9.02 ]
+					},
+					{
+						"time": 0.4,
+						"curve": [ 0.444, 0, 0.489, 0, 0.4, -0.13, 0.489, 0 ]
+					},
+					{
+						"time": 0.5333,
+						"curve": [ 0.578, 0, 0.622, -20.52, 0.578, 0, 0.622, 2.86 ]
+					},
+					{ "time": 0.6667, "x": -20.52, "y": 2.86 },
+					{ "time": 0.8 }
+				]
+			}
+		}
+	}
+}
+}

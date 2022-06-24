@@ -658,7 +658,7 @@ public class Core extends JamGame {
     }
     
     public enum Binding {
-        LEFT, RIGHT, UP, DOWN, SHOOT, SPECIAL, SHIELD;
+        THROW, STRIKE, DASH
     }
     public static float bgm;
     public static float sfx;
@@ -741,13 +741,9 @@ public class Core extends JamGame {
     }
     
     public void setDefaultBindings() {
-        addKeyBinding(Binding.LEFT, Input.Keys.LEFT);
-        addKeyBinding(Binding.RIGHT, Input.Keys.RIGHT);
-        addKeyBinding(Binding.UP, Input.Keys.UP);
-        addKeyBinding(Binding.DOWN, Input.Keys.DOWN);
-        addKeyBinding(Binding.SHOOT, Input.Keys.Z);
-        addKeyBinding(Binding.SHIELD, Input.Keys.X);
-        addKeyBinding(Binding.SPECIAL, Input.Keys.C);
+        addKeyBinding(Binding.STRIKE, Keys.Z);
+        addKeyBinding(Binding.THROW, Keys.X);
+        addKeyBinding(Binding.DASH, Keys.C);
     }
     
     public static class ControllerHandler implements ControllerListener {

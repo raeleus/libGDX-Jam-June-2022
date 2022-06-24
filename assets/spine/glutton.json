@@ -1,0 +1,82 @@
+{
+"skeleton": {
+	"hash": "w9sESfKgtEo",
+	"spine": "4.0.64",
+	"x": -43.26,
+	"y": -11.76,
+	"width": 85.65,
+	"height": 61,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "game/glutton-body", "parent": "root", "length": 38.1, "x": 0.94, "y": 1.96 },
+	{ "name": "game/glutton-hand", "parent": "game/glutton-body", "length": 20.99, "rotation": -1.51, "x": 36.99, "y": 11.04 },
+	{ "name": "game/glutton-hand2", "parent": "game/glutton-body", "length": 22.65, "rotation": 1.4, "x": -39.76, "y": 8.28 },
+	{ "name": "game/glutton-head", "parent": "game/glutton-body", "length": 19.88, "y": 35.34 }
+],
+"slots": [
+	{ "name": "game/glutton-body", "bone": "game/glutton-body", "attachment": "game/glutton-body" },
+	{ "name": "game/glutton-hand", "bone": "game/glutton-hand", "attachment": "game/glutton-hand" },
+	{ "name": "game/glutton-hand2", "bone": "game/glutton-hand2", "attachment": "game/glutton-hand" },
+	{ "name": "game/glutton-head", "bone": "game/glutton-head", "attachment": "game/glutton-head" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/glutton-body": {
+				"game/glutton-body": { "y": 8.28, "width": 52, "height": 44 }
+			},
+			"game/glutton-hand": {
+				"game/glutton-hand": { "x": -0.57, "y": 0.54, "rotation": 1.51, "width": 10, "height": 11 }
+			},
+			"game/glutton-hand2": {
+				"game/glutton-hand": { "x": 0.57, "y": 0.54, "rotation": -1.4, "width": 10, "height": 11 }
+			},
+			"game/glutton-head": {
+				"game/glutton-head": { "x": 1.1, "y": -0.55, "width": 22, "height": 25 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"game/glutton-head": {
+				"translate": [
+					{},
+					{ "time": 0.1, "y": -2.76 },
+					{ "time": 0.2333 }
+				]
+			},
+			"game/glutton-hand": {
+				"translate": [
+					{},
+					{ "time": 0.1, "y": -6.63 },
+					{ "time": 0.2333, "x": 7.73, "y": -7.18 },
+					{ "time": 0.3333, "x": 6.63, "y": 1.1 },
+					{ "time": 0.4333 }
+				]
+			},
+			"game/glutton-hand2": {
+				"translate": [
+					{ "x": 6.63, "y": 1.1 },
+					{ "time": 0.1 },
+					{ "time": 0.2, "y": -6.63 },
+					{ "time": 0.3333, "x": 7.73, "y": -7.18 },
+					{ "time": 0.4333, "x": 6.63, "y": 1.1 }
+				]
+			},
+			"game/glutton-body": {
+				"translate": [
+					{},
+					{ "time": 0.1333, "y": 6.07 },
+					{ "time": 0.4333 }
+				]
+			}
+		}
+	}
+}
+}

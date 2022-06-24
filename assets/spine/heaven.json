@@ -1,0 +1,94 @@
+{
+"skeleton": {
+	"hash": "oUvq3goHAMs",
+	"spine": "4.0.64",
+	"x": -0.02,
+	"y": -0.04,
+	"width": 1024.06,
+	"height": 576.05,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "logo/white", "parent": "root", "length": 483.21, "rotation": 0.75, "x": 512, "y": 288 },
+	{ "name": "game/heaven-stairs", "parent": "root", "length": 369.74, "rotation": -0.33, "x": 512, "y": 121.99 },
+	{ "name": "game/heaven-city", "parent": "root", "length": 380.29, "rotation": 0.95, "x": 512, "y": 271.14 }
+],
+"slots": [
+	{ "name": "clip", "bone": "root", "attachment": "clip" },
+	{ "name": "logo/white", "bone": "logo/white", "color": "91e1ffff", "attachment": "logo/white" },
+	{ "name": "game/heaven-city", "bone": "game/heaven-city", "attachment": "game/heaven-city" },
+	{ "name": "game/heaven-clouds", "bone": "logo/white", "attachment": "game/heaven-clouds" },
+	{ "name": "game/heaven-stairs", "bone": "game/heaven-stairs", "attachment": "game/heaven-stairs" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"clip": {
+				"clip": {
+					"type": "clipping",
+					"end": "clip",
+					"vertexCount": 4,
+					"vertices": [ -0.02, -0.03, 0, 576.01, 1024.04, 576.01, 1024.01, -0.04 ],
+					"color": "ce3a3aff"
+				}
+			},
+			"game/heaven-city": {
+				"game/heaven-city": { "x": 15.28, "y": 33.45, "rotation": -0.95, "width": 943, "height": 531 }
+			},
+			"game/heaven-clouds": {
+				"game/heaven-clouds": { "x": 16.9, "y": -12.65, "rotation": -0.75, "width": 1241, "height": 675 }
+			},
+			"game/heaven-stairs": {
+				"game/heaven-stairs": { "x": 18.82, "y": 119.36, "rotation": 0.33, "width": 430, "height": 544 }
+			},
+			"logo/white": {
+				"logo/white": { "scaleX": 1024, "scaleY": 576, "rotation": -0.75, "width": 1, "height": 1 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"game/heaven-stairs": {
+				"translate": [
+					{
+						"y": -182.32,
+						"curve": [ 0.222, 0, 1.778, 0, 0.222, -182.32, 1.778, -40.91 ]
+					},
+					{ "time": 2, "y": -40.91 }
+				]
+			},
+			"game/heaven-city": {
+				"translate": [
+					{
+						"y": -34.36,
+						"curve": [ 0.222, 0, 1.778, 0, 0.222, -34.36, 1.778, 0 ]
+					},
+					{ "time": 2 }
+				]
+			},
+			"logo/white": {
+				"translate": [
+					{
+						"y": -50.72,
+						"curve": [ 0.667, 0, 1.333, 0, 0.667, -50.72, 1.333, 0 ]
+					},
+					{ "time": 2 }
+				],
+				"scale": [
+					{
+						"x": 1.264,
+						"y": 1.264,
+						"curve": [ 0.222, 1.264, 1.778, 1, 0.222, 1.264, 1.778, 1 ]
+					},
+					{ "time": 2 }
+				]
+			}
+		}
+	}
+}
+}

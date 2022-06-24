@@ -1,0 +1,31 @@
+{
+"skeleton": {
+	"hash": "hbM9OPMV/cQ",
+	"spine": "4.0.64",
+	"x": -36.5,
+	"y": -31.5,
+	"width": 73,
+	"height": 63,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/tile-ground", "bone": "root", "attachment": "game/tile-ground" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/tile-ground": {
+				"game/tile-ground": { "width": 73, "height": 63 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

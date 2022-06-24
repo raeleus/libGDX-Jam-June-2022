@@ -1,0 +1,57 @@
+{
+"skeleton": {
+	"hash": "uNrUYwTjctQ",
+	"spine": "4.0.64",
+	"x": -31.5,
+	"y": -32.5,
+	"width": 63,
+	"height": 65,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/blood-01", "bone": "root", "attachment": "game/blood-01" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/blood-01": {
+				"game/blood-01": { "width": 63, "height": 65 },
+				"game/blood-02": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/blood-03": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/blood-04": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/blood-05": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/blood-06": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/blood-07": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/blood-08": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/blood-09": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/blood-10": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"game/blood-01": {
+				"attachment": [
+					{ "time": 0.0333, "name": "game/blood-02" },
+					{ "time": 0.0667, "name": "game/blood-03" },
+					{ "time": 0.1, "name": "game/blood-04" },
+					{ "time": 0.1333, "name": "game/blood-05" },
+					{ "time": 0.1667, "name": "game/blood-06" },
+					{ "time": 0.2, "name": "game/blood-07" },
+					{ "time": 0.2333, "name": "game/blood-08" },
+					{ "time": 0.2667, "name": "game/blood-09" },
+					{ "time": 0.3, "name": "game/blood-10" },
+					{ "time": 0.3333, "name": null }
+				]
+			}
+		}
+	}
+}
+}

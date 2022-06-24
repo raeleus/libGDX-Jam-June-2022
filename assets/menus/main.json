@@ -5,14 +5,59 @@
 		"cells": [
 			{
 				"child": {
-					"class": "Image",
-					"name": null,
-					"drawable": "libgdx-animation",
-					"scaling": "none",
+					"class": "ImageButton",
+					"name": "wolf",
+					"style": {
+						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.ImageButton",
+						"name": "default"
+					},
+					"checked": false,
+					"disabled": false,
+					"color": null,
+					"padLeft": 0,
+					"padRight": 0,
+					"padTop": 0,
+					"padBottom": 0,
 					"touchable": "enabled",
 					"visible": true
 				},
 				"row": 0,
+				"column": 0,
+				"padLeft": 0,
+				"padRight": 0,
+				"padTop": 0,
+				"padBottom": 0,
+				"spaceLeft": 0,
+				"spaceRight": 0,
+				"spaceTop": 0,
+				"spaceBottom": 0,
+				"expandX": false,
+				"expandY": false,
+				"fillX": false,
+				"fillY": false,
+				"growX": false,
+				"growY": false,
+				"alignment": 16,
+				"minWidth": -1,
+				"minHeight": -1,
+				"maxWidth": -1,
+				"maxHeight": -1,
+				"preferredWidth": -1,
+				"preferredHeight": -1,
+				"uniformX": false,
+				"uniformY": false,
+				"colSpan": 3
+			},
+			{
+				"child": {
+					"class": "Image",
+					"name": null,
+					"drawable": "title",
+					"scaling": "fit",
+					"touchable": "enabled",
+					"visible": true
+				},
+				"row": 1,
 				"column": 0,
 				"padLeft": 0,
 				"padRight": 0,
@@ -46,7 +91,7 @@
 					"text": "Play",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
-						"name": "default"
+						"name": "menu"
 					},
 					"checked": false,
 					"disabled": false,
@@ -58,7 +103,7 @@
 					"touchable": "enabled",
 					"visible": true
 				},
-				"row": 1,
+				"row": 2,
 				"column": 0,
 				"padLeft": 0,
 				"padRight": 0,
@@ -92,7 +137,7 @@
 					"text": "Options",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
-						"name": "default"
+						"name": "menu"
 					},
 					"checked": false,
 					"disabled": false,
@@ -104,7 +149,7 @@
 					"touchable": "enabled",
 					"visible": true
 				},
-				"row": 1,
+				"row": 2,
 				"column": 1,
 				"padLeft": 0,
 				"padRight": 0,
@@ -138,7 +183,7 @@
 					"text": "Credits",
 					"style": {
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.TextButton",
-						"name": "default"
+						"name": "menu"
 					},
 					"checked": false,
 					"disabled": false,
@@ -150,7 +195,7 @@
 					"touchable": "enabled",
 					"visible": true
 				},
-				"row": 1,
+				"row": 2,
 				"column": 2,
 				"padLeft": 0,
 				"padRight": 0,
@@ -185,7 +230,7 @@
 						"clazz": "com.badlogic.gdx.scenes.scene2d.ui.Label",
 						"name": "default"
 					},
-					"text": "Copyright Raymond \"Raeleus\" Buckley © 2021",
+					"text": "Copyright Raymond \"Raeleus\" Buckley © 2022",
 					"textAlignment": 8,
 					"ellipsis": false,
 					"ellipsisString": "...",
@@ -194,7 +239,7 @@
 					"touchable": "enabled",
 					"visible": true
 				},
-				"row": 2,
+				"row": 3,
 				"column": 0,
 				"padLeft": 0,
 				"padRight": 0,

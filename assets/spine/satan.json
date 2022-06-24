@@ -1,0 +1,291 @@
+{
+"skeleton": {
+	"hash": "qsMhzI6oQxw",
+	"spine": "4.0.64",
+	"x": -50.16,
+	"y": -13.51,
+	"width": 107.08,
+	"height": 80.2,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "game/satan-body", "parent": "root", "length": 36.29, "rotation": -2.26, "x": 0.52, "y": 21.08 },
+	{ "name": "game/satan-hand2", "parent": "game/satan-body", "length": 17.66, "rotation": 0.71, "x": 41.98, "y": 1.18 },
+	{ "name": "game/satan-hand", "parent": "game/satan-body", "length": 12.88, "rotation": 2.26, "x": -38.16, "y": -1.03 },
+	{ "name": "game/satan-head", "parent": "game/satan-body", "length": 27.2, "rotation": 3.27, "x": 3.48, "y": 20.67 },
+	{ "name": "game/satan-wing", "parent": "game/satan-body", "length": 37.23, "rotation": 0.79, "x": 18.45, "y": 4.55 },
+	{ "name": "game/satan-wing2", "parent": "game/satan-body", "length": 34.36, "rotation": -176.94, "x": -14.03, "y": 4.7 },
+	{ "name": "game/blood-pool", "parent": "root", "length": 38.15, "rotation": 1.33, "x": 0.45, "y": -6.19 }
+],
+"slots": [
+	{ "name": "game/blood-pool", "bone": "game/blood-pool" },
+	{ "name": "clip", "bone": "root", "attachment": "clip" },
+	{ "name": "game/satan-wing", "bone": "game/satan-wing", "attachment": "game/satan-wing" },
+	{ "name": "game/satan-wing2", "bone": "game/satan-wing2", "attachment": "game/satan-wing" },
+	{ "name": "game/satan-body", "bone": "game/satan-body", "attachment": "game/satan-body" },
+	{ "name": "game/satan-hand", "bone": "game/satan-hand", "attachment": "game/satan-hand" },
+	{ "name": "game/satan-hand2", "bone": "game/satan-hand2", "attachment": "game/satan-hand" },
+	{ "name": "game/satan-head", "bone": "game/satan-head", "attachment": "game/satan-head" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"clip": {
+				"clip": {
+					"type": "clipping",
+					"end": "clip",
+					"vertexCount": 4,
+					"vertices": [ -102.87, -14.17, 129.06, -14.61, 129.94, 99.8, -99.77, 98.03 ],
+					"color": "ce3a3aff"
+				}
+			},
+			"game/blood-pool": {
+				"game/blood-pool": {
+					"x": 1.71,
+					"y": -2.7,
+					"scaleX": 1.4983,
+					"scaleY": 1.4983,
+					"rotation": -1.33,
+					"width": 51,
+					"height": 34
+				}
+			},
+			"game/satan-body": {
+				"game/satan-body": { "x": 2.96, "y": -2.27, "rotation": 2.26, "width": 57, "height": 48 }
+			},
+			"game/satan-hand": {
+				"game/satan-hand": { "x": -0.93, "y": 0.47, "width": 12, "height": 13 }
+			},
+			"game/satan-hand2": {
+				"game/satan-hand": { "x": 0.46, "y": 0.49, "rotation": 1.55, "width": 12, "height": 13 }
+			},
+			"game/satan-head": {
+				"game/satan-head": { "x": 1.58, "y": 8.56, "rotation": -1.01, "width": 37, "height": 33 }
+			},
+			"game/satan-wing": {
+				"game/satan-wing": { "x": 14.84, "y": -1.53, "rotation": 1.47, "width": 46, "height": 73 }
+			},
+			"game/satan-wing2": {
+				"game/satan-wing": { "x": 13.88, "y": 3.15, "scaleX": -1, "rotation": 179.2, "width": 46, "height": 73 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"game/satan-hand2": {
+				"translate": [
+					{ "x": 18.17, "y": -12.65 },
+					{ "time": 0.1, "x": 17.32, "y": 8.8 },
+					{ "time": 0.2 },
+					{ "time": 0.3, "x": 0.53, "y": -13.35 },
+					{ "time": 0.4, "x": 18.17, "y": -12.65 }
+				]
+			},
+			"game/satan-hand": {
+				"translate": [
+					{},
+					{ "time": 0.1, "x": 0.53, "y": -13.35 },
+					{ "time": 0.2, "x": 18.17, "y": -12.65 },
+					{ "time": 0.3, "x": 17.32, "y": 8.8 },
+					{ "time": 0.4 }
+				]
+			},
+			"game/satan-head": {
+				"translate": [
+					{ "x": -0.34, "y": -4.04 },
+					{ "time": 0.2, "x": 3.68, "y": -1.06 },
+					{ "time": 0.4, "x": -0.34, "y": -4.04 }
+				]
+			},
+			"game/satan-body": {
+				"translate": [
+					{},
+					{ "time": 0.2, "y": 7.05 },
+					{ "time": 0.4 }
+				]
+			}
+		}
+	},
+	"die": {
+		"slots": {
+			"game/blood-pool": {
+				"attachment": [
+					{ "name": "game/blood-pool" }
+				]
+			}
+		},
+		"bones": {
+			"game/blood-pool": {
+				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.2667 }
+				]
+			},
+			"game/satan-body": {
+				"translate": [
+					{ "time": 0.4 },
+					{ "time": 1.2, "y": -63.41 }
+				],
+				"scale": [
+					{ "time": 0.4 },
+					{ "time": 1.2, "x": 0.355, "y": 0.355 }
+				]
+			},
+			"game/satan-hand": {
+				"translate": [
+					{ "time": 0.4 },
+					{ "time": 1.2, "x": 29.54, "y": -17.47 }
+				]
+			},
+			"game/satan-hand2": {
+				"translate": [
+					{ "time": 0.4 },
+					{ "time": 1.2, "x": -29.41, "y": -19.36 }
+				]
+			},
+			"game/satan-wing": {
+				"rotate": [
+					{ "time": 0.4 },
+					{ "time": 0.5333, "value": -7.78 }
+				]
+			},
+			"game/satan-wing2": {
+				"rotate": [
+					{ "time": 0.4 },
+					{ "time": 0.5333, "value": 20.99 }
+				]
+			}
+		}
+	},
+	"land": {
+		"slots": {
+			"game/satan-body": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4667, "color": "ffffffff" }
+				]
+			},
+			"game/satan-hand": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4667, "color": "ffffffff" }
+				]
+			},
+			"game/satan-hand2": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4667, "color": "ffffffff" }
+				]
+			},
+			"game/satan-head": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4667, "color": "ffffffff" }
+				]
+			},
+			"game/satan-wing": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4667, "color": "ffffffff" }
+				]
+			},
+			"game/satan-wing2": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.4667, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"game/satan-body": {
+				"translate": [
+					{
+						"y": 66.86,
+						"curve": [ 0.156, 0, 0.311, 0, 0.221, 65.6, 0.467, 53.91 ]
+					},
+					{ "time": 0.4667 }
+				]
+			},
+			"game/satan-wing2": {
+				"rotate": [
+					{ "value": 21.12 },
+					{ "time": 0.4667 }
+				]
+			},
+			"game/satan-wing": {
+				"rotate": [
+					{ "value": -27.11 },
+					{ "time": 0.4667 }
+				]
+			}
+		}
+	},
+	"leap": {
+		"slots": {
+			"game/satan-body": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.4667, "color": "ffffff00" }
+				]
+			},
+			"game/satan-hand": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.4667, "color": "ffffff00" }
+				]
+			},
+			"game/satan-hand2": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.4667, "color": "ffffff00" }
+				]
+			},
+			"game/satan-head": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.4667, "color": "ffffff00" }
+				]
+			},
+			"game/satan-wing": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.4667, "color": "ffffff00" }
+				]
+			},
+			"game/satan-wing2": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.4667, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"game/satan-body": {
+				"translate": [
+					{
+						"curve": [ 0.156, 0, 0.311, 0, 0.001, 45.09, 0.349, 65.85 ]
+					},
+					{ "time": 0.4667, "y": 66.86 }
+				]
+			},
+			"game/satan-wing2": {
+				"rotate": [
+					{},
+					{ "time": 0.4667, "value": 21.12 }
+				]
+			},
+			"game/satan-wing": {
+				"rotate": [
+					{},
+					{ "time": 0.4667, "value": -27.11 }
+				]
+			}
+		}
+	}
+}
+}

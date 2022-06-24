@@ -1,0 +1,157 @@
+{
+"skeleton": {
+	"hash": "6iQmBD2wnQI",
+	"spine": "4.0.64",
+	"y": -366.21,
+	"width": 1247.55,
+	"height": 1208.61,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "spiral", "parent": "root", "length": 439.44, "x": 512, "y": 288 },
+	{ "name": "logo", "parent": "root", "length": 142.23, "rotation": 1.03, "x": 512, "y": 288 }
+],
+"slots": [
+	{ "name": "background", "bone": "root", "attachment": "logo/white" },
+	{ "name": "spiral", "bone": "spiral", "attachment": "logo/ray3k-spiral" },
+	{ "name": "company", "bone": "root", "attachment": "logo/ray3k-company" },
+	{ "name": "logo", "bone": "logo", "attachment": "logo/ray3k-logo" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"background": {
+				"logo/white": {
+					"color": "250147ff",
+					"x": 512,
+					"y": 288,
+					"scaleX": 1024,
+					"scaleY": 576,
+					"width": 1,
+					"height": 1
+				}
+			},
+			"company": {
+				"logo/ray3k-company": { "x": 512, "y": 82.03, "scaleX": 0.7241, "scaleY": 0.7241, "width": 934, "height": 55 }
+			},
+			"logo": {
+				"logo/ray3k-logo": {
+					"x": 0.62,
+					"y": 34.26,
+					"scaleX": 0.3921,
+					"scaleY": 0.3921,
+					"rotation": -1.03,
+					"width": 668,
+					"height": 779
+				}
+			},
+			"spiral": {
+				"logo/ray3k-spiral": { "x": 117.01, "y": -49.9, "scaleX": 0.4994, "scaleY": 0.4994, "width": 2477, "height": 2420 }
+			}
+		}
+	}
+],
+"events": {
+	"logo/crash": { "audio": "sfx/logo/crash.mp3" }
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"background": {
+				"rgba": [
+					{ "color": "000000ff" },
+					{ "time": 0.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 4, "color": "ffffffff" },
+					{ "time": 4.3667, "color": "000000ff" }
+				]
+			},
+			"company": {
+				"rgba": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 2.3667, "color": "ffffff00" },
+					{ "time": 2.9, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 4, "color": "ffffffff" },
+					{ "time": 4.3667, "color": "000000ff" }
+				]
+			},
+			"logo": {
+				"rgba": [
+					{ "time": 4, "color": "ffffffff" },
+					{ "time": 4.3667, "color": "000000ff" }
+				]
+			},
+			"spiral": {
+				"rgba": [
+					{ "color": "000000ff" },
+					{ "time": 0.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 4, "color": "ffffffff" },
+					{ "time": 4.3667, "color": "000000ff" }
+				]
+			}
+		},
+		"bones": {
+			"spiral": {
+				"rotate": [
+					{},
+					{ "time": 4.3667, "value": 360 }
+				]
+			},
+			"logo": {
+				"translate": [
+					{
+						"curve": [ 0.111, 0, 0.778, 0, 0.069, 52, 0.931, -64.28 ]
+					},
+					{
+						"time": 1,
+						"y": -12.28,
+						"curve": [ 1.111, 0, 1.289, 0, 1.069, 39.72, 1.289, 132.14 ]
+					},
+					{
+						"time": 1.4,
+						"y": 132.14,
+						"curve": [ 1.5, 0, 1.7, 0, 1.5, 132.14, 1.764, 48.05 ]
+					},
+					{ "time": 1.8 }
+				],
+				"scale": [
+					{ "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 },
+					{ "time": 1.8 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 1.6667, "name": "logo/crash" }
+		]
+	},
+	"stand": {
+		"slots": {
+			"background": {
+				"rgba": [
+					{ "color": "000000ff" }
+				]
+			},
+			"company": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"spiral": {
+				"rgba": [
+					{ "color": "000000ff" }
+				]
+			}
+		},
+		"bones": {
+			"logo": {
+				"scale": [
+					{ "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

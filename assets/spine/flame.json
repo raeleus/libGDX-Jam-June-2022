@@ -1,0 +1,152 @@
+{
+"skeleton": {
+	"hash": "tEDckDF8inQ",
+	"spine": "4.0.64",
+	"x": -44.8,
+	"y": -28.69,
+	"width": 90.61,
+	"height": 71.63,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "game/flame-01", "parent": "root", "length": 51.91 },
+	{ "name": "game/flame-02", "parent": "root", "length": 51.91, "x": -13.8, "y": -6.63 },
+	{ "name": "game/flame-03", "parent": "root", "length": 51.91, "x": 13.8, "y": -6.63 }
+],
+"slots": [
+	{ "name": "game/flame-01", "bone": "game/flame-01", "attachment": "game/flame-01" },
+	{ "name": "game/flame-02", "bone": "game/flame-02", "attachment": "game/flame-01" },
+	{ "name": "game/flame-03", "bone": "game/flame-03", "attachment": "game/flame-01" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/flame-01": {
+				"game/flame-01": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-02": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-03": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-04": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-05": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-06": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 }
+			},
+			"game/flame-02": {
+				"game/flame-01": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-02": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-03": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-04": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-05": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-06": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 }
+			},
+			"game/flame-03": {
+				"game/flame-01": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-02": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-03": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-04": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-05": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 },
+				"game/flame-06": { "x": 0.5, "y": 10.44, "width": 63, "height": 65 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"game/flame-01": {
+				"attachment": [
+					{ "time": 0.0667, "name": "game/flame-02" },
+					{ "time": 0.1333, "name": "game/flame-03" },
+					{ "time": 0.2, "name": "game/flame-04" },
+					{ "time": 0.2667, "name": "game/flame-05" },
+					{ "time": 0.3333, "name": "game/flame-06" },
+					{ "time": 0.4, "name": "game/flame-01" },
+					{ "time": 0.4667, "name": "game/flame-02" },
+					{ "time": 0.5333, "name": "game/flame-03" },
+					{ "time": 0.6, "name": "game/flame-04" },
+					{ "time": 0.6667, "name": "game/flame-05" },
+					{ "time": 0.7333, "name": "game/flame-06" },
+					{ "time": 0.8, "name": "game/flame-01" },
+					{ "time": 0.8667, "name": "game/flame-02" },
+					{ "time": 0.9333, "name": "game/flame-03" },
+					{ "time": 1, "name": "game/flame-04" },
+					{ "time": 1.0667, "name": "game/flame-05" },
+					{ "time": 1.1333, "name": "game/flame-06" },
+					{ "time": 1.2, "name": "game/flame-01" }
+				]
+			},
+			"game/flame-02": {
+				"attachment": [
+					{ "time": 0.0333, "name": "game/flame-06" },
+					{ "time": 0.1, "name": "game/flame-01" },
+					{ "time": 0.1667, "name": "game/flame-02" },
+					{ "time": 0.2333, "name": "game/flame-03" },
+					{ "time": 0.3, "name": "game/flame-04" },
+					{ "time": 0.3667, "name": "game/flame-05" },
+					{ "time": 0.4333, "name": "game/flame-06" },
+					{ "time": 0.5, "name": "game/flame-01" },
+					{ "time": 0.5667, "name": "game/flame-02" },
+					{ "time": 0.6333, "name": "game/flame-03" },
+					{ "time": 0.7, "name": "game/flame-04" },
+					{ "time": 0.7667, "name": "game/flame-05" },
+					{ "time": 0.8333, "name": "game/flame-06" },
+					{ "time": 0.9, "name": "game/flame-01" },
+					{ "time": 0.9667, "name": "game/flame-02" },
+					{ "time": 1.0333, "name": "game/flame-03" },
+					{ "time": 1.1, "name": "game/flame-04" },
+					{ "time": 1.1667, "name": "game/flame-05" }
+				]
+			},
+			"game/flame-03": {
+				"attachment": [
+					{ "time": 0.0333, "name": "game/flame-05" },
+					{ "time": 0.1, "name": "game/flame-06" },
+					{ "time": 0.1667, "name": "game/flame-01" },
+					{ "time": 0.2333, "name": "game/flame-02" },
+					{ "time": 0.3, "name": "game/flame-03" },
+					{ "time": 0.3667, "name": "game/flame-04" },
+					{ "time": 0.4333, "name": "game/flame-05" },
+					{ "time": 0.5, "name": "game/flame-06" },
+					{ "time": 0.5667, "name": "game/flame-01" },
+					{ "time": 0.6333, "name": "game/flame-02" },
+					{ "time": 0.7, "name": "game/flame-03" },
+					{ "time": 0.7667, "name": "game/flame-04" },
+					{ "time": 0.8333, "name": "game/flame-05" },
+					{ "time": 0.9, "name": "game/flame-06" },
+					{ "time": 0.9667, "name": "game/flame-01" },
+					{ "time": 1.0333, "name": "game/flame-02" },
+					{ "time": 1.1, "name": "game/flame-03" },
+					{ "time": 1.1667, "name": "game/flame-04" }
+				]
+			}
+		},
+		"bones": {
+			"game/flame-01": {
+				"scale": [
+					{
+						"curve": [ 0.382, 1.418, 0.905, 0.516, 0.379, 1.42, 0.907, 0.512 ]
+					},
+					{ "time": 1.2, "x": 0, "y": 0 }
+				]
+			},
+			"game/flame-02": {
+				"scale": [
+					{
+						"curve": [ 0.382, 1.418, 0.905, 0.516, 0.379, 1.42, 0.907, 0.512 ]
+					},
+					{ "time": 1.2, "x": 0, "y": 0 }
+				]
+			},
+			"game/flame-03": {
+				"scale": [
+					{
+						"curve": [ 0.382, 1.418, 0.905, 0.516, 0.379, 1.42, 0.907, 0.512 ]
+					},
+					{ "time": 1.2, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

@@ -1,0 +1,88 @@
+{
+"skeleton": {
+	"hash": "Uv1AEBYYwPU",
+	"spine": "4.0.64",
+	"x": -25.43,
+	"y": -5.56,
+	"width": 51.46,
+	"height": 25.25,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "game/imp-body", "parent": "root", "length": 12.81, "x": 0.17, "y": 2.23 },
+	{ "name": "game/imp-wing", "parent": "game/imp-body", "length": 26.54, "rotation": 0.5, "x": 5.12, "y": 0.7 },
+	{ "name": "game/imp-wing2", "parent": "game/imp-body", "length": 19.09, "rotation": 180, "x": -5.59, "y": 0.7 },
+	{ "name": "game/imp-head", "parent": "game/imp-body", "length": 19.8, "rotation": 2.02, "x": 0.7, "y": 8.85 }
+],
+"slots": [
+	{ "name": "game/imp-wing", "bone": "game/imp-wing", "attachment": "game/imp-wing" },
+	{ "name": "game/imp-wing2", "bone": "game/imp-wing2", "attachment": "game/imp-wing" },
+	{ "name": "game/imp-body", "bone": "game/imp-body", "attachment": "game/imp-body" },
+	{ "name": "game/imp-head", "bone": "game/imp-head", "attachment": "game/imp-head" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/imp-body": {
+				"game/imp-body": { "x": 0.22, "y": 0.07, "width": 16, "height": 15 }
+			},
+			"game/imp-head": {
+				"game/imp-head": { "x": 0.25, "y": 1.1, "rotation": -2.02, "width": 17, "height": 15 }
+			},
+			"game/imp-wing": {
+				"game/imp-wing": { "x": 8.76, "y": 2.45, "rotation": -0.5, "width": 24, "height": 21 }
+			},
+			"game/imp-wing2": {
+				"game/imp-wing": { "x": 8.01, "y": -2.01, "scaleX": -1, "rotation": 180, "width": 24, "height": 21 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"game/imp-wing": {
+				"rotate": [
+					{},
+					{ "time": 0.1, "value": 15.55 },
+					{ "time": 0.2 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.1, "x": 0.772 },
+					{ "time": 0.2 }
+				]
+			},
+			"game/imp-wing2": {
+				"rotate": [
+					{},
+					{ "time": 0.1, "value": -14.24 },
+					{ "time": 0.2 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.1, "x": 0.644 },
+					{ "time": 0.2 }
+				]
+			},
+			"game/imp-head": {
+				"translate": [
+					{ "y": 1.94 },
+					{ "time": 0.1 },
+					{ "time": 0.2, "y": 1.94 }
+				]
+			},
+			"game/imp-body": {
+				"translate": [
+					{},
+					{ "time": 0.1, "y": 4.2 },
+					{ "time": 0.2 }
+				]
+			}
+		}
+	}
+}
+}
