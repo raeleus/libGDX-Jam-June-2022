@@ -27,6 +27,10 @@ public class PlayerEntity extends Entity {
     
     @Override
     public void act(float delta) {
+        if (turn == Turn.PLAYER_MOVING && MathUtils.isEqual(x, moveTargetX) && MathUtils.isEqual(y, moveTargetY)) {
+            turn = Turn.ENEMY;
+        }
+        
         if (MathUtils.isEqual(x, pentagramEntity.x) && MathUtils.isEqual(y, pentagramEntity.y)) {
             destroy = true;
             sfx_gameTeleport.play(sfx);
@@ -40,6 +44,7 @@ public class PlayerEntity extends Entity {
                         if (tutorial <= 5) {
                             tutorial++;
                             preferences.putInteger("tutorial", tutorial);
+                            preferences.flush();
                             level = "tutorial" + Utils.intToTwoDigit(tutorial);
                         }
                         core.transition(new GameScreen(level));

@@ -48,12 +48,17 @@ public class GameScreen extends JamScreen {
     public Array<GroundEntity> grounds = new Array<>();
     public Array<LavaEntity> lavas = new Array<>();
     public Array<Entity> characters = new Array<>();
+    public Array<Entity> enemies = new Array<>();
     private float bubbleTimer;
     public HexUtils hexUtils;
     public static PlayerEntity player;
     public String level;
     public Music currentDialogAudio;
     public static PentagramEntity pentagramEntity;
+    public enum Turn {
+        STORY, PLAYER, PLAYER_MOVING, ENEMY, ENEMY_MOVING
+    }
+    public static Turn turn;
     
     public GameScreen(String level) {
         this.level = level;
@@ -116,7 +121,9 @@ public class GameScreen extends JamScreen {
         entityController.clear();
         loadLevel(level);
 
+        turn = Turn.PLAYER;
         if (level.equals("home") || level.equals("tutorial01")) {
+            turn = Turn.STORY;
             var index = preferences.getInteger("dialog", 1);
             if (index > 10) {
                 index = 1;
@@ -242,6 +249,7 @@ public class GameScreen extends JamScreen {
                         preferences.flush();
     
                         if (currentDialogAudio != null) currentDialogAudio.stop();
+                        turn = Turn.PLAYER;
                     }
                     else {
                         clearChildren();
@@ -313,43 +321,42 @@ public class GameScreen extends JamScreen {
             bubble.setPosition(lava.x - 20 + MathUtils.random(40), lava.y - 20 + MathUtils.random(40));
             entityController.add(bubble);
         }
+    
+        for (int i = 0; i < grounds.size; i++) {
+            var ground = grounds.get(i);
+            ground.skeleton.setColor(Color.WHITE);
+        }
         
-        if (!player.destroy && isButtonJustPressed(Buttons.LEFT)) {
+        if (turn == Turn.PLAYER && !player.destroy) {
             temp.set(player.x, player.y);
             var pathHead = hexUtils.pixelToGridHex(temp);
             temp.set(mouseX, mouseY);
             var pathTail = hexUtils.pixelToGridHex(temp);
             if (pathTail != null && pathTail.weight == 0) {
                 var obj = pathTail.userObject;
-                if (obj != null)
-                    if (obj instanceof GroundEntity) {
-                        sfx_gameWalk.play(sfx);
-                        var path = hexUtils.getPath(pathTail, pathHead);
-    
-                        for (int i = 0; i < grounds.size; i++) {
-                            var ground = grounds.get(i);
-                            ground.skeleton.setColor(Color.WHITE);
-                        }
-                        
-                        if (path.get(pathHead) != null) {
-                            HexTile current = path.get(pathHead);
-                            var ground = (GroundEntity) current.userObject;
+                if (obj instanceof GroundEntity) {
+                    var path = hexUtils.getPath(pathTail, pathHead);
+            
+                    if (path.get(pathHead) != null) {
+                        HexTile current = path.get(pathHead);
+                        var ground = (GroundEntity) current.userObject;
+                        ground.skeleton.setColor(Color.RED);
+                        if (isButtonJustPressed(Buttons.LEFT)) {
                             player.moveTowardsTarget(300f, ground.x, ground.y);
+                            sfx_gameWalk.play(sfx);
                             pathHead.weight = 0;
                             current.weight = 100;
-                            for (int i = 1; i < path.size() && current != pathTail; i++) {
-                                ground = (GroundEntity) current.userObject;
-                                ground.skeleton.setColor(Color.RED);
-                                current = path.get(current);
-                            }
-                            ground = (GroundEntity) pathHead.userObject;
-                            ground.skeleton.setColor(Color.BLUE);
-                            
-                            ground = (GroundEntity) pathTail.userObject;
-                            ground.skeleton.setColor(Color.GREEN);
-                            
+                            turn = Turn.PLAYER_MOVING;
                         }
+//                        for (int i = 1; i < path.size() && current != pathTail; i++) {
+//                            current = path.get(current);
+//                        }
                     }
+                }
+            }
+        } else if (turn == Turn.ENEMY) {
+            if (enemies.size == 0) {
+                turn = Turn.PLAYER;
             }
         }
     }
