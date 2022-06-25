@@ -48,7 +48,7 @@ public class GameScreen extends JamScreen {
     public Array<GroundEntity> grounds = new Array<>();
     public Array<LavaEntity> lavas = new Array<>();
     public Array<Entity> characters = new Array<>();
-    public Array<Entity> enemies = new Array<>();
+    public Array<EnemyEntity> enemies = new Array<>();
     private float bubbleTimer;
     public HexUtils hexUtils;
     public static PlayerEntity player;
@@ -357,7 +357,17 @@ public class GameScreen extends JamScreen {
         } else if (turn == Turn.ENEMY) {
             if (enemies.size == 0) {
                 turn = Turn.PLAYER;
+            } else {
+                for (var enemy : enemies) {
+                    enemy.takeTurn();
+                }
+                turn = Turn.ENEMY_MOVING;
             }
+        } else if (turn == Turn.ENEMY_MOVING) {
+            for (var enemy : enemies) {
+                enemy.takeTurn();
+            }
+            turn = Turn.PLAYER;
         }
     }
     
@@ -484,6 +494,13 @@ public class GameScreen extends JamScreen {
                         pentagramEntity = new PentagramEntity();
                         pentagramEntity.setPosition(x, y);
                         entityController.add(pentagramEntity);
+                        break;
+                    case "snake":
+                        var snake = new SnakeEntity();
+                        snake.setPosition(x, y);
+                        entityController.add(snake);
+                        characters.add(snake);
+                        enemies.add(snake);
                         break;
                     default:
                         if (name.startsWith("tutorial")) {
