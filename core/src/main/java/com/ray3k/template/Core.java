@@ -44,7 +44,7 @@ import java.util.Objects;
 import static com.ray3k.template.Resources.*;
 
 public class Core extends JamGame {
-    public static final String PROJECT_NAME = "Template Game";
+    public static final String PROJECT_NAME = "Son of Satan";
     public final static IntArray keysJustPressed = new IntArray();
     public final static IntArray buttonsJustPressed = new IntArray();
     public final static IntArray buttonsPressed = new IntArray();

@@ -49,9 +49,10 @@ public class GameScreen extends JamScreen {
     public Array<Entity> characters = new Array<>();
     private float bubbleTimer;
     public HexUtils hexUtils;
-    public PlayerEntity player;
+    public static PlayerEntity player;
     public String level;
     public Music currentDialogAudio;
+    public static PentagramEntity pentagramEntity;
     
     public GameScreen(String level) {
         this.level = level;
@@ -116,6 +117,11 @@ public class GameScreen extends JamScreen {
 
         if (level.equals("home") || level.equals("tutorial01")) {
             var index = preferences.getInteger("dialog", 1);
+            if (index > 10) {
+                index = 1;
+                preferences.putInteger("dialog", index);
+                preferences.flush();
+            }
             var audioArray = new Array<Music>();
             var textArray = new Array<String>();
             var imageArray = new Array<Image>();
@@ -218,6 +224,7 @@ public class GameScreen extends JamScreen {
                     break;
             }
             
+            var finalIndex = index;
             var popTable = new PopTable() {
                 int progress = 0;
     
@@ -230,7 +237,8 @@ public class GameScreen extends JamScreen {
                 public void refresh() {
                     if (progress >= audioArray.size) {
                         hide();
-                        preferences.putInteger("dialog", index + 1);
+                        preferences.putInteger("dialog", finalIndex + 1);
+                        preferences.flush();
                     }
                     else {
                         clearChildren();
@@ -462,9 +470,9 @@ public class GameScreen extends JamScreen {
                         characters.add(satan_dummy);
                         break;
                     case "pentagram":
-                        var pentagram = new PentagramEntity();
-                        pentagram.setPosition(x, y);
-                        entityController.add(pentagram);
+                        pentagramEntity = new PentagramEntity();
+                        pentagramEntity.setPosition(x, y);
+                        entityController.add(pentagramEntity);
                         break;
                     default:
                         if (name.startsWith("tutorial")) {
