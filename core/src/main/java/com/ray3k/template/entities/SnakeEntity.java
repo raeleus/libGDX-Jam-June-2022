@@ -31,7 +31,7 @@ public class SnakeEntity extends EnemyEntity {
     
     @Override
     public void destroy() {
-    
+        super.destroy();
     }
     
     @Override
@@ -51,6 +51,11 @@ public class SnakeEntity extends EnemyEntity {
     
     @Override
     public void completeMoving() {
-        
+    
+    }
+    
+    @Override
+    public void hurt() {
+        destroy = true;
     }
 }

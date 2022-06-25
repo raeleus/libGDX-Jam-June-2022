@@ -1,7 +1,6 @@
 package com.ray3k.template.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.audio.Music;
@@ -25,7 +24,6 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.tommyettinger.textra.TypingLabel;
-import com.lol.fraud.HexTile;
 import com.lol.fraud.HexUtils;
 import com.lol.fraud.HexUtils.TYPE;
 import com.ray3k.stripe.PopTable;
@@ -37,20 +35,20 @@ import com.ray3k.template.screens.DialogPause.*;
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
 import static com.ray3k.template.Core.*;
-import static com.ray3k.template.Resources.*;
 import static com.ray3k.template.Resources.Values.*;
+import static com.ray3k.template.Resources.*;
 
 public class GameScreen extends JamScreen {
     public static GameScreen gameScreen;
     public static final Color BG_COLOR = new Color();
     public static Stage stage;
     public boolean paused;
-    public Array<GroundEntity> grounds = new Array<>();
-    public Array<LavaEntity> lavas = new Array<>();
-    public Array<Entity> characters = new Array<>();
-    public Array<EnemyEntity> enemies = new Array<>();
+    public static Array<GroundEntity> grounds = new Array<>();
+    public static Array<LavaEntity> lavas = new Array<>();
+    public static Array<Entity> characters = new Array<>();
+    public static Array<EnemyEntity> enemies = new Array<>();
     private float bubbleTimer;
-    public HexUtils hexUtils;
+    public static HexUtils hexUtils;
     public static PlayerEntity player;
     public String level;
     public Music currentDialogAudio;
@@ -327,33 +325,10 @@ public class GameScreen extends JamScreen {
             ground.skeleton.setColor(Color.WHITE);
         }
         
-        if (turn == Turn.PLAYER && !player.destroy) {
-            temp.set(player.x, player.y);
-            var pathHead = hexUtils.pixelToGridHex(temp);
-            temp.set(mouseX, mouseY);
-            var pathTail = hexUtils.pixelToGridHex(temp);
-            if (pathTail != null && pathTail.weight == 0) {
-                var obj = pathTail.userObject;
-                if (obj instanceof GroundEntity) {
-                    var path = hexUtils.getPath(pathTail, pathHead);
-            
-                    if (path.get(pathHead) != null) {
-                        HexTile current = path.get(pathHead);
-                        var ground = (GroundEntity) current.userObject;
-                        ground.skeleton.setColor(Color.RED);
-                        if (isButtonJustPressed(Buttons.LEFT)) {
-                            player.moveTowardsTarget(300f, ground.x, ground.y);
-                            sfx_gameWalk.play(sfx);
-                            pathHead.weight = 0;
-                            current.weight = 100;
-                            turn = Turn.PLAYER_MOVING;
-                        }
-//                        for (int i = 1; i < path.size() && current != pathTail; i++) {
-//                            current = path.get(current);
-//                        }
-                    }
-                }
-            }
+        if (turn == Turn.PLAYER) {
+            if (!player.destroy) player.takeTurn();
+        } else if (turn == Turn.PLAYER_MOVING) {
+            if (!player.destroy) player.completeMoving();
         } else if (turn == Turn.ENEMY) {
             if (enemies.size == 0) {
                 turn = Turn.PLAYER;
