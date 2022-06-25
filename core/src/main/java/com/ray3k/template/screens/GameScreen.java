@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.lol.fraud.HexTile;
 import com.lol.fraud.HexUtils;
 import com.lol.fraud.HexUtils.TYPE;
 import com.ray3k.template.*;
@@ -36,8 +37,10 @@ public class GameScreen extends JamScreen {
     public boolean paused;
     public Array<GroundEntity> grounds = new Array<>();
     public Array<LavaEntity> lavas = new Array<>();
+    public Array<Entity> characters = new Array<>();
     private float bubbleTimer;
     public HexUtils hexUtils;
+    public PlayerEntity player;
     
     @Override
     public void show() {
@@ -90,8 +93,8 @@ public class GameScreen extends JamScreen {
         viewport = new FitViewport(1024, 576, camera);
         camera.position.set(512, 288, 0);
     
-        hexUtils = new HexUtils(HexUtils.flat, new Vector2(72, 64), new Vector2(-18, 0));
-        hexUtils.generateRectangularGrid(20, 19, TYPE.EVENQ);
+        hexUtils = new HexUtils(HexUtils.flat, new Vector2(36, 36), new Vector2(offsetX, offsetY));
+        hexUtils.generateRectangularGrid(25, 25, TYPE.ODDR);
         
         entityController.clear();
         var tutorial = preferences.getInteger("tutorial", 1);
@@ -132,8 +135,41 @@ public class GameScreen extends JamScreen {
         }
         
         if (isButtonJustPressed(Buttons.LEFT)) {
+            temp.set(player.x, player.y);
+            var pathHead = hexUtils.pixelToGridHex(temp);
             temp.set(mouseX, mouseY);
-            hexUtils.pixelToHex(temp);
+            var hex = hexUtils.pixelToGridHex(temp);
+            if (hex != null) {
+                var obj = hex.userObject;
+                if (obj != null)
+                    if (obj instanceof GroundEntity) {
+                        var path = hexUtils.getPath(hex, pathHead);
+    
+                        for (int i = 0; i < grounds.size; i++) {
+                            var ground = grounds.get(i);
+                            ground.skeleton.setColor(Color.WHITE);
+                        }
+                        
+                        if (path.get(pathHead) != null) {
+                            HexTile current = path.get(pathHead);
+                            var ground = (GroundEntity) current.userObject;
+                            player.moveTowardsTarget(300f, ground.x, ground.y);
+                            pathHead.weight = 0;
+                            current.weight = 100;
+                            for (int i = 1; i < path.size() && current != hex; i++) {
+                                ground = (GroundEntity) current.userObject;
+                                ground.skeleton.setColor(Color.RED);
+                                current = path.get(current);
+                            }
+                            ground = (GroundEntity) pathHead.userObject;
+                            ground.skeleton.setColor(Color.BLUE);
+                            
+                            ground = (GroundEntity) hex.userObject;
+                            ground.skeleton.setColor(Color.GREEN);
+                            
+                        }
+                    }
+            }
         }
     }
     
@@ -149,6 +185,14 @@ public class GameScreen extends JamScreen {
         viewport.apply();
         batch.setProjectionMatrix(camera.combined);
         entityController.draw(paused ? 0 : delta);
+    
+//        for(var h: hexUtils.grid){
+//            var color = Color.WHITE.cpy().lerp(Color.BLACK,h.weight/10f);
+//            color.a = .75f;
+//            shapeDrawer.setColor(color);
+//            shapeDrawer.rectangle(h.pos.x - 36, h.pos.y - 32, 72, 64);
+//            shapeDrawer.polygon(h.pos.x, h.pos.y, 6, 36, 32, 0);
+//        }
         batch.end();
         vfxManager.endInputCapture();
         vfxManager.applyEffects();
@@ -196,7 +240,7 @@ public class GameScreen extends JamScreen {
             @Override
             public void level(String ogmoVersion, int width, int height, int offsetX, int offsetY,
                               ObjectMap<String, OgmoValue> valuesMap) {
-                System.out.println("valuesMap.get(\"blessing1\") = " + valuesMap.get("blessing1").asString());
+//                System.out.println("valuesMap.get(\"blessing1\") = " + valuesMap.get("blessing1").asString());
             }
     
             @Override
@@ -214,12 +258,22 @@ public class GameScreen extends JamScreen {
                         ground.setPosition(x, y);
                         entityController.add(ground);
                         grounds.add(ground);
+                        var hex = hexUtils.pixelToGridHex(temp.set(x, y));
+                        if (hex != null) {
+                            hex.weight = 0;
+                            hex.userObject = ground;
+                        }
                         break;
                     case "lava":
                         var lava = new LavaEntity();
                         lava.setPosition(x, y);
                         entityController.add(lava);
                         lavas.add(lava);
+                        hex = hexUtils.pixelToGridHex(temp.set(x, y));
+                        if (hex != null) {
+                            hex.weight = 200;
+                            hex.userObject = lava;
+                        }
                         break;
                     case "cliff":
                         var cliff = new CliffEntity();
@@ -227,14 +281,16 @@ public class GameScreen extends JamScreen {
                         entityController.add(cliff);
                         break;
                     case "player":
-                        var player = new PlayerEntity();
+                        player = new PlayerEntity();
                         player.setPosition(x, y);
                         entityController.add(player);
+                        characters.add(player);
                         break;
                     case "satan_dummy":
                         var satan_dummy = new SatanDummyEntity();
                         satan_dummy.setPosition(x, y);
                         entityController.add(satan_dummy);
+                        characters.add(satan_dummy);
                         break;
                     case "pentagram":
                         var pentagram = new PentagramEntity();
@@ -286,9 +342,21 @@ public class GameScreen extends JamScreen {
                     var lava = iter.next();
                     for (var ground : grounds) {
                         if (MathUtils.isEqual(lava.x, ground.x) && MathUtils.isEqual(lava.y, ground.y)) {
+                            var hex = hexUtils.pixelToGridHex(temp.set(lava.x, lava.y));
+                            if (hex != null) {
+                                hex.weight = 0;
+                                hex.userObject = ground;
+                            }
                             iter.remove();
                             break;
                         }
+                    }
+                }
+                
+                for (var character : characters) {
+                    var hex = hexUtils.pixelToGridHex(temp.set(character.x, character.y));
+                    if (hex != null) {
+                        hex.weight = 100;
                     }
                 }
             }

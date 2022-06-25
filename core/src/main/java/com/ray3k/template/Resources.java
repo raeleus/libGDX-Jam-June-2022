@@ -1200,7 +1200,9 @@ public class Resources {
 
         public static float bubbleDelayMax = 1.0f;
 
-        public static float jumpVelocity = 10.0f;
+        public static int offsetX = 395;
+
+        public static int offsetY = -425;
 
         public static String name = "Raeleus";
 

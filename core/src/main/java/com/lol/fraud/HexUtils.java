@@ -34,7 +34,7 @@ public class HexUtils {
             -1.0f / 3.0f,
             (float)Math.sqrt(3.0) / 3.0f,
             0.0f);
-    ArrayList<HexTile> grid = new ArrayList<>();
+    public ArrayList<HexTile> grid = new ArrayList<>();
     HashMap<String, HexTile> gridMap = new HashMap<String, HexTile>();
     boolean tiledMapLoaded = false;
     int maxLayers = 0;

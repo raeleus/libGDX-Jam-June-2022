@@ -15,8 +15,9 @@ public class HexTile {
      *
      __________________________________________________________________________________________*/
     public static final int NW=2,NE=1,W=3,E=0,SW=4,SE=5;
-    int q, r, s, weight = 1;
-    Vector2 pos;
+    public int q, r, s, weight = 1;
+    public Object userObject;
+    public Vector2 pos;
     HexTile(int q, int r, int s) {
         this.q = q;
         this.r = r;
