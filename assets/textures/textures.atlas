@@ -472,92 +472,96 @@ textures_3.png
 	size: 2048, 2048
 	filter: Linear, Linear
 ability-bar
-	bounds: 802, 1080, 880, 89
+	bounds: 1014, 1258, 587, 89
 ability-button
-	bounds: 1479, 1320, 507, 123
+	bounds: 1009, 669, 507, 123
 ability-window
-	bounds: 802, 652, 572, 426
+	bounds: 1014, 794, 572, 426
 big
-	bounds: 1497, 1195, 504, 123
+	bounds: 1, 570, 504, 123
 button
-	bounds: 1653, 1462, 183, 61
+	bounds: 1828, 1982, 183, 61
 button-wolf
-	bounds: 1838, 1483, 43, 40
+	bounds: 1897, 1035, 43, 40
 button-wolf-checked
-	bounds: 1988, 1375, 43, 40
+	bounds: 964, 763, 43, 40
 dialog
-	bounds: 802, 1171, 675, 257
+	bounds: 1, 1208, 675, 257
 font
-	bounds: 1, 695, 505, 49
+	bounds: 1518, 632, 505, 49
+font-title
+	bounds: 1518, 683, 506, 109
 heart
-	bounds: 1988, 1417, 48, 52
+	bounds: 964, 805, 48, 52
 heart-disabled
-	bounds: 1988, 1471, 48, 52
+	bounds: 1931, 1911, 48, 52
 icon-arc
-	bounds: 1684, 1093, 101, 100
+	bounds: 1931, 1791, 101, 100
 icon-beast
-	bounds: 1684, 991, 101, 100
+	bounds: 1828, 1760, 101, 100
 icon-blessing
-	bounds: 576, 662, 101, 100
+	bounds: 1931, 1689, 101, 100
 icon-blood
-	bounds: 576, 560, 101, 100
+	bounds: 1828, 1658, 101, 100
 icon-body
-	bounds: 1, 542, 101, 100
+	bounds: 1931, 1587, 101, 100
 icon-crown
-	bounds: 104, 542, 101, 100
+	bounds: 1828, 1556, 101, 100
 icon-dash
-	bounds: 207, 542, 101, 100
+	bounds: 1931, 1485, 101, 100
 icon-david
-	bounds: 310, 542, 101, 100
+	bounds: 1828, 1454, 101, 100
 icon-dove
-	bounds: 413, 542, 101, 100
+	bounds: 1931, 1383, 101, 100
 icon-godspeed
-	bounds: 679, 662, 101, 100
+	bounds: 1828, 1352, 101, 100
 icon-grail
-	bounds: 679, 560, 101, 100
+	bounds: 1931, 1281, 101, 100
 icon-holy-light
-	bounds: 1376, 889, 101, 100
+	bounds: 1828, 1250, 101, 100
 icon-lamb
-	bounds: 1376, 787, 101, 100
+	bounds: 1931, 1179, 101, 100
 icon-lance
-	bounds: 1376, 685, 101, 100
+	bounds: 1603, 1247, 101, 100
 icon-parting
-	bounds: 1376, 583, 101, 100
+	bounds: 1706, 1247, 101, 100
+icon-patience
+	bounds: 1828, 1862, 101, 101
 icon-redeemer
-	bounds: 782, 550, 101, 100
+	bounds: 1809, 1148, 101, 100
 icon-strike
-	bounds: 516, 458, 101, 100
+	bounds: 1912, 1077, 101, 100
 icon-sword
-	bounds: 1, 440, 101, 100
+	bounds: 1589, 1145, 101, 100
 icon-trinity
-	bounds: 104, 440, 101, 100
+	bounds: 1692, 1145, 101, 100
 icon-wings
-	bounds: 207, 440, 100, 100
+	bounds: 1795, 1046, 100, 100
 menu-button
-	bounds: 945, 1451, 24, 7
+	bounds: 2013, 2036, 24, 7
 pip
-	bounds: 1883, 1493, 12, 30
+	bounds: 2031, 1972, 12, 30
 pip-disabled
-	bounds: 1897, 1493, 11, 30
+	bounds: 2031, 2004, 12, 30
 portrait-satan
-	bounds: 1, 764, 799, 694
+	bounds: 1027, 1349, 799, 694
 portrait-son
-	bounds: 1027, 1430, 334, 606
+	bounds: 678, 859, 334, 606
 scroll-horizontal
-	bounds: 802, 1443, 141, 15
+	bounds: 1828, 1965, 141, 15
 scroll-vertical
-	bounds: 1479, 1177, 16, 141
+	bounds: 2013, 1893, 16, 141
 slider-back
-	bounds: 1, 746, 573, 16
+	bounds: 1014, 1240, 573, 16
 slider-fore
-	bounds: 1, 644, 573, 16
+	bounds: 1014, 1222, 573, 16
 slider-knob
-	bounds: 1988, 1326, 42, 47
+	bounds: 1942, 1028, 42, 47
 text-field
-	bounds: 1363, 1445, 288, 78
+	bounds: 674, 779, 288, 78
 title
-	bounds: 1, 1460, 1024, 576
+	bounds: 1, 1467, 1024, 576
 white
-	bounds: 971, 1457, 1, 1
+	bounds: 2039, 2042, 1, 1
 window
-	bounds: 1363, 1525, 671, 511
+	bounds: 1, 695, 671, 511

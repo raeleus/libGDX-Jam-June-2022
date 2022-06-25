@@ -51,6 +51,7 @@ public class GameScreen extends JamScreen {
     public String level;
     public Music currentDialogAudio;
     public static PentagramEntity pentagramEntity;
+    public static ShrineEntity shrineEntity;
     public enum Turn {
         STORY, PLAYER, PLAYER_MOVING, ENEMY, ENEMY_MOVING
     }
@@ -59,7 +60,18 @@ public class GameScreen extends JamScreen {
         MOVE, STRIKE, DASH, THROW
     }
     public static Mode mode;
+    public static Table healthTable;
+    public static Table pipTable;
     public static ButtonGroup<Button> controlsButtonGroup;
+    public static Button strikeButton;
+    public static Button throwButton;
+    public static Button dashButton;
+    public static Array<String> blessings = new Array<>();
+    public static String shrineTitle;
+    public static int health = 3;
+    public static int maxHealth = 3;
+    public static int energy = 6;
+    public static int maxEnergy = 6;
     
     public GameScreen(String level) {
         this.level = level;
@@ -68,11 +80,14 @@ public class GameScreen extends JamScreen {
     @Override
     public void show() {
         super.show();
+        energy = maxEnergy;
         grounds.clear();
         lavas.clear();
         characters.clear();
         enemies.clear();
         player = null;
+        pentagramEntity = null;
+        shrineEntity = null;
         hexUtils = null;
         
     
@@ -426,7 +441,18 @@ public class GameScreen extends JamScreen {
             @Override
             public void level(String ogmoVersion, int width, int height, int offsetX, int offsetY,
                               ObjectMap<String, OgmoValue> valuesMap) {
-//                System.out.println("valuesMap.get(\"blessing1\") = " + valuesMap.get("blessing1").asString());
+                var blessing = valuesMap.get("blessing1").asString();
+                if (!blessing.equals("None")) blessings.add(blessing);
+                blessing = valuesMap.get("blessing2").asString();
+                if (!blessing.equals("None")) blessings.add(blessing);
+                blessing = valuesMap.get("blessing3").asString();
+                if (!blessing.equals("None")) blessings.add(blessing);
+                blessing = valuesMap.get("blessing4").asString();
+                if (!blessing.equals("None")) blessings.add(blessing);
+                blessing = valuesMap.get("blessing5").asString();
+                if (!blessing.equals("None")) blessings.add(blessing);
+                
+                shrineTitle = valuesMap.get("shrineTitle").asString();
             }
     
             @Override
@@ -489,6 +515,11 @@ public class GameScreen extends JamScreen {
                         entityController.add(snake);
                         characters.add(snake);
                         enemies.add(snake);
+                        break;
+                    case "shrine":
+                        shrineEntity = new ShrineEntity();
+                        shrineEntity.setPosition(x, y);
+                        entityController.add(shrineEntity);
                         break;
                     default:
                         if (name.startsWith("tutorial")) {
@@ -558,9 +589,24 @@ public class GameScreen extends JamScreen {
     }
     
     private void createStageElements() {
+        strikeButton = new ImageButton(skin, "strike");
+        dashButton = new ImageButton(skin, "dash");
+        throwButton = new ImageButton(skin, "throw");
+        
         var root = (Table) stage.getRoot().getChild(0);
         root.left().bottom();
         
+        root.defaults().left();
+        healthTable = new Table();
+        root.add(healthTable);
+        refreshHealthTable();
+        
+        root.row();
+        pipTable = new Table();
+        root.add(pipTable);
+        refreshEnergyTable();
+        
+        root.row();
         var table = new Table();
         table.setBackground(skin.getDrawable("controls-bg"));
         root.add(table);
@@ -568,7 +614,6 @@ public class GameScreen extends JamScreen {
         controlsButtonGroup = new ButtonGroup<>();
         controlsButtonGroup.setMinCheckCount(0);
         
-        var strikeButton = new ImageButton(skin, "strike");
         table.add(strikeButton).size(50, 50);
         controlsButtonGroup.add(strikeButton);
         Utils.onChange(strikeButton, () -> {
@@ -576,7 +621,6 @@ public class GameScreen extends JamScreen {
             else mode = Mode.MOVE;
         });
     
-        var dashButton = new ImageButton(skin, "dash");
         table.add(dashButton).size(50, 50);
         controlsButtonGroup.add(dashButton);
         Utils.onChange(dashButton, () -> {
@@ -584,12 +628,50 @@ public class GameScreen extends JamScreen {
             else mode = Mode.MOVE;
         });
     
-        var throwButton = new ImageButton(skin, "throw");
         table.add(throwButton).size(50, 50);
         controlsButtonGroup.add(throwButton);
         Utils.onChange(throwButton, () -> {
             if (throwButton.isChecked()) mode = Mode.THROW;
             else mode = Mode.MOVE;
         });
+    }
+    
+    public static void refreshHealthTable() {
+        healthTable.clear();
+        
+        for (int i = 0; i < maxHealth; i++) {
+            var image = new Image(skin, i < health ? "heart" : "heart-disabled");
+            healthTable.add(image);
+        }
+    }
+    
+    public static void refreshEnergyTable() {
+        pipTable.clear();
+        
+        var stack = new Stack();
+        pipTable.add(stack);
+        
+        var table = new Table();
+        table.left();
+        stack.add(table);
+    
+        for (int i = 0; i < maxEnergy; i += 2) {
+            var image = new Image(skin, "pip-disabled-10");
+            table.add(image);
+        }
+        
+        table = new Table();
+        table.left();
+        stack.add(table);
+        for (int i = 0; i < energy; i += 2) {
+            var image = new Image(skin, "pip-10");
+            table.add(image);
+        }
+        
+        if (energy > 0 && energy % 2 != 0) {
+            table.getCells().peek().height(15).bottom().expandY();
+        }
+        
+        dashButton.setDisabled(energy <= 1);
     }
 }

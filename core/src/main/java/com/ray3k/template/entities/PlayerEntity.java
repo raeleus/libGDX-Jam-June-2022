@@ -4,11 +4,16 @@ import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response.Result;
 import com.lol.fraud.HexTile;
+import com.ray3k.stripe.PopTable;
 import com.ray3k.template.*;
 import com.ray3k.template.screens.*;
 
@@ -228,6 +233,8 @@ public class PlayerEntity extends Entity {
                 }
     
                 if (isButtonJustPressed(Buttons.LEFT)) {
+                    energy -= 2;
+                    refreshEnergyTable();
                     player.moveTowardsTarget(600f, ground.x, ground.y);
                     sfx_gameDash.play(sfx);
                     playerHex.weight = 0;
@@ -286,7 +293,7 @@ public class PlayerEntity extends Entity {
             turn = Turn.ENEMY;
         }
         
-        if (MathUtils.isEqual(x, pentagramEntity.x) && MathUtils.isEqual(y, pentagramEntity.y)) {
+        if (pentagramEntity != null && MathUtils.isEqual(x, pentagramEntity.x) && MathUtils.isEqual(y, pentagramEntity.y)) {
             destroy = true;
             sfx_gameTeleport.play(sfx);
             var anim = new AnimationEntity(skeletonData, animationData, animationTeleport, x, y) {
@@ -307,6 +314,198 @@ public class PlayerEntity extends Entity {
                 }
             };
             entityController.add(anim);
+        }
+    
+        if (shrineEntity != null && MathUtils.isEqual(x, shrineEntity.x) && MathUtils.isEqual(y, shrineEntity.y)) {
+            shrineEntity.destroy = true;
+            shrineEntity = null;
+            var pop = new PopTable();
+            
+            var table = new Table();
+            table.setBackground(skin.getDrawable("ability-bar-10"));
+            pop.add(table);
+            
+            var label = new Label(shrineTitle, skin, "title");
+            table.add(label);
+            
+            pop.row();
+            table = new Table();
+            table.setBackground(skin.getDrawable("ability-window-10"));
+            pop.add(table);
+            
+            var scrollTable = new Table();
+            var scroll = new ScrollPane(scrollTable, skin);
+            scroll.setFadeScrollBars(false);
+            table.add(scroll).grow();
+            
+            for (var blessing : blessings) {
+                scrollTable.row();
+                var button = new Button(skin);
+                button.left();
+                var image = new Image();
+                button.add(image);
+                var descriptionLabel = new Label("", skin);
+                switch (blessing) {
+                    case "Holy Blessing":
+                        image.setDrawable(skin, "icon-blessing");
+                        descriptionLabel.setText("Restore all health");
+                        break;
+                    case "Blood of Christ":
+                        image.setDrawable(skin, "icon-blood");
+                        descriptionLabel.setText("+1 max health");
+                        break;
+                    case "Strength of Samson":
+                        image.setDrawable(skin, "icon-strike");
+                        descriptionLabel.setText("+1 strike pushback");
+                        break;
+                    case "Blood of the Lamb":
+                        image.setDrawable(skin, "icon-lamb");
+                        descriptionLabel.setText("+1 energy pips");
+                        break;
+                    case "Parting the Red Sea":
+                        image.setDrawable(skin, "icon-parting");
+                        descriptionLabel.setText("Strike affects enemies to the side as well");
+                        break;
+                    case "Patience of Job":
+                        image.setDrawable(skin, "icon-patience");
+                        descriptionLabel.setText("Ability to wait a turn");
+                        break;
+                    case "Faith of David":
+                        image.setDrawable(skin, "icon-david");
+                        descriptionLabel.setText("+1 trident throw range");
+                        break;
+                    case "Body of Christ":
+                        image.setDrawable(skin, "icon-body");
+                        descriptionLabel.setText("Restore 1 health after 3 consecutive kills");
+                        break;
+                    case "Lance of Longinus":
+                        image.setDrawable(skin, "icon-lance");
+                        descriptionLabel.setText("Thrust penetrates to the next tile");
+                        break;
+                    case "Wings of Michael":
+                        image.setDrawable(skin, "icon-wings");
+                        descriptionLabel.setText("+1 dash distance");
+                        break;
+                    case "Holy Trinity":
+                        image.setDrawable(skin, "icon-trinity");
+                        descriptionLabel.setText("Restore trident, strike, and energy");
+                        break;
+                    case "Godspeed":
+                        image.setDrawable(skin, "icon-godspeed");
+                        descriptionLabel.setText("Additional action after 3 consecutive kills");
+                        break;
+                    case "Crown of Thorns":
+                        image.setDrawable(skin, "icon-crown");
+                        descriptionLabel.setText("Attacking enemies receive damage");
+                        break;
+                    case "Holy Light":
+                        image.setDrawable(skin, "icon-holy-light");
+                        descriptionLabel.setText("Shield while striking");
+                        break;
+                    case "Noah's Dove":
+                        image.setDrawable(skin, "icon-dove");
+                        descriptionLabel.setText("Recall trident to your hand");
+                        break;
+                    case "Mark of the Beast":
+                        image.setDrawable(skin, "icon-beast");
+                        descriptionLabel.setText("Stun surrounding enemies after landing a dash");
+                        break;
+                    case "Holy Grail":
+                        image.setDrawable(skin, "icon-grail");
+                        descriptionLabel.setText("Survive death once");
+                        break;
+                    case "Arc of the Covenant":
+                        image.setDrawable(skin, "icon-arc");
+                        descriptionLabel.setText("Use the raw power of God instead of the trident");
+                        break;
+                    case "Christ the Redeemer":
+                        image.setDrawable(skin, "icon-redeemer");
+                        descriptionLabel.setText("Restore 1 health every level");
+                        break;
+                }
+                table = new Table();
+                button.add(table);
+                
+                table.defaults().left();
+                var buttonLabel = new Label(blessing, skin, "title");
+                table.add(buttonLabel);
+                
+                table.row();
+                table.add(descriptionLabel);
+                
+                button.addListener(new ClickListener() {
+                    @Override
+                    public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+                        super.enter(event,x, y, pointer, fromActor);
+                        button.setColor(Color.RED);
+                        buttonLabel.setColor(Color.RED);
+                        image.setColor(Color.RED);
+                        descriptionLabel.setColor(Color.RED);
+                    }
+    
+                    @Override
+                    public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                        super.exit(event,x, y, pointer, toActor);
+                        button.setColor(Color.WHITE);
+                        buttonLabel.setColor(Color.WHITE);
+                        image.setColor(Color.WHITE);
+                        descriptionLabel.setColor(Color.WHITE);
+                    }
+    
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        pop.hide();
+    
+                        switch (blessing) {
+                            case "Holy Blessing":
+                                health = maxHealth;
+                                refreshHealthTable();
+                                break;
+                            case "Blood of Christ":
+                                health++;
+                                maxHealth++;
+                                refreshHealthTable();
+                                break;
+                            case "Strength of Samson":
+                                break;
+                            case "Blood of the Lamb":
+                                break;
+                            case "Parting the Red Sea":
+                                break;
+                            case "Patience of Job":
+                                break;
+                            case "Faith of David":
+                                break;
+                            case "Body of Christ":
+                                break;
+                            case "Lance of Longinus":
+                                break;
+                            case "Wings of Michael":
+                                break;
+                            case "Holy Trinity":
+                                break;
+                            case "Godspeed":
+                                break;
+                            case "Crown of Thorns":
+                                break;
+                            case "Holy Light":
+                                break;
+                            case "Noah's Dove":
+                                break;
+                            case "Mark of the Beast":
+                                break;
+                            case "Holy Grail":
+                                break;
+                            case "Arc of the Covenant":
+                                break;
+                            case "Christ the Redeemer":
+                                break;
+                        }
+                    }
+                });
+                scrollTable.add(button);
+            }
+            pop.show(stage);
         }
     }
 }

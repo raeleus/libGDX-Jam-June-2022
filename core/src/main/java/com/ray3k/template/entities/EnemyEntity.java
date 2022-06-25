@@ -1,6 +1,7 @@
 package com.ray3k.template.entities;
 
 import com.badlogic.gdx.math.Vector2;
+import com.ray3k.template.*;
 import com.ray3k.template.Resources.*;
 
 import static com.ray3k.template.Core.*;
@@ -21,5 +22,7 @@ public abstract class EnemyEntity extends Entity {
         entityController.add(anim);
         
         enemies.removeValue(this, true);
+        energy = Utils.approach(energy, maxEnergy, 1);
+        refreshEnergyTable();
     }
 }

@@ -5,6 +5,9 @@
 	},
 	"font": {
 		"file": "font.fnt"
+	},
+	"font-title": {
+		"file": "font-title.fnt"
 	}
 },
 "com.badlogic.gdx.graphics.Color": {
@@ -562,11 +565,72 @@
 		"regions": [],
 		"playMode": 2,
 		"crushMode": 0
+	},
+	"ability-bar-10": {
+		"region": "ability-bar",
+		"horizontalStretchAreas": [ 60, 519 ],
+		"verticalStretchAreas": [ 12, 74 ],
+		"tiling": false,
+		"minWidth": 587,
+		"minHeight": 89,
+		"rightWidth": 65,
+		"leftWidth": 60,
+		"bottomHeight": 13,
+		"topHeight": 14,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
+	},
+	"pip-disabled-10": {
+		"region": "pip-disabled",
+		"horizontalStretchAreas": [ 0, 10 ],
+		"verticalStretchAreas": [ 0, 29 ],
+		"tiling": true,
+		"minWidth": 12,
+		"minHeight": 30,
+		"rightWidth": 0,
+		"leftWidth": 0,
+		"bottomHeight": 0,
+		"topHeight": 0,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
+	},
+	"pip-10": {
+		"region": "pip",
+		"horizontalStretchAreas": [ 0, 11 ],
+		"verticalStretchAreas": [ 0, 29 ],
+		"tiling": true,
+		"minWidth": 12,
+		"minHeight": 30,
+		"rightWidth": 0,
+		"leftWidth": 0,
+		"bottomHeight": 0,
+		"topHeight": 0,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
 	"default": {
-		"up": "ability-button-10"
+		"up": "ability-button-10",
+		"pressedOffsetY": -1
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
@@ -607,6 +671,9 @@
 "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
 	"default": {
 		"font": "font"
+	},
+	"title": {
+		"font": "font-title"
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle": {
