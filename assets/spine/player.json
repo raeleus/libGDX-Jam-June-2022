@@ -1,11 +1,11 @@
 {
 "skeleton": {
-	"hash": "7cjvBI6+wXw",
+	"hash": "0V42FNv+6L0",
 	"spine": "4.0.64",
 	"x": -36.45,
-	"y": -26.55,
+	"y": -5.73,
 	"width": 78.03,
-	"height": 83.97,
+	"height": 63.14,
 	"images": "",
 	"audio": ""
 },
@@ -19,7 +19,7 @@
 	{ "name": "game/blood-pool", "parent": "root", "length": 31.05, "rotation": 1.64, "x": 3.11, "y": -7.07 }
 ],
 "slots": [
-	{ "name": "game/blood-pool", "bone": "game/blood-pool", "attachment": "game/blood-pool" },
+	{ "name": "game/blood-pool", "bone": "game/blood-pool" },
 	{ "name": "clip", "bone": "root", "attachment": "clip" },
 	{ "name": "game/player-body", "bone": "game/player-body", "attachment": "game/player-body" },
 	{ "name": "game/player-sword", "bone": "game/player-hand2" },
@@ -103,11 +103,12 @@
 			},
 			"game/player-hand2": {
 				"translate": [
-					{},
-					{ "time": 0.1, "y": -5.53 },
-					{ "time": 0.2333, "x": 6.91, "y": -5.53 },
-					{ "time": 0.3333, "x": 6.91, "y": 5.18 },
-					{ "time": 0.4333 }
+					{ "x": 5.18, "y": -5.53 },
+					{ "time": 0.0333, "x": 6.91, "y": -5.53 },
+					{ "time": 0.1333, "x": 6.91, "y": 5.18 },
+					{ "time": 0.2333 },
+					{ "time": 0.3333, "y": -5.53 },
+					{ "time": 0.4333, "x": 5.18, "y": -5.53 }
 				]
 			},
 			"game/player-head": {
@@ -127,6 +128,13 @@
 		}
 	},
 	"die": {
+		"slots": {
+			"game/blood-pool": {
+				"attachment": [
+					{ "name": "game/blood-pool" }
+				]
+			}
+		},
 		"bones": {
 			"game/player-body": {
 				"translate": [
@@ -241,6 +249,13 @@
 		}
 	},
 	"spawn": {
+		"slots": {
+			"game/blood-pool": {
+				"attachment": [
+					{ "name": "game/blood-pool" }
+				]
+			}
+		},
 		"bones": {
 			"game/player-body": {
 				"translate": [
@@ -262,6 +277,8 @@
 			},
 			"game/blood-pool": {
 				"scale": [
+					{ "x": 0, "y": 0 },
+					{ "time": 0.3, "curve": "stepped" },
 					{ "time": 0.9 },
 					{ "time": 1.2, "x": 0, "y": 0 }
 				]

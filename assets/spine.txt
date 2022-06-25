@@ -21,3 +21,4 @@ spine/tile-cliff.json
 spine/tile-ground.json
 spine/tile-magma.json
 spine/trident.json
+spine/tutorial.json

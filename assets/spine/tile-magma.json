@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "NpOPl2Y5Yjw",
+	"hash": "v+5q02VTIiQ",
 	"spine": "4.0.64",
 	"x": -36.5,
 	"y": -32,
@@ -20,7 +20,7 @@
 		"name": "default",
 		"attachments": {
 			"game/tile-magma": {
-				"game/tile-magma": { "width": 73, "height": 64 }
+				"game/tile-magma": { "width": 72, "height": 64 }
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "hbM9OPMV/cQ",
+	"hash": "8ehrenrY88k",
 	"spine": "4.0.64",
 	"x": -36.5,
 	"y": -31.5,
@@ -20,7 +20,7 @@
 		"name": "default",
 		"attachments": {
 			"game/tile-ground": {
-				"game/tile-ground": { "width": 73, "height": 63 }
+				"game/tile-ground": { "width": 72, "height": 64 }
 			}
 		}
 	}

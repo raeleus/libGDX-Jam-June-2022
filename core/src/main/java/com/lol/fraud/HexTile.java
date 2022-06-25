@@ -14,7 +14,7 @@ public class HexTile {
      * This allows everyone to get the benefit from whatever work is put in.
      *
      __________________________________________________________________________________________*/
-    static final int NW=2,NE=1,W=3,E=0,SW=4,SE=5;
+    public static final int NW=2,NE=1,W=3,E=0,SW=4,SE=5;
     int q, r, s, weight = 1;
     Vector2 pos;
     HexTile(int q, int r, int s) {

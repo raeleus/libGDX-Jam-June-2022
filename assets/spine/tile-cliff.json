@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "qMddAgtJmTY",
+	"hash": "G1V/k5M8YxI",
 	"spine": "4.0.64",
 	"x": -36.94,
 	"y": -38.22,
@@ -21,7 +21,7 @@
 		"name": "default",
 		"attachments": {
 			"game/tile-cliff": {
-				"game/tile-cliff": { "x": -0.44, "y": -6.22, "width": 73, "height": 64 }
+				"game/tile-cliff": { "x": -0.44, "y": -6.22, "width": 72, "height": 76 }
 			}
 		}
 	}

@@ -1,4 +1,6 @@
 {
+"bubbleDelayMin": 0.5,
+"bubbleDelayMax": 1.0,
 "jumpVelocity": 10.0,
 "name": "Raeleus",
 "godMode": true,

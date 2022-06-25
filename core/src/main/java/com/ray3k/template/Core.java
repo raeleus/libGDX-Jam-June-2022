@@ -87,6 +87,14 @@ public class Core extends JamGame {
     public static ShapeDrawer shapeDrawer;
     public static Transition defaultTransition;
     public static float defaultTransitionDuration;
+    public static final float DEPTH_TUTORIAL = 10f;
+    public static final float DEPTH_PLAYER = 20f;
+    public static final float DEPTH_ENEMY = 30f;
+    public static final float DEPTH_PICKUP = 40f;
+    public static final float DEPTH_GROUND = 50f;
+    public static final float DEPTH_CLIFF = 51f;
+    public static final float DEPTH_LAVA_BUBBLE = 52f;
+    public static final float DEPTH_LAVA = 53f;
     
     public static boolean isKeyJustPressed(int key) {
         return key == Keys.ANY_KEY ? keysJustPressed.size > 0 : keysJustPressed.contains(key);

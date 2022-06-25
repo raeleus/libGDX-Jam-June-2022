@@ -4,6 +4,8 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
@@ -436,7 +438,26 @@ public class Resources {
         SpineTrident.boneRoot = SpineTrident.skeletonData.findBone("root");
         SpineTrident.slotGamePlayerTrident = SpineTrident.skeletonData.findSlot("game/player-trident");
         SpineTrident.skinDefault = SpineTrident.skeletonData.findSkin("default");
+        SpineTutorial.skeletonData = assetManager.get("spine/tutorial.json");
+        SpineTutorial.animationData = assetManager.get("spine/tutorial.json-animation");
+        SpineTutorial.animationAnimation = SpineTutorial.skeletonData.findAnimation("animation");
+        SpineTutorial.boneRoot = SpineTutorial.skeletonData.findBone("root");
+        SpineTutorial.slotGameTutorial01 = SpineTutorial.skeletonData.findSlot("game/tutorial01");
+        SpineTutorial.skinTutorial01 = SpineTutorial.skeletonData.findSkin("tutorial01");
+        SpineTutorial.skinTutorial02 = SpineTutorial.skeletonData.findSkin("tutorial02");
+        SpineTutorial.skinTutorial03 = SpineTutorial.skeletonData.findSkin("tutorial03");
+        SpineTutorial.skinTutorial04 = SpineTutorial.skeletonData.findSkin("tutorial04");
+        SpineTutorial.skinTutorial05 = SpineTutorial.skeletonData.findSkin("tutorial05");
+        SpineTutorial.skinTutorial06 = SpineTutorial.skeletonData.findSkin("tutorial06");
+        SpineTutorial.skinTutorial07 = SpineTutorial.skeletonData.findSkin("tutorial07");
+        SpineTutorial.skinTutorial08 = SpineTutorial.skeletonData.findSkin("tutorial08");
+        SpineTutorial.skinTutorial09 = SpineTutorial.skeletonData.findSkin("tutorial09");
+        SpineTutorial.skinTutorial010 = SpineTutorial.skeletonData.findSkin("tutorial010");
+        SpineTutorial.skinTutorial011 = SpineTutorial.skeletonData.findSkin("tutorial011");
+        SpineTutorial.skinTutorial012 = SpineTutorial.skeletonData.findSkin("tutorial012");
         skin_skin = assetManager.get("skin/skin.json");
+        SkinSkinStyles.bDefault = skin_skin.get("default", Button.ButtonStyle.class);
+        SkinSkinStyles.ibDefault = skin_skin.get("default", ImageButton.ImageButtonStyle.class);
         SkinSkinStyles.lDefault = skin_skin.get("default", Label.LabelStyle.class);
         SkinSkinStyles.lstDefault = skin_skin.get("default", List.ListStyle.class);
         SkinSkinStyles.pDefaultHorizontal = skin_skin.get("default-horizontal", ProgressBar.ProgressBarStyle.class);
@@ -448,6 +469,7 @@ public class Resources {
         SkinSkinStyles.tbMenu = skin_skin.get("menu", TextButton.TextButtonStyle.class);
         SkinSkinStyles.tfDefault = skin_skin.get("default", TextField.TextFieldStyle.class);
         SkinSkinStyles.ttDefault = skin_skin.get("default", TextTooltip.TextTooltipStyle.class);
+        SkinSkinStyles.wDialog = skin_skin.get("dialog", Window.WindowStyle.class);
         SkinSkinStyles.wDefault = skin_skin.get("default", Window.WindowStyle.class);
         SkinSkinStyles.wAbility = skin_skin.get("ability", Window.WindowStyle.class);
         sfx_click = assetManager.get("sfx/click.mp3");
@@ -1103,7 +1125,47 @@ public class Resources {
         public static com.esotericsoftware.spine.Skin skinDefault;
     }
 
+    public static class SpineTutorial {
+        public static SkeletonData skeletonData;
+
+        public static AnimationStateData animationData;
+
+        public static Animation animationAnimation;
+
+        public static BoneData boneRoot;
+
+        public static SlotData slotGameTutorial01;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial01;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial02;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial03;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial04;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial05;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial06;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial07;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial08;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial09;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial010;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial011;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial012;
+    }
+
     public static class SkinSkinStyles {
+        public static Button.ButtonStyle bDefault;
+
+        public static ImageButton.ImageButtonStyle ibDefault;
+
         public static Label.LabelStyle lDefault;
 
         public static List.ListStyle lstDefault;
@@ -1126,12 +1188,18 @@ public class Resources {
 
         public static TextTooltip.TextTooltipStyle ttDefault;
 
+        public static Window.WindowStyle wDialog;
+
         public static Window.WindowStyle wDefault;
 
         public static Window.WindowStyle wAbility;
     }
 
     public static class Values {
+        public static float bubbleDelayMin = 0.5f;
+
+        public static float bubbleDelayMax = 1.0f;
+
         public static float jumpVelocity = 10.0f;
 
         public static String name = "Raeleus";
