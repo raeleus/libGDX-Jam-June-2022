@@ -31,8 +31,11 @@
       "gridCellsY": 18,
       "entities": [
         {"name": "pentagram", "id": 1, "_eid": "99180965", "x": 882, "y": 288, "originX": 28, "originY": 27.5},
-        {"name": "player", "id": 2, "_eid": "99143148", "x": 504, "y": 384, "originX": 12, "originY": 15},
-        {"name": "satan_dummy", "id": 3, "_eid": "99682646", "x": 504, "y": 192, "originX": 18.5, "originY": 16.5}
+        {"name": "player", "id": 2, "_eid": "99143148", "x": 669, "y": 352, "originX": 12, "originY": 15},
+        {"name": "satan_dummy", "id": 3, "_eid": "99682646", "x": 504, "y": 192, "originX": 18.5, "originY": 16.5},
+        {"name": "snake", "id": 4, "_eid": "99142381", "x": 666, "y": 288, "originX": 21, "originY": 25},
+        {"name": "snake", "id": 6, "_eid": "99142381", "x": 666, "y": 224, "originX": 21, "originY": 25},
+        {"name": "snake", "id": 7, "_eid": "99142381", "x": 666, "y": 160, "originX": 21, "originY": 25}
       ]
     },
     {

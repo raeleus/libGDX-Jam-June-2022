@@ -2,6 +2,7 @@ package com.ray3k.template.entities;
 
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response.Result;
+import com.ray3k.template.Resources.*;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Resources.SpineSnake.*;
@@ -57,5 +58,8 @@ public class SnakeEntity extends EnemyEntity {
     @Override
     public void hurt() {
         destroy = true;
+    
+        var anim = new AnimationEntity(SpineBlood.skeletonData, SpineBlood.animationData, SpineBlood.animationAnimation, x, y);
+        entityController.add(anim);
     }
 }

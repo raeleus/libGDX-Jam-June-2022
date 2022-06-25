@@ -18,9 +18,6 @@ public abstract class EnemyEntity extends Entity {
         var hex = hexUtils.pixelToGridHex(temp.set(x, y));
         hex.weight = 0;
         
-        var anim = new AnimationEntity(SpineBlood.skeletonData, SpineBlood.animationData, SpineBlood.animationAnimation, x, y);
-        entityController.add(anim);
-        
         enemies.removeValue(this, true);
         energy = Utils.approach(energy, maxEnergy, 1);
         refreshEnergyTable();

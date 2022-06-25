@@ -161,7 +161,91 @@ public class PlayerEntity extends Entity {
     }
     
     private void strikeTurn() {
+        var playerHex = hexUtils.pixelToGridHex(temp.set(player.x, player.y));
+        var adjacentHexes = hexUtils.getHexesInRadius(playerHex, 1);
+
+        var iter = adjacentHexes.iterator();
+        outerLoop : while (iter.hasNext()) {
+            var hex = iter.next();
+            if (hex != null && hex.userObject instanceof GroundEntity) {
+                var ground = (GroundEntity) hex.userObject;
+                for (var enemy : enemies) {
+                    if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) {
+                        ground.skeleton.setColor(Color.RED);
+                        break outerLoop;
+                    }
+                }
+                iter.remove();
+            } else {
+                iter.remove();
+            }
+        }
     
+        var targetHex = hexUtils.pixelToGridHex(temp.set(mouseX, mouseY));
+        if (targetHex != null && targetHex.userObject instanceof GroundEntity) {
+            if (adjacentHexes.contains(targetHex) && isButtonJustPressed(Buttons.LEFT)) {
+                sfx_gameSlash.play(sfx * .5f);
+                turn = Turn.PLAYER_MOVING;
+                controlsButtonGroup.uncheckAll();
+                
+                var q = targetHex.q;
+                var r = targetHex.r;
+                var deltaQ = MathUtils.clamp(targetHex.q - playerHex.q, -1, 1);
+                var deltaR = MathUtils.clamp(targetHex.r - playerHex.r, -1, 1);
+                
+                energy--;
+                refreshEnergyTable();
+                
+                EnemyEntity enemy = null;
+                var ground = (GroundEntity) targetHex.userObject;
+                for (var enemyCheck : enemies) {
+                    if (MathUtils.isEqual(enemyCheck.x, ground.x) && MathUtils.isEqual(enemyCheck.y, ground.y)) {
+                        enemy = enemyCheck;
+                        break;
+                    }
+                }
+                moveEnemy(enemy, q + deltaQ, r + deltaR);
+            }
+        }
+    }
+    
+    private void moveEnemy(EnemyEntity enemy, int q, int r) {
+        if (enemy != null) {
+            var startHex = hexUtils.pixelToGridHex(temp.set(enemy.x, enemy.y));
+            var targetHex = hexUtils.getTile(q, r, -q - r);
+            if (targetHex != null && targetHex.userObject instanceof GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                
+                EnemyEntity nextEnemy = null;
+                for (var enemyCheck : enemies) {
+                    if (MathUtils.isEqual(enemyCheck.x, ground.x) && MathUtils.isEqual(enemyCheck.y, ground.y)) {
+                        nextEnemy = enemyCheck;
+                        break;
+                    }
+                }
+    
+                enemy.moveTowardsTarget(300f, ground.x, ground.y);
+                startHex.weight = 0;
+                targetHex.weight = 100;
+                
+                if (nextEnemy != null) {
+                    var deltaQ = MathUtils.clamp(targetHex.q - startHex.q, -1, 1);
+                    var deltaR = MathUtils.clamp(targetHex.r - startHex.r, -1, 1);
+                    moveEnemy(nextEnemy, q + deltaQ, r + deltaR);
+                }
+            } else {
+                enemy.destroy = true;
+                sfx_gameBurn.play(sfx);
+                hexUtils.hexToPixel(targetHex, temp);
+                var anim = new AnimationEntity(SpineFlame.skeletonData, SpineFlame.animationData,
+                        SpineFlame.animationAnimation, temp.x, temp.y);
+                anim.animationState.getCurrent(0).setTimeScale(MathUtils.random(.5f, 1.5f));
+                anim.animationState.setAnimation(1, SpineFlame.animationFlames, true);
+                anim.animationState.getCurrent(1).setTrackTime(1.0f);
+                anim.depth = DEPTH_PARTICLES;
+                entityController.add(anim);
+            }
+        }
     }
     
     private void dashTurn() {
@@ -268,9 +352,9 @@ public class PlayerEntity extends Entity {
     }
     
     public void completeMoving() {
-        if (MathUtils.isEqual(x, moveTargetX) && MathUtils.isEqual(y, moveTargetY)) {
+        if (!moveTargetActivated) {
             if (thrustEnemies.size > 0 || slashEnemies.size > 0) {
-                sfx_gameSlash.play(sfx);
+                sfx_gameSlash.play(sfx * .5f);
                 
                 if (thrustEnemies.size > 0) {
                     animationState.setAnimation(0, animationTrident, false);
