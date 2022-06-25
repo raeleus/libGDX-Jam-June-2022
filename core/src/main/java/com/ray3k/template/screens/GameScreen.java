@@ -37,12 +37,13 @@ import com.ray3k.template.screens.DialogPause.*;
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
 import static com.ray3k.template.Core.*;
+import static com.ray3k.template.Resources.*;
 import static com.ray3k.template.Resources.Values.*;
 
 public class GameScreen extends JamScreen {
     public static GameScreen gameScreen;
     public static final Color BG_COLOR = new Color();
-    public Stage stage;
+    public static Stage stage;
     public boolean paused;
     public Array<GroundEntity> grounds = new Array<>();
     public Array<LavaEntity> lavas = new Array<>();
@@ -133,9 +134,9 @@ public class GameScreen extends JamScreen {
             sonImage.setScaling(Scaling.fit);
             switch (index) {
                 case 1:
-                    audioArray.add(Resources.bgm_01a);
-                    audioArray.add(Resources.bgm_01b);
-                    audioArray.add(Resources.bgm_01c);
+                    audioArray.add(bgm_01a);
+                    audioArray.add(bgm_01b);
+                    audioArray.add(bgm_01c);
                     textArray.add(jsonValue.getString("01a"));
                     textArray.add(jsonValue.getString("01b"));
                     textArray.add(jsonValue.getString("01c"));
@@ -144,9 +145,9 @@ public class GameScreen extends JamScreen {
                     imageArray.add(satanImage);
                     break;
                 case 2:
-                    audioArray.add(Resources.bgm_02a);
-                    audioArray.add(Resources.bgm_02b);
-                    audioArray.add(Resources.bgm_02c);
+                    audioArray.add(bgm_02a);
+                    audioArray.add(bgm_02b);
+                    audioArray.add(bgm_02c);
                     textArray.add(jsonValue.getString("02a"));
                     textArray.add(jsonValue.getString("02b"));
                     textArray.add(jsonValue.getString("02c"));
@@ -155,9 +156,9 @@ public class GameScreen extends JamScreen {
                     imageArray.add(satanImage);
                     break;
                 case 3:
-                    audioArray.add(Resources.bgm_03a);
-                    audioArray.add(Resources.bgm_03b);
-                    audioArray.add(Resources.bgm_03c);
+                    audioArray.add(bgm_03a);
+                    audioArray.add(bgm_03b);
+                    audioArray.add(bgm_03c);
                     textArray.add(jsonValue.getString("03a"));
                     textArray.add(jsonValue.getString("03b"));
                     textArray.add(jsonValue.getString("03c"));
@@ -166,21 +167,21 @@ public class GameScreen extends JamScreen {
                     imageArray.add(satanImage);
                     break;
                 case 4:
-                    audioArray.add(Resources.bgm_04a);
-                    audioArray.add(Resources.bgm_04b);
+                    audioArray.add(bgm_04a);
+                    audioArray.add(bgm_04b);
                     textArray.add(jsonValue.getString("04a"));
                     textArray.add(jsonValue.getString("04b"));
                     imageArray.add(sonImage);
                     imageArray.add(satanImage);
                     break;
                 case 5:
-                    audioArray.add(Resources.bgm_05a);
+                    audioArray.add(bgm_05a);
                     textArray.add(jsonValue.getString("05a"));
                     imageArray.add(satanImage);
                     break;
                 case 6:
-                    audioArray.add(Resources.bgm_06a);
-                    audioArray.add(Resources.bgm_06b);
+                    audioArray.add(bgm_06a);
+                    audioArray.add(bgm_06b);
                     textArray.add(jsonValue.getString("06a"));
                     textArray.add(jsonValue.getString("06b"));
                     imageArray.add(sonImage);
@@ -188,9 +189,9 @@ public class GameScreen extends JamScreen {
                     imageArray.add(sonImage);
                     break;
                 case 7:
-                    audioArray.add(Resources.bgm_07a);
-                    audioArray.add(Resources.bgm_07b);
-                    audioArray.add(Resources.bgm_07c);
+                    audioArray.add(bgm_07a);
+                    audioArray.add(bgm_07b);
+                    audioArray.add(bgm_07c);
                     textArray.add(jsonValue.getString("07a"));
                     textArray.add(jsonValue.getString("07b"));
                     textArray.add(jsonValue.getString("07c"));
@@ -199,24 +200,24 @@ public class GameScreen extends JamScreen {
                     imageArray.add(satanImage);
                     break;
                 case 8:
-                    audioArray.add(Resources.bgm_08a);
-                    audioArray.add(Resources.bgm_08b);
+                    audioArray.add(bgm_08a);
+                    audioArray.add(bgm_08b);
                     textArray.add(jsonValue.getString("08a"));
                     textArray.add(jsonValue.getString("08b"));
                     imageArray.add(satanImage);
                     imageArray.add(sonImage);
                     break;
                 case 9:
-                    audioArray.add(Resources.bgm_09a);
-                    audioArray.add(Resources.bgm_09b);
+                    audioArray.add(bgm_09a);
+                    audioArray.add(bgm_09b);
                     textArray.add(jsonValue.getString("09a"));
                     textArray.add(jsonValue.getString("09b"));
                     imageArray.add(sonImage);
                     imageArray.add(satanImage);
                     break;
                 case 10:
-                    audioArray.add(Resources.bgm_10a);
-                    audioArray.add(Resources.bgm_10b);
+                    audioArray.add(bgm_10a);
+                    audioArray.add(bgm_10b);
                     textArray.add(jsonValue.getString("10a"));
                     textArray.add(jsonValue.getString("10b"));
                     imageArray.add(satanImage);
@@ -239,6 +240,8 @@ public class GameScreen extends JamScreen {
                         hide();
                         preferences.putInteger("dialog", finalIndex + 1);
                         preferences.flush();
+    
+                        if (currentDialogAudio != null) currentDialogAudio.stop();
                     }
                     else {
                         clearChildren();
@@ -311,16 +314,17 @@ public class GameScreen extends JamScreen {
             entityController.add(bubble);
         }
         
-        if (isButtonJustPressed(Buttons.LEFT)) {
+        if (!player.destroy && isButtonJustPressed(Buttons.LEFT)) {
             temp.set(player.x, player.y);
             var pathHead = hexUtils.pixelToGridHex(temp);
             temp.set(mouseX, mouseY);
-            var hex = hexUtils.pixelToGridHex(temp);
-            if (hex != null) {
-                var obj = hex.userObject;
+            var pathTail = hexUtils.pixelToGridHex(temp);
+            if (pathTail != null && pathTail.weight == 0) {
+                var obj = pathTail.userObject;
                 if (obj != null)
                     if (obj instanceof GroundEntity) {
-                        var path = hexUtils.getPath(hex, pathHead);
+                        sfx_gameWalk.play(sfx);
+                        var path = hexUtils.getPath(pathTail, pathHead);
     
                         for (int i = 0; i < grounds.size; i++) {
                             var ground = grounds.get(i);
@@ -333,7 +337,7 @@ public class GameScreen extends JamScreen {
                             player.moveTowardsTarget(300f, ground.x, ground.y);
                             pathHead.weight = 0;
                             current.weight = 100;
-                            for (int i = 1; i < path.size() && current != hex; i++) {
+                            for (int i = 1; i < path.size() && current != pathTail; i++) {
                                 ground = (GroundEntity) current.userObject;
                                 ground.skeleton.setColor(Color.RED);
                                 current = path.get(current);
@@ -341,7 +345,7 @@ public class GameScreen extends JamScreen {
                             ground = (GroundEntity) pathHead.userObject;
                             ground.skeleton.setColor(Color.BLUE);
                             
-                            ground = (GroundEntity) hex.userObject;
+                            ground = (GroundEntity) pathTail.userObject;
                             ground.skeleton.setColor(Color.GREEN);
                             
                         }
