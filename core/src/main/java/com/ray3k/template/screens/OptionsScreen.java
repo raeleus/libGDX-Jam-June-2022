@@ -61,10 +61,10 @@ public class OptionsScreen extends JamScreen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 preferences.putBoolean("wolf", false);
-                preferences.putInteger("dialog", 0);
-                preferences.putInteger("ending", 0);
-                preferences.putInteger("final", 0);
-                preferences.putInteger("second", 0);
+                preferences.putInteger("dialog", 1);
+                preferences.putInteger("ending", 1);
+                preferences.putInteger("final", 1);
+                preferences.putInteger("second", 1);
                 preferences.putString("achievements", "");
                 preferences.putInteger("tutorial", 1);
             }

@@ -41,7 +41,13 @@ public class MenuScreen extends JamScreen {
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.input.setInputProcessor(null);
                 bgm.stop();
-                core.transition(new GameScreen());
+                
+                String level = "home";
+                var tutorial = preferences.getInteger("tutorial", 1);
+                if (tutorial <= 6) {
+                    level = "tutorial" + Utils.intToTwoDigit(tutorial);
+                }
+                core.transition(new GameScreen(level));
             }
         });
     

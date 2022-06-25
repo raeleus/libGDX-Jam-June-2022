@@ -32,123 +32,15 @@ public class Resources {
 
     public static Sound sfx_click;
 
-    public static Sound sfx_game01a;
-
-    public static Sound sfx_game01b;
-
-    public static Sound sfx_game01c;
-
-    public static Sound sfx_game02a;
-
-    public static Sound sfx_game02b;
-
-    public static Sound sfx_game02c;
-
-    public static Sound sfx_game03a;
-
-    public static Sound sfx_game03b;
-
-    public static Sound sfx_game03c;
-
-    public static Sound sfx_game04a;
-
-    public static Sound sfx_game04b;
-
-    public static Sound sfx_game05a;
-
-    public static Sound sfx_game06a;
-
-    public static Sound sfx_game06b;
-
-    public static Sound sfx_game07a;
-
-    public static Sound sfx_game07b;
-
-    public static Sound sfx_game07c;
-
-    public static Sound sfx_game08a;
-
-    public static Sound sfx_game08b;
-
-    public static Sound sfx_game09a;
-
-    public static Sound sfx_game09b;
-
-    public static Sound sfx_game10a;
-
-    public static Sound sfx_game10b;
-
     public static Sound sfx_gameBlessing;
 
     public static Sound sfx_gameBurn;
 
     public static Sound sfx_gameDash;
 
-    public static Sound sfx_gameEnding01a;
-
-    public static Sound sfx_gameEnding01b;
-
-    public static Sound sfx_gameEnding01c;
-
-    public static Sound sfx_gameEnding01d;
-
-    public static Sound sfx_gameEnding01e;
-
-    public static Sound sfx_gameEnding01f;
-
-    public static Sound sfx_gameEnding01g;
-
-    public static Sound sfx_gameEnding01h;
-
-    public static Sound sfx_gameEnding02;
-
-    public static Sound sfx_gameEnding03a;
-
-    public static Sound sfx_gameEnding03b;
-
     public static Sound sfx_gameExplosionBig;
 
     public static Sound sfx_gameExplosion;
-
-    public static Sound sfx_gameFinal01a;
-
-    public static Sound sfx_gameFinal01b;
-
-    public static Sound sfx_gameFinal01c;
-
-    public static Sound sfx_gameFinal02a;
-
-    public static Sound sfx_gameFinal02b;
-
-    public static Sound sfx_gameFinal03a;
-
-    public static Sound sfx_gameFinal03b;
-
-    public static Sound sfx_gameFinal04a;
-
-    public static Sound sfx_gameFinal04b;
-
-    public static Sound sfx_gameFinal05a;
-
-    public static Sound sfx_gameFinal05b;
-
-    public static Sound sfx_gameFinal06a;
-
-    public static Sound sfx_gameFinal06b;
-
-    public static Sound sfx_gameFinal07a;
-
-    public static Sound sfx_gameFinal07b;
-
-    public static Sound sfx_gameSecond01;
-
-    public static Sound sfx_gameSecond02;
-
-    public static Sound sfx_gameSecond03;
-
-    public static Sound sfx_gameSecond04;
-
-    public static Sound sfx_gameSecond05;
 
     public static Sound sfx_gameSlash;
 
@@ -164,9 +56,117 @@ public class Resources {
 
     public static Sound sfx_logoMove;
 
+    public static Music bgm_01a;
+
+    public static Music bgm_01b;
+
+    public static Music bgm_01c;
+
+    public static Music bgm_02a;
+
+    public static Music bgm_02b;
+
+    public static Music bgm_02c;
+
+    public static Music bgm_03a;
+
+    public static Music bgm_03b;
+
+    public static Music bgm_03c;
+
+    public static Music bgm_04a;
+
+    public static Music bgm_04b;
+
+    public static Music bgm_05a;
+
+    public static Music bgm_06a;
+
+    public static Music bgm_06b;
+
+    public static Music bgm_07a;
+
+    public static Music bgm_07b;
+
+    public static Music bgm_07c;
+
+    public static Music bgm_08a;
+
+    public static Music bgm_08b;
+
+    public static Music bgm_09a;
+
+    public static Music bgm_09b;
+
+    public static Music bgm_10a;
+
+    public static Music bgm_10b;
+
     public static Music bgm_audioSample;
 
+    public static Music bgm_ending01a;
+
+    public static Music bgm_ending01b;
+
+    public static Music bgm_ending01c;
+
+    public static Music bgm_ending01d;
+
+    public static Music bgm_ending01e;
+
+    public static Music bgm_ending01f;
+
+    public static Music bgm_ending01g;
+
+    public static Music bgm_ending01h;
+
+    public static Music bgm_ending02;
+
+    public static Music bgm_ending03a;
+
+    public static Music bgm_ending03b;
+
+    public static Music bgm_final01a;
+
+    public static Music bgm_final01b;
+
+    public static Music bgm_final01c;
+
+    public static Music bgm_final02a;
+
+    public static Music bgm_final02b;
+
+    public static Music bgm_final03a;
+
+    public static Music bgm_final03b;
+
+    public static Music bgm_final04a;
+
+    public static Music bgm_final04b;
+
+    public static Music bgm_final05a;
+
+    public static Music bgm_final05b;
+
+    public static Music bgm_final06a;
+
+    public static Music bgm_final06b;
+
+    public static Music bgm_final07a;
+
+    public static Music bgm_final07b;
+
     public static Music bgm_menu;
+
+    public static Music bgm_second01;
+
+    public static Music bgm_second02;
+
+    public static Music bgm_second03;
+
+    public static Music bgm_second04;
+
+    public static Music bgm_second05;
 
     public static void loadResources(AssetManager assetManager) {
         textures_textures = assetManager.get("textures/textures.atlas");
@@ -473,65 +473,11 @@ public class Resources {
         SkinSkinStyles.wDefault = skin_skin.get("default", Window.WindowStyle.class);
         SkinSkinStyles.wAbility = skin_skin.get("ability", Window.WindowStyle.class);
         sfx_click = assetManager.get("sfx/click.mp3");
-        sfx_game01a = assetManager.get("sfx/game/01a.mp3");
-        sfx_game01b = assetManager.get("sfx/game/01b.mp3");
-        sfx_game01c = assetManager.get("sfx/game/01c.mp3");
-        sfx_game02a = assetManager.get("sfx/game/02a.mp3");
-        sfx_game02b = assetManager.get("sfx/game/02b.mp3");
-        sfx_game02c = assetManager.get("sfx/game/02c.mp3");
-        sfx_game03a = assetManager.get("sfx/game/03a.mp3");
-        sfx_game03b = assetManager.get("sfx/game/03b.mp3");
-        sfx_game03c = assetManager.get("sfx/game/03c.mp3");
-        sfx_game04a = assetManager.get("sfx/game/04a.mp3");
-        sfx_game04b = assetManager.get("sfx/game/04b.mp3");
-        sfx_game05a = assetManager.get("sfx/game/05a.mp3");
-        sfx_game06a = assetManager.get("sfx/game/06a.mp3");
-        sfx_game06b = assetManager.get("sfx/game/06b.mp3");
-        sfx_game07a = assetManager.get("sfx/game/07a.mp3");
-        sfx_game07b = assetManager.get("sfx/game/07b.mp3");
-        sfx_game07c = assetManager.get("sfx/game/07c.mp3");
-        sfx_game08a = assetManager.get("sfx/game/08a.mp3");
-        sfx_game08b = assetManager.get("sfx/game/08b.mp3");
-        sfx_game09a = assetManager.get("sfx/game/09a.mp3");
-        sfx_game09b = assetManager.get("sfx/game/09b.mp3");
-        sfx_game10a = assetManager.get("sfx/game/10a.mp3");
-        sfx_game10b = assetManager.get("sfx/game/10b.mp3");
         sfx_gameBlessing = assetManager.get("sfx/game/blessing.mp3");
         sfx_gameBurn = assetManager.get("sfx/game/burn.mp3");
         sfx_gameDash = assetManager.get("sfx/game/dash.mp3");
-        sfx_gameEnding01a = assetManager.get("sfx/game/ending01a.mp3");
-        sfx_gameEnding01b = assetManager.get("sfx/game/ending01b.mp3");
-        sfx_gameEnding01c = assetManager.get("sfx/game/ending01c.mp3");
-        sfx_gameEnding01d = assetManager.get("sfx/game/ending01d.mp3");
-        sfx_gameEnding01e = assetManager.get("sfx/game/ending01e.mp3");
-        sfx_gameEnding01f = assetManager.get("sfx/game/ending01f.mp3");
-        sfx_gameEnding01g = assetManager.get("sfx/game/ending01g.mp3");
-        sfx_gameEnding01h = assetManager.get("sfx/game/ending01h.mp3");
-        sfx_gameEnding02 = assetManager.get("sfx/game/ending02.mp3");
-        sfx_gameEnding03a = assetManager.get("sfx/game/ending03a.mp3");
-        sfx_gameEnding03b = assetManager.get("sfx/game/ending03b.mp3");
         sfx_gameExplosionBig = assetManager.get("sfx/game/explosion-big.mp3");
         sfx_gameExplosion = assetManager.get("sfx/game/explosion.mp3");
-        sfx_gameFinal01a = assetManager.get("sfx/game/final01a.mp3");
-        sfx_gameFinal01b = assetManager.get("sfx/game/final01b.mp3");
-        sfx_gameFinal01c = assetManager.get("sfx/game/final01c.mp3");
-        sfx_gameFinal02a = assetManager.get("sfx/game/final02a.mp3");
-        sfx_gameFinal02b = assetManager.get("sfx/game/final02b.mp3");
-        sfx_gameFinal03a = assetManager.get("sfx/game/final03a.mp3");
-        sfx_gameFinal03b = assetManager.get("sfx/game/final03b.mp3");
-        sfx_gameFinal04a = assetManager.get("sfx/game/final04a.mp3");
-        sfx_gameFinal04b = assetManager.get("sfx/game/final04b.mp3");
-        sfx_gameFinal05a = assetManager.get("sfx/game/final05a.mp3");
-        sfx_gameFinal05b = assetManager.get("sfx/game/final05b.mp3");
-        sfx_gameFinal06a = assetManager.get("sfx/game/final06a.mp3");
-        sfx_gameFinal06b = assetManager.get("sfx/game/final06b.mp3");
-        sfx_gameFinal07a = assetManager.get("sfx/game/final07a.mp3");
-        sfx_gameFinal07b = assetManager.get("sfx/game/final07b.mp3");
-        sfx_gameSecond01 = assetManager.get("sfx/game/second01.mp3");
-        sfx_gameSecond02 = assetManager.get("sfx/game/second02.mp3");
-        sfx_gameSecond03 = assetManager.get("sfx/game/second03.mp3");
-        sfx_gameSecond04 = assetManager.get("sfx/game/second04.mp3");
-        sfx_gameSecond05 = assetManager.get("sfx/game/second05.mp3");
         sfx_gameSlash = assetManager.get("sfx/game/slash.mp3");
         sfx_gameTeleport = assetManager.get("sfx/game/teleport.mp3");
         sfx_gameWalk = assetManager.get("sfx/game/walk.mp3");
@@ -539,8 +485,62 @@ public class Resources {
         sfx_logoLand = assetManager.get("sfx/logo/land.mp3");
         sfx_logoLine = assetManager.get("sfx/logo/line.mp3");
         sfx_logoMove = assetManager.get("sfx/logo/move.mp3");
+        bgm_01a = assetManager.get("bgm/01a.mp3");
+        bgm_01b = assetManager.get("bgm/01b.mp3");
+        bgm_01c = assetManager.get("bgm/01c.mp3");
+        bgm_02a = assetManager.get("bgm/02a.mp3");
+        bgm_02b = assetManager.get("bgm/02b.mp3");
+        bgm_02c = assetManager.get("bgm/02c.mp3");
+        bgm_03a = assetManager.get("bgm/03a.mp3");
+        bgm_03b = assetManager.get("bgm/03b.mp3");
+        bgm_03c = assetManager.get("bgm/03c.mp3");
+        bgm_04a = assetManager.get("bgm/04a.mp3");
+        bgm_04b = assetManager.get("bgm/04b.mp3");
+        bgm_05a = assetManager.get("bgm/05a.mp3");
+        bgm_06a = assetManager.get("bgm/06a.mp3");
+        bgm_06b = assetManager.get("bgm/06b.mp3");
+        bgm_07a = assetManager.get("bgm/07a.mp3");
+        bgm_07b = assetManager.get("bgm/07b.mp3");
+        bgm_07c = assetManager.get("bgm/07c.mp3");
+        bgm_08a = assetManager.get("bgm/08a.mp3");
+        bgm_08b = assetManager.get("bgm/08b.mp3");
+        bgm_09a = assetManager.get("bgm/09a.mp3");
+        bgm_09b = assetManager.get("bgm/09b.mp3");
+        bgm_10a = assetManager.get("bgm/10a.mp3");
+        bgm_10b = assetManager.get("bgm/10b.mp3");
         bgm_audioSample = assetManager.get("bgm/audio-sample.mp3");
+        bgm_ending01a = assetManager.get("bgm/ending01a.mp3");
+        bgm_ending01b = assetManager.get("bgm/ending01b.mp3");
+        bgm_ending01c = assetManager.get("bgm/ending01c.mp3");
+        bgm_ending01d = assetManager.get("bgm/ending01d.mp3");
+        bgm_ending01e = assetManager.get("bgm/ending01e.mp3");
+        bgm_ending01f = assetManager.get("bgm/ending01f.mp3");
+        bgm_ending01g = assetManager.get("bgm/ending01g.mp3");
+        bgm_ending01h = assetManager.get("bgm/ending01h.mp3");
+        bgm_ending02 = assetManager.get("bgm/ending02.mp3");
+        bgm_ending03a = assetManager.get("bgm/ending03a.mp3");
+        bgm_ending03b = assetManager.get("bgm/ending03b.mp3");
+        bgm_final01a = assetManager.get("bgm/final01a.mp3");
+        bgm_final01b = assetManager.get("bgm/final01b.mp3");
+        bgm_final01c = assetManager.get("bgm/final01c.mp3");
+        bgm_final02a = assetManager.get("bgm/final02a.mp3");
+        bgm_final02b = assetManager.get("bgm/final02b.mp3");
+        bgm_final03a = assetManager.get("bgm/final03a.mp3");
+        bgm_final03b = assetManager.get("bgm/final03b.mp3");
+        bgm_final04a = assetManager.get("bgm/final04a.mp3");
+        bgm_final04b = assetManager.get("bgm/final04b.mp3");
+        bgm_final05a = assetManager.get("bgm/final05a.mp3");
+        bgm_final05b = assetManager.get("bgm/final05b.mp3");
+        bgm_final06a = assetManager.get("bgm/final06a.mp3");
+        bgm_final06b = assetManager.get("bgm/final06b.mp3");
+        bgm_final07a = assetManager.get("bgm/final07a.mp3");
+        bgm_final07b = assetManager.get("bgm/final07b.mp3");
         bgm_menu = assetManager.get("bgm/menu.mp3");
+        bgm_second01 = assetManager.get("bgm/second01.mp3");
+        bgm_second02 = assetManager.get("bgm/second02.mp3");
+        bgm_second03 = assetManager.get("bgm/second03.mp3");
+        bgm_second04 = assetManager.get("bgm/second04.mp3");
+        bgm_second05 = assetManager.get("bgm/second05.mp3");
     }
 
     public static class SpineArrow {

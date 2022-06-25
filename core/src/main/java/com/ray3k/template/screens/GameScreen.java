@@ -4,22 +4,31 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.ObjectMap;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.github.tommyettinger.textra.TypingLabel;
 import com.lol.fraud.HexTile;
 import com.lol.fraud.HexUtils;
 import com.lol.fraud.HexUtils.TYPE;
+import com.ray3k.stripe.PopTable;
 import com.ray3k.template.*;
 import com.ray3k.template.OgmoReader.*;
 import com.ray3k.template.entities.*;
@@ -41,6 +50,12 @@ public class GameScreen extends JamScreen {
     private float bubbleTimer;
     public HexUtils hexUtils;
     public PlayerEntity player;
+    public String level;
+    public Music currentDialogAudio;
+    
+    public GameScreen(String level) {
+        this.level = level;
+    }
     
     @Override
     public void show() {
@@ -97,11 +112,165 @@ public class GameScreen extends JamScreen {
         hexUtils.generateRectangularGrid(25, 25, TYPE.ODDR);
         
         entityController.clear();
-        var tutorial = preferences.getInteger("tutorial", 1);
-        if (tutorial > 6) {
-            loadLevel("home");
-        } else {
-            loadLevel("tutorial" + Utils.intToTwoDigit(tutorial));
+        loadLevel(level);
+
+        if (level.equals("home") || level.equals("tutorial01")) {
+            var index = preferences.getInteger("dialog", 1);
+            var audioArray = new Array<Music>();
+            var textArray = new Array<String>();
+            var imageArray = new Array<Image>();
+            var jsonReader = new JsonReader();
+            var jsonValue = jsonReader.parse(Gdx.files.internal("dialogs.json"));
+            var satanImage = new Image(skin, "portrait-satan");
+            satanImage.setScaling(Scaling.fit);
+            var sonImage = new Image(skin, "portrait-son");
+            sonImage.setScaling(Scaling.fit);
+            switch (index) {
+                case 1:
+                    audioArray.add(Resources.bgm_01a);
+                    audioArray.add(Resources.bgm_01b);
+                    audioArray.add(Resources.bgm_01c);
+                    textArray.add(jsonValue.getString("01a"));
+                    textArray.add(jsonValue.getString("01b"));
+                    textArray.add(jsonValue.getString("01c"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    break;
+                case 2:
+                    audioArray.add(Resources.bgm_02a);
+                    audioArray.add(Resources.bgm_02b);
+                    audioArray.add(Resources.bgm_02c);
+                    textArray.add(jsonValue.getString("02a"));
+                    textArray.add(jsonValue.getString("02b"));
+                    textArray.add(jsonValue.getString("02c"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    break;
+                case 3:
+                    audioArray.add(Resources.bgm_03a);
+                    audioArray.add(Resources.bgm_03b);
+                    audioArray.add(Resources.bgm_03c);
+                    textArray.add(jsonValue.getString("03a"));
+                    textArray.add(jsonValue.getString("03b"));
+                    textArray.add(jsonValue.getString("03c"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    break;
+                case 4:
+                    audioArray.add(Resources.bgm_04a);
+                    audioArray.add(Resources.bgm_04b);
+                    textArray.add(jsonValue.getString("04a"));
+                    textArray.add(jsonValue.getString("04b"));
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    break;
+                case 5:
+                    audioArray.add(Resources.bgm_05a);
+                    textArray.add(jsonValue.getString("05a"));
+                    imageArray.add(satanImage);
+                    break;
+                case 6:
+                    audioArray.add(Resources.bgm_06a);
+                    audioArray.add(Resources.bgm_06b);
+                    textArray.add(jsonValue.getString("06a"));
+                    textArray.add(jsonValue.getString("06b"));
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    break;
+                case 7:
+                    audioArray.add(Resources.bgm_07a);
+                    audioArray.add(Resources.bgm_07b);
+                    audioArray.add(Resources.bgm_07c);
+                    textArray.add(jsonValue.getString("07a"));
+                    textArray.add(jsonValue.getString("07b"));
+                    textArray.add(jsonValue.getString("07c"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    break;
+                case 8:
+                    audioArray.add(Resources.bgm_08a);
+                    audioArray.add(Resources.bgm_08b);
+                    textArray.add(jsonValue.getString("08a"));
+                    textArray.add(jsonValue.getString("08b"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    break;
+                case 9:
+                    audioArray.add(Resources.bgm_09a);
+                    audioArray.add(Resources.bgm_09b);
+                    textArray.add(jsonValue.getString("09a"));
+                    textArray.add(jsonValue.getString("09b"));
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    break;
+                case 10:
+                    audioArray.add(Resources.bgm_10a);
+                    audioArray.add(Resources.bgm_10b);
+                    textArray.add(jsonValue.getString("10a"));
+                    textArray.add(jsonValue.getString("10b"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    break;
+            }
+            
+            var popTable = new PopTable() {
+                int progress = 0;
+    
+                @Override
+                public void show(Stage stage, Action action) {
+                    refresh();
+                    super.show(stage, action);
+                }
+                
+                public void refresh() {
+                    if (progress >= audioArray.size) {
+                        hide();
+                        preferences.putInteger("dialog", index + 1);
+                    }
+                    else {
+                        clearChildren();
+    
+                        if (currentDialogAudio != null) currentDialogAudio.stop();
+                        currentDialogAudio = audioArray.get(progress);
+                        currentDialogAudio.play();
+    
+                        var stack = new Stack();
+                        add(stack).grow();
+    
+                        var table = new Table();
+                        stack.add(table);
+    
+                        table.add(imageArray.get(progress)).bottom().left().size(500, 500).expand();
+    
+                        table = new Table();
+                        stack.add(table);
+    
+                        var subTable = new Table();
+                        subTable.setBackground(skin.getDrawable("dialog-10"));
+                        table.add(subTable).bottom().right().expand();
+                        
+                        var typingLabel = new TypingLabel(textArray.get(progress) + "\nClick to continue...", skin);
+                        typingLabel.setWrap(true);
+                        subTable.add(typingLabel).grow();
+                    }
+                }
+            };
+            
+            popTable.setModal(true);
+            popTable.setFillParent(true);
+            popTable.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    popTable.progress++;
+                    popTable.refresh();
+                }
+            });
+            popTable.show(stage);
         }
     }
     
