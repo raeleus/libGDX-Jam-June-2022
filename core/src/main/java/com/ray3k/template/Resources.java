@@ -191,6 +191,7 @@ public class Resources {
         SpineFlame.skeletonData = assetManager.get("spine/flame.json");
         SpineFlame.animationData = assetManager.get("spine/flame.json-animation");
         SpineFlame.animationAnimation = SpineFlame.skeletonData.findAnimation("animation");
+        SpineFlame.animationFlames = SpineFlame.skeletonData.findAnimation("flames");
         SpineFlame.boneRoot = SpineFlame.skeletonData.findBone("root");
         SpineFlame.boneGameFlame01 = SpineFlame.skeletonData.findBone("game/flame-01");
         SpineFlame.boneGameFlame02 = SpineFlame.skeletonData.findBone("game/flame-02");
@@ -458,6 +459,10 @@ public class Resources {
         skin_skin = assetManager.get("skin/skin.json");
         SkinSkinStyles.bDefault = skin_skin.get("default", Button.ButtonStyle.class);
         SkinSkinStyles.ibDefault = skin_skin.get("default", ImageButton.ImageButtonStyle.class);
+        SkinSkinStyles.ibThrow = skin_skin.get("throw", ImageButton.ImageButtonStyle.class);
+        SkinSkinStyles.ibWolf = skin_skin.get("wolf", ImageButton.ImageButtonStyle.class);
+        SkinSkinStyles.ibStrike = skin_skin.get("strike", ImageButton.ImageButtonStyle.class);
+        SkinSkinStyles.ibDash = skin_skin.get("dash", ImageButton.ImageButtonStyle.class);
         SkinSkinStyles.lDefault = skin_skin.get("default", Label.LabelStyle.class);
         SkinSkinStyles.lstDefault = skin_skin.get("default", List.ListStyle.class);
         SkinSkinStyles.pDefaultHorizontal = skin_skin.get("default-horizontal", ProgressBar.ProgressBarStyle.class);
@@ -591,6 +596,8 @@ public class Resources {
         public static AnimationStateData animationData;
 
         public static Animation animationAnimation;
+
+        public static Animation animationFlames;
 
         public static BoneData boneRoot;
 
@@ -1165,6 +1172,14 @@ public class Resources {
         public static Button.ButtonStyle bDefault;
 
         public static ImageButton.ImageButtonStyle ibDefault;
+
+        public static ImageButton.ImageButtonStyle ibThrow;
+
+        public static ImageButton.ImageButtonStyle ibWolf;
+
+        public static ImageButton.ImageButtonStyle ibStrike;
+
+        public static ImageButton.ImageButtonStyle ibDash;
 
         public static Label.LabelStyle lDefault;
 

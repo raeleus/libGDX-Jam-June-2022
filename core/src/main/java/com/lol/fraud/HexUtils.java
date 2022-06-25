@@ -56,19 +56,19 @@ public class HexUtils {
         }
         this.origin = origin;
     }
-    public void generateGrid(int w, int h, SHAPE shape, TYPE type){
+    public void generateGrid(int w, int h, SHAPE shape, TYPE type, Vector2 vector2){
         if(shape==SHAPE.RECTANGLE){
-            generateRectangularGrid(w,h,type);
+            generateRectangularGrid(w,h,type, vector2);
         }else if(shape==SHAPE.TRIANGLE){
-            generateTriangularGrid(w,false);
+            generateTriangularGrid(w,false, vector2);
         }else if(shape==SHAPE.RHOMBUS){
-            generateRhomboidGrid(w,h,false);
+            generateRhomboidGrid(w,h,false, vector2);
         }else if(shape==SHAPE.HEXAGON){
-            generateHexagonalGrid(w);
+            generateHexagonalGrid(w, vector2);
         }
         getOnScreen(0,0,1920,1080);
     }
-    public void generateRectangularGrid(int w, int h, TYPE type){
+    public void generateRectangularGrid(int w, int h, TYPE type, Vector2 vector2){
         clearGrid();
         //Column (q) based types to be added... at some point perhaps.
         if(type == TYPE.ODDR){
@@ -76,7 +76,7 @@ public class HexUtils {
                 int r_offset = (int)Math.floor(r/2f); // or r>>1
                 for (int q = -r_offset; q < w - r_offset; q++) {
                     HexTile hex = new HexTile(q, r, -q-r);
-                    hex.pos = hexToPixel(hex);
+                    hex.pos = hexToPixel(hex, vector2);
                     setBounds(hex.pos);
                     gridMap.put(hex.q+","+hex.r+","+hex.s,hex);
                 }
@@ -86,7 +86,7 @@ public class HexUtils {
                 int offset = (int)Math.floor(r/2f); // or r>>1
                 for (int s= - offset; s < w - offset; s++) {
                     HexTile hex = new HexTile(-r-s+w, r, s-w);
-                    hex.pos = hexToPixel(hex);
+                    hex.pos = hexToPixel(hex, vector2);
                     setBounds(hex.pos);
                     gridMap.put(hex.q+","+hex.r+","+hex.s,hex);
                 }
@@ -94,27 +94,27 @@ public class HexUtils {
         }
         getOnScreen(0,0,1920,1080);
     }
-    public void generateHexagonalGrid(int radius){
+    public void generateHexagonalGrid(int radius, Vector2 vector2){
         clearGrid();
         for (int q = -radius; q <= radius; q++) {
             int r1 = Math.max(-radius, -q - radius);
             int r2 = Math.min(radius, -q + radius);
             for (int r = r1; r <= r2; r++) {
                 HexTile hex = new HexTile(q, r, -q-r);
-                hex.pos = hexToPixel(hex);
+                hex.pos = hexToPixel(hex, vector2);
                 setBounds(hex.pos);
                 gridMap.put(hex.q+","+hex.r+","+hex.s,hex);
             }
         }
         getOnScreen(0,0,1920,1080);
     }
-    public void generateTriangularGrid(int maxwidth, boolean flipy) {
+    public void generateTriangularGrid(int maxwidth, boolean flipy, Vector2 vector2) {
         clearGrid();
         if (flipy) {
             for (int q = 0; q <= maxwidth; q++) {
                 for (int r = maxwidth - q; r <= maxwidth; r++) {
                     HexTile hex = new HexTile(q, r, -q - r);
-                    hex.pos = hexToPixel(hex);
+                    hex.pos = hexToPixel(hex, vector2);
                     setBounds(hex.pos);
                     gridMap.put(hex.q+","+hex.r+","+hex.s, hex);
                 }
@@ -123,7 +123,7 @@ public class HexUtils {
             for (int q = 0; q <= maxwidth; q++) {
                 for (int r = 0; r <= maxwidth - q; r++) {
                     HexTile hex = new HexTile(q, r, -q - r);
-                    hex.pos = hexToPixel(hex);
+                    hex.pos = hexToPixel(hex, vector2);
                     setBounds(hex.pos);
                     gridMap.put(hex.q+","+hex.r+","+hex.s, hex);
                 }
@@ -131,13 +131,13 @@ public class HexUtils {
         }
         getOnScreen(0,0,1920,1080);
     }
-    public void generateRhomboidGrid(int w, int h, boolean reverseSkew){
+    public void generateRhomboidGrid(int w, int h, boolean reverseSkew, Vector2 vector2){
         clearGrid();
         if(reverseSkew){
             for (int s = 0; s < h; s++) {
                 for (int r = 0; r < w; r++) {
                     HexTile hex = new HexTile(-r-s+w, r, s-w);
-                    hex.pos = hexToPixel(hex);
+                    hex.pos = hexToPixel(hex, vector2);
                     setBounds(hex.pos);
                     gridMap.put(hex.q+","+hex.r+","+hex.s,hex);
                 }
@@ -146,7 +146,7 @@ public class HexUtils {
             for (int r = 0; r < h; r++) {
                 for (int q = 0; q < w; q++) {
                     HexTile hex = new HexTile(q, r, -q-r);
-                    hex.pos = hexToPixel(hex);
+                    hex.pos = hexToPixel(hex, vector2);
                     setBounds(hex.pos);
                     gridMap.put(hex.q+","+hex.r+","+hex.s,hex);
                 }
@@ -172,10 +172,10 @@ public class HexUtils {
         }
         return corners;
     }
-    public Vector2 hexToPixel(HexTile h) {
+    public Vector2 hexToPixel(HexTile h, Vector2 vector2) {
         float x = (orientation.f0 * h.q + orientation.f1 * h.r) * size.x;
         float y = (orientation.f2 * h.q + orientation.f3 * h.r) * size.y;
-        return new Vector2(x + origin.x, y + origin.y);
+        return vector2.set(x + origin.x, y + origin.y);
     }
     public Vector2 hexCornerOffset(int corner) {
         double angle = Math.PI * (orientation.start_angle - corner+0.5f) / 6.0;

@@ -17,7 +17,7 @@ public class AnimationEntity extends Entity {
         animationState.addListener(new AnimationStateAdapter() {
             @Override
             public void complete(TrackEntry entry) {
-                destroy = true;
+                if (entry.getTrackIndex() == 0) destroy = true;
             }
         });
     }

@@ -89,6 +89,7 @@ public class Core extends JamGame {
     public static float defaultTransitionDuration;
     public static final float DEPTH_TUTORIAL = 10f;
     public static final float DEPTH_PLAYER = 20f;
+    public static final float DEPTH_PARTICLES = 25f;
     public static final float DEPTH_ENEMY = 30f;
     public static final float DEPTH_PICKUP = 40f;
     public static final float DEPTH_GROUND = 50f;

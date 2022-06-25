@@ -499,23 +499,23 @@ icon-beast
 	bounds: 1684, 991, 101, 100
 icon-blessing
 	bounds: 576, 662, 101, 100
-icon-blessing_1
-	bounds: 576, 560, 101, 100
 icon-blood
-	bounds: 1, 542, 101, 100
+	bounds: 576, 560, 101, 100
 icon-body
-	bounds: 104, 542, 101, 100
+	bounds: 1, 542, 101, 100
 icon-crown
-	bounds: 207, 542, 101, 100
+	bounds: 104, 542, 101, 100
 icon-dash
-	bounds: 310, 542, 101, 100
+	bounds: 207, 542, 101, 100
 icon-david
-	bounds: 413, 542, 101, 100
+	bounds: 310, 542, 101, 100
 icon-dove
-	bounds: 679, 662, 101, 100
+	bounds: 413, 542, 101, 100
 icon-godspeed
-	bounds: 679, 560, 101, 100
+	bounds: 679, 662, 101, 100
 icon-grail
+	bounds: 679, 560, 101, 100
+icon-holy-light
 	bounds: 1376, 889, 101, 100
 icon-lamb
 	bounds: 1376, 787, 101, 100

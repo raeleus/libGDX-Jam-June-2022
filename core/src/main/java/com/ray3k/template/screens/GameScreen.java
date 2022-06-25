@@ -13,9 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Stack;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.JsonReader;
@@ -57,6 +55,11 @@ public class GameScreen extends JamScreen {
         STORY, PLAYER, PLAYER_MOVING, ENEMY, ENEMY_MOVING
     }
     public static Turn turn;
+    public enum Mode {
+        MOVE, STRIKE, DASH, THROW
+    }
+    public static Mode mode;
+    public static ButtonGroup<Button> controlsButtonGroup;
     
     public GameScreen(String level) {
         this.level = level;
@@ -65,6 +68,13 @@ public class GameScreen extends JamScreen {
     @Override
     public void show() {
         super.show();
+        grounds.clear();
+        lavas.clear();
+        characters.clear();
+        enemies.clear();
+        player = null;
+        hexUtils = null;
+        
     
         gameScreen = this;
         BG_COLOR.set(Color.BLACK);
@@ -108,18 +118,21 @@ public class GameScreen extends JamScreen {
     
         InputMultiplexer inputMultiplexer = new InputMultiplexer(stage, this);
         Gdx.input.setInputProcessor(inputMultiplexer);
+        
+        createStageElements();
     
         camera = new OrthographicCamera();
         viewport = new FitViewport(1024, 576, camera);
         camera.position.set(512, 288, 0);
     
         hexUtils = new HexUtils(HexUtils.flat, new Vector2(36, 36), new Vector2(offsetX, offsetY));
-        hexUtils.generateRectangularGrid(25, 25, TYPE.ODDR);
+        hexUtils.generateRectangularGrid(25, 25, TYPE.ODDR, temp);
         
         entityController.clear();
         loadLevel(level);
 
         turn = Turn.PLAYER;
+        mode = Mode.MOVE;
         if (level.equals("home") || level.equals("tutorial01")) {
             turn = Turn.STORY;
             var index = preferences.getInteger("dialog", 1);
@@ -271,7 +284,7 @@ public class GameScreen extends JamScreen {
                         subTable.setBackground(skin.getDrawable("dialog-10"));
                         table.add(subTable).bottom().right().expand();
                         
-                        var typingLabel = new TypingLabel(textArray.get(progress) + "\nClick to continue...", skin);
+                        var typingLabel = new TypingLabel(textArray.get(progress) + "\n{NORMAL}Click to continue...", skin);
                         typingLabel.setWrap(true);
                         subTable.add(typingLabel).grow();
                     }
@@ -291,7 +304,7 @@ public class GameScreen extends JamScreen {
         }
     }
     
-    Vector2 temp = new Vector2();
+    private static final Vector2 temp = new Vector2();
     
     @Override
     public void act(float delta) {
@@ -542,5 +555,41 @@ public class GameScreen extends JamScreen {
             }
         });
         reader.readFile(Gdx.files.internal("levels/" + name + ".json"));
+    }
+    
+    private void createStageElements() {
+        var root = (Table) stage.getRoot().getChild(0);
+        root.left().bottom();
+        
+        var table = new Table();
+        table.setBackground(skin.getDrawable("controls-bg"));
+        root.add(table);
+        
+        controlsButtonGroup = new ButtonGroup<>();
+        controlsButtonGroup.setMinCheckCount(0);
+        
+        var strikeButton = new ImageButton(skin, "strike");
+        table.add(strikeButton).size(50, 50);
+        controlsButtonGroup.add(strikeButton);
+        Utils.onChange(strikeButton, () -> {
+            if (strikeButton.isChecked()) mode = Mode.STRIKE;
+            else mode = Mode.MOVE;
+        });
+    
+        var dashButton = new ImageButton(skin, "dash");
+        table.add(dashButton).size(50, 50);
+        controlsButtonGroup.add(dashButton);
+        Utils.onChange(dashButton, () -> {
+            if (dashButton.isChecked()) mode = Mode.DASH;
+            else mode = Mode.MOVE;
+        });
+    
+        var throwButton = new ImageButton(skin, "throw");
+        table.add(throwButton).size(50, 50);
+        controlsButtonGroup.add(throwButton);
+        Utils.onChange(throwButton, () -> {
+            if (throwButton.isChecked()) mode = Mode.THROW;
+            else mode = Mode.MOVE;
+        });
     }
 }
