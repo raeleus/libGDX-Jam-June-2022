@@ -18,6 +18,8 @@ import com.ray3k.stripe.PopTable;
 import com.ray3k.template.*;
 import com.ray3k.template.screens.*;
 
+import java.util.ArrayList;
+
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Resources.*;
 import static com.ray3k.template.Resources.SpinePlayer.*;
@@ -118,6 +120,23 @@ public class PlayerEntity extends Entity {
                             }
                         }
                         
+                        if (thrustEnemies.size > 0 && powers.contains(Power.LANCE_OF_LONGINUS, true)) {
+                            thrustQ = pathHead.q + (targetHex.q - pathHead.q) * 3;
+                            thrustR = pathHead.r + (targetHex.r - pathHead.r) * 3;
+                            thrustHex = hexUtils.getTile(thrustQ, thrustR, -thrustQ - thrustR);
+                            if (hasTrident && thrustHex != null && thrustHex.userObject instanceof GroundEntity) {
+                                var thrustGround = (GroundEntity) thrustHex.userObject;
+                                for (var enemy : enemies) {
+                                    if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
+                                            enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
+                                        thrustGround.skeleton.setColor(Color.RED);
+                                        thrustEnemies.add(enemy);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        
                         //check for slash
                         var adjacentHexes = hexUtils.getHexesInRadius(pathHead, 1);
                         var slashHexes = hexUtils.getHexesInRadius(targetHex, 1);
@@ -178,35 +197,41 @@ public class PlayerEntity extends Entity {
             } else iter.remove();
         }
     
+        var targetHexes = new ArrayList<HexTile>();
         var targetHex = hexUtils.pixelToGridHex(temp.set(mouseX, mouseY));
-        if (targetHex != null && targetHex.userObject instanceof GroundEntity) {
-            if (adjacentHexes.contains(targetHex) && isButtonJustPressed(Buttons.LEFT)) {
-                sfx_gameSlash.play(sfx * .5f);
-                turn = Turn.PLAYER_MOVING;
-                controlsButtonGroup.uncheckAll();
-                
-                var q = targetHex.q;
-                var r = targetHex.r;
-                var deltaQ = MathUtils.clamp(targetHex.q - playerHex.q, -1, 1);
-                var deltaR = MathUtils.clamp(targetHex.r - playerHex.r, -1, 1);
-                
-                energy--;
-                refreshEnergyTable();
-                
-                EnemyEntity enemy = null;
-                var ground = (GroundEntity) targetHex.userObject;
-                for (var enemyCheck : enemies) {
-                    if (MathUtils.isEqual(enemyCheck.x, ground.x) && MathUtils.isEqual(enemyCheck.y, ground.y)) {
-                        enemy = enemyCheck;
-                        break;
+        targetHexes.add(targetHex);
+        if (powers.contains(Power.PARTING_THE_RED_SEA, true) && targetHex != null) targetHexes.addAll(hexUtils.getHexesInRadius(targetHex, 1));
+        
+        for (var hex : targetHexes) {
+            if (hex != null && hex.userObject instanceof GroundEntity) {
+                if (adjacentHexes.contains(hex) && isButtonJustPressed(Buttons.LEFT)) {
+                    sfx_gameSlash.play(sfx * .5f);
+                    turn = Turn.PLAYER_MOVING;
+                    controlsButtonGroup.uncheckAll();
+            
+                    var q = hex.q;
+                    var r = hex.r;
+                    var deltaQ = MathUtils.clamp(hex.q - playerHex.q, -1, 1);
+                    var deltaR = MathUtils.clamp(hex.r - playerHex.r, -1, 1);
+            
+                    energy--;
+                    refreshEnergyTable();
+            
+                    EnemyEntity enemy = null;
+                    var ground = (GroundEntity) hex.userObject;
+                    for (var enemyCheck : enemies) {
+                        if (MathUtils.isEqual(enemyCheck.x, ground.x) && MathUtils.isEqual(enemyCheck.y, ground.y)) {
+                            enemy = enemyCheck;
+                            break;
+                        }
                     }
-                }
-                moveEnemy(enemy, q + deltaQ, r + deltaR);
-                var finalEnemy = enemy;
-                if (powers.contains(Power.STRENGTH_OF_SAMSON, true)) {
-                    stage.addAction(Actions.delay(.5f, Actions.run(() -> {
-                        moveEnemy(finalEnemy, q + 2 * deltaQ, r + 2 * deltaR);
-                    })));
+                    moveEnemy(enemy, q + deltaQ, r + deltaR);
+                    var finalEnemy = enemy;
+                    if (powers.contains(Power.STRENGTH_OF_SAMSON, true)) {
+                        stage.addAction(Actions.delay(.5f, Actions.run(() -> {
+                            moveEnemy(finalEnemy, q + 2 * deltaQ, r + 2 * deltaR);
+                        })));
+                    }
                 }
             }
         }
@@ -309,6 +334,23 @@ public class PlayerEntity extends Entity {
                                 thrustGround.skeleton.setColor(Color.RED);
                                 thrustEnemies.add(enemy);
                                 break;
+                            }
+                        }
+                    }
+    
+                    if (thrustEnemies.size > 0 && powers.contains(Power.LANCE_OF_LONGINUS, true)) {
+                        thrustQ = playerHex.q + deltaQ * 4;
+                        thrustR = playerHex.r + deltaR * 4;
+                        thrustHex = hexUtils.getTile(thrustQ, thrustR, -thrustQ - thrustR);
+                        if (thrustHex != null && thrustHex.userObject instanceof GroundEntity) {
+                            var thrustGround = (GroundEntity) thrustHex.userObject;
+                            for (var enemy : enemies) {
+                                if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
+                                        enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
+                                    thrustGround.skeleton.setColor(Color.RED);
+                                    thrustEnemies.add(enemy);
+                                    break;
+                                }
                             }
                         }
                     }
