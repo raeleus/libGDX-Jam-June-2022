@@ -72,6 +72,8 @@ public class GameScreen extends JamScreen {
     public static int maxHealth = 3;
     public static int energy = 6;
     public static int maxEnergy = 6;
+    public static boolean hasTrident = true;
+    public static TridentEntity tridentEntity;
     
     public GameScreen(String level) {
         this.level = level;
@@ -89,7 +91,8 @@ public class GameScreen extends JamScreen {
         pentagramEntity = null;
         shrineEntity = null;
         hexUtils = null;
-        
+        hasTrident = true;
+        tridentEntity = null;
     
         gameScreen = this;
         BG_COLOR.set(Color.BLACK);
@@ -679,6 +682,7 @@ public class GameScreen extends JamScreen {
             table.getCells().peek().height(15).bottom().expandY();
         }
         
-        dashButton.setDisabled(energy <= 1);
+        dashButton.setDisabled(energy < 2);
+        strikeButton.setDisabled(energy < 1);
     }
 }

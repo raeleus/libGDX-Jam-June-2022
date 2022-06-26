@@ -105,7 +105,7 @@ public class PlayerEntity extends Entity {
                         var thrustQ = pathHead.q + (targetHex.q - pathHead.q) * 2;
                         var thrustR = pathHead.r + (targetHex.r - pathHead.r) * 2;
                         var thrustHex = hexUtils.getTile(thrustQ, thrustR, -thrustQ - thrustR);
-                        if (thrustHex != null && thrustHex.userObject instanceof GroundEntity) {
+                        if (hasTrident && thrustHex != null && thrustHex.userObject instanceof GroundEntity) {
                             var thrustGround = (GroundEntity) thrustHex.userObject;
                             for (var enemy : enemies) {
                                 if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
@@ -170,18 +170,17 @@ public class PlayerEntity extends Entity {
                 for (var enemy : enemies) {
                     if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) {
                         ground.skeleton.setColor(Color.RED);
-                        break outerLoop;
+                        continue outerLoop;
                     }
                 }
-                iter.remove();
-            } else {
-                iter.remove();
-            }
+                ground.skeleton.setColor(Color.BLUE);
+            } else iter.remove();
         }
     
         var targetHex = hexUtils.pixelToGridHex(temp.set(mouseX, mouseY));
         if (targetHex != null && targetHex.userObject instanceof GroundEntity) {
             if (adjacentHexes.contains(targetHex) && isButtonJustPressed(Buttons.LEFT)) {
+                System.out.println("strike");
                 sfx_gameSlash.play(sfx * .5f);
                 turn = Turn.PLAYER_MOVING;
                 controlsButtonGroup.uncheckAll();
@@ -276,7 +275,7 @@ public class PlayerEntity extends Entity {
                 var deltaR = MathUtils.clamp(targetHex.r - playerHex.r, -1, 1);
     
                 //check for thrust
-                if (deltaQ != 0 || deltaR != 0) {
+                if (hasTrident && (deltaQ != 0 || deltaR != 0)) {
                     var thrustQ = playerHex.q + deltaQ * 3;
                     var thrustR = playerHex.r + deltaR * 3;
                     var thrustHex = hexUtils.getTile(thrustQ, thrustR, -thrustQ - thrustR);
@@ -346,7 +345,53 @@ public class PlayerEntity extends Entity {
     }
     
     private void throwTurn() {
+        var playerHex = hexUtils.pixelToGridHex(temp.set(player.x, player.y));
+        var throwHexes = hexUtils.getHexesInRadius(playerHex, 2);
+        var iter = throwHexes.iterator();
+        outerLoop : while (iter.hasNext()) {
+            var hex = iter.next();
+            if (hex != null && hex.userObject instanceof GroundEntity) {
+                var ground = (GroundEntity) hex.userObject;
+                if (hex.weight > 0) {
+                    for (var enemy : enemies) {
+                        if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) {
+                            ground.skeleton.setColor(Color.RED);
+                            continue outerLoop;
+                        }
+                    }
+                    iter.remove();
+                } else {
+                    ground.skeleton.setColor(Color.BLUE);
+                }
+            } else iter.remove();
+        }
     
+        var targetHex = hexUtils.pixelToGridHex(temp.set(mouseX, mouseY));
+        if (targetHex != null && targetHex.userObject instanceof GroundEntity) {
+            var ground = (GroundEntity) targetHex.userObject;
+            if (throwHexes.contains(targetHex)) {
+                if (isButtonJustPressed(Buttons.LEFT)) {
+                    sfx_gameDash.play(sfx);
+                    turn = Turn.PLAYER_MOVING;
+                    controlsButtonGroup.uncheckAll();
+                    hasTrident = false;
+                    throwButton.setDisabled(true);
+                    
+                    tridentEntity = new TridentEntity();
+                    tridentEntity.setPosition(player.x, player.y);
+                    entityController.add(tridentEntity);
+                    tridentEntity.moveTowardsTarget(600f, ground.x, ground.y);
+                    
+                    for (var enemy : enemies) {
+                        if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) {
+                            enemy.hurt();
+                            sfx_gameSlash.play(sfx * .5f);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
     
     public void completeMoving() {
@@ -396,6 +441,13 @@ public class PlayerEntity extends Entity {
                 }
             };
             entityController.add(anim);
+        }
+    
+        if (tridentEntity != null && MathUtils.isEqual(x, tridentEntity.x) && MathUtils.isEqual(y, tridentEntity.y)) {
+            tridentEntity.destroy = true;
+            tridentEntity = null;
+            hasTrident = true;
+            throwButton.setDisabled(false);
         }
     
         if (shrineEntity != null && MathUtils.isEqual(x, shrineEntity.x) && MathUtils.isEqual(y, shrineEntity.y)) {
