@@ -409,7 +409,7 @@ public class GameScreen extends JamScreen {
             } else {
                 for (int i = 0; i < enemies.size; i++) {
                     var enemy = enemies.get(i);
-                    enemy.takeTurn();
+                    if (!enemy.destroy) enemy.takeTurn();
                 }
                 turn = Turn.ENEMY_MOVING;
             }

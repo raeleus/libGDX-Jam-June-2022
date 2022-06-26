@@ -94,7 +94,7 @@ public class SuccubusEntity extends EnemyEntity {
         while (iter.hasNext()) {
             var hex = iter.next();
             
-            if (hex == null || hex.distance(pathHead) <= 1 || hex.distance(pathTail) > 1 || !(hex.userObject instanceof GroundEntity)) {
+            if (hex == null || hex.weight > 0 || hex.distance(pathHead) <= 1 || hex.distance(pathTail) > 1 || !(hex.userObject instanceof GroundEntity)) {
                 iter.remove();
                 continue;
             }
@@ -114,8 +114,12 @@ public class SuccubusEntity extends EnemyEntity {
             var grenade = new GrenadeEntity();
             entityController.add(grenade);
             enemies.add(grenade);
+            characters.add(grenade);
             grenade.setPosition(x, y);
-            grenade.moveTowardsTarget(600.0f, ground.x, ground.y);
+            closest.weight = 100;
+            stage.addAction(Actions.delay(.5f, Actions.run(() -> {
+                grenade.moveTowardsTarget(600.0f, ground.x, ground.y);
+            })));
         } else {
             switch (status) {
                 case EMPTY:

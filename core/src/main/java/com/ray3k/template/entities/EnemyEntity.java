@@ -2,9 +2,7 @@ package com.ray3k.template.entities;
 
 import com.badlogic.gdx.math.Vector2;
 import com.ray3k.template.*;
-import com.ray3k.template.Resources.*;
 
-import static com.ray3k.template.Core.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
 public abstract class EnemyEntity extends Entity {
@@ -20,7 +18,9 @@ public abstract class EnemyEntity extends Entity {
         
         enemies.removeValue(this, true);
         characters.removeValue(this, true);
-        energy = Utils.approach(energy, maxEnergy, 1);
-        refreshEnergyTable();
+        if (!(this instanceof GrenadeEntity)) {
+            energy = Utils.approach(energy, maxEnergy, 1);
+            refreshEnergyTable();
+        }
     }
 }
