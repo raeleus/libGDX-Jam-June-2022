@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "0V42FNv+6L0",
+	"hash": "y5TpFw3UHWs",
 	"spine": "4.0.64",
 	"x": -36.45,
 	"y": -5.73,
@@ -20,7 +20,7 @@
 ],
 "slots": [
 	{ "name": "game/blood-pool", "bone": "game/blood-pool" },
-	{ "name": "clip", "bone": "root", "attachment": "clip" },
+	{ "name": "clip", "bone": "root" },
 	{ "name": "game/player-body", "bone": "game/player-body", "attachment": "game/player-body" },
 	{ "name": "game/player-sword", "bone": "game/player-hand2" },
 	{ "name": "game/player-trident", "bone": "game/player-hand" },
@@ -129,6 +129,11 @@
 	},
 	"die": {
 		"slots": {
+			"clip": {
+				"attachment": [
+					{ "name": "clip" }
+				]
+			},
 			"game/blood-pool": {
 				"attachment": [
 					{ "name": "game/blood-pool" }

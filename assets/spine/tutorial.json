@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "sirqVv7cj5w",
+	"hash": "c6Q4QPp2XR0",
 	"spine": "4.0.64",
 	"x": -50.5,
 	"width": 101,
@@ -88,7 +88,7 @@
 		}
 	},
 	{
-		"name": "tutorial010",
+		"name": "tutorial10",
 		"attachments": {
 			"game/tutorial01": {
 				"sign": { "name": "game/tutorial10", "y": 67, "width": 102, "height": 134 }
@@ -96,7 +96,7 @@
 		}
 	},
 	{
-		"name": "tutorial011",
+		"name": "tutorial11",
 		"attachments": {
 			"game/tutorial01": {
 				"sign": { "name": "game/tutorial11", "y": 67, "width": 102, "height": 134 }
@@ -104,7 +104,7 @@
 		}
 	},
 	{
-		"name": "tutorial012",
+		"name": "tutorial12",
 		"attachments": {
 			"game/tutorial01": {
 				"sign": { "name": "game/tutorial12", "y": 67, "width": 102, "height": 134 }

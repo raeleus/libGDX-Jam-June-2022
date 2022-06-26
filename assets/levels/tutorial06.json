@@ -18,7 +18,7 @@
       "entities": [
         {"name": "tutorial10", "id": 0, "_eid": "04286738", "x": 280, "y": 202, "originX": 50.5, "originY": 134},
         {"name": "tutorial11", "id": 1, "_eid": "04289464", "x": 694, "y": 437, "originX": 50.5, "originY": 134},
-        {"name": "tutorial12", "id": 2, "_eid": "04293253", "x": 993, "y": 242, "originX": 50.5, "originY": 134}
+        {"name": "tutorial12", "id": 2, "_eid": "04293253", "x": 950, "y": 217.5, "originX": 50.5, "originY": 134}
       ]
     },
     {

@@ -19,6 +19,7 @@ public abstract class EnemyEntity extends Entity {
         hex.weight = 0;
         
         enemies.removeValue(this, true);
+        characters.removeValue(this, true);
         energy = Utils.approach(energy, maxEnergy, 1);
         refreshEnergyTable();
     }

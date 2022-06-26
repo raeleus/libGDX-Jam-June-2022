@@ -1,0 +1,31 @@
+{
+"skeleton": {
+	"hash": "8VIMX8sir4Q",
+	"spine": "4.0.64",
+	"x": -12,
+	"y": -11,
+	"width": 25,
+	"height": 23,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/grenade", "bone": "root", "attachment": "game/grenade" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/grenade": {
+				"game/grenade": { "x": 0.5, "y": 0.5, "width": 25, "height": 23 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

@@ -227,6 +227,12 @@ public class Resources {
         SpineGoat.slotGameGoatHand2 = SpineGoat.skeletonData.findSlot("game/goat-hand2");
         SpineGoat.slotGameGoatHead = SpineGoat.skeletonData.findSlot("game/goat-head");
         SpineGoat.skinDefault = SpineGoat.skeletonData.findSkin("default");
+        SpineGrenade.skeletonData = assetManager.get("spine/grenade.json");
+        SpineGrenade.animationData = assetManager.get("spine/grenade.json-animation");
+        SpineGrenade.animationAnimation = SpineGrenade.skeletonData.findAnimation("animation");
+        SpineGrenade.boneRoot = SpineGrenade.skeletonData.findBone("root");
+        SpineGrenade.slotGameGrenade = SpineGrenade.skeletonData.findSlot("game/grenade");
+        SpineGrenade.skinDefault = SpineGrenade.skeletonData.findSkin("default");
         SpineHeaven.skeletonData = assetManager.get("spine/heaven.json");
         SpineHeaven.animationData = assetManager.get("spine/heaven.json-animation");
         SpineHeaven.animationAnimation = SpineHeaven.skeletonData.findAnimation("animation");
@@ -453,9 +459,9 @@ public class Resources {
         SpineTutorial.skinTutorial07 = SpineTutorial.skeletonData.findSkin("tutorial07");
         SpineTutorial.skinTutorial08 = SpineTutorial.skeletonData.findSkin("tutorial08");
         SpineTutorial.skinTutorial09 = SpineTutorial.skeletonData.findSkin("tutorial09");
-        SpineTutorial.skinTutorial010 = SpineTutorial.skeletonData.findSkin("tutorial010");
-        SpineTutorial.skinTutorial011 = SpineTutorial.skeletonData.findSkin("tutorial011");
-        SpineTutorial.skinTutorial012 = SpineTutorial.skeletonData.findSkin("tutorial012");
+        SpineTutorial.skinTutorial10 = SpineTutorial.skeletonData.findSkin("tutorial10");
+        SpineTutorial.skinTutorial11 = SpineTutorial.skeletonData.findSkin("tutorial11");
+        SpineTutorial.skinTutorial12 = SpineTutorial.skeletonData.findSkin("tutorial12");
         skin_skin = assetManager.get("skin/skin.json");
         SkinSkinStyles.bDefault = skin_skin.get("default", Button.ButtonStyle.class);
         SkinSkinStyles.ibDefault = skin_skin.get("default", ImageButton.ImageButtonStyle.class);
@@ -464,6 +470,7 @@ public class Resources {
         SkinSkinStyles.ibStrike = skin_skin.get("strike", ImageButton.ImageButtonStyle.class);
         SkinSkinStyles.ibDash = skin_skin.get("dash", ImageButton.ImageButtonStyle.class);
         SkinSkinStyles.lDefault = skin_skin.get("default", Label.LabelStyle.class);
+        SkinSkinStyles.lTitle = skin_skin.get("title", Label.LabelStyle.class);
         SkinSkinStyles.lstDefault = skin_skin.get("default", List.ListStyle.class);
         SkinSkinStyles.pDefaultHorizontal = skin_skin.get("default-horizontal", ProgressBar.ProgressBarStyle.class);
         SkinSkinStyles.spDefault = skin_skin.get("default", ScrollPane.ScrollPaneStyle.class);
@@ -670,6 +677,20 @@ public class Resources {
         public static SlotData slotGameGoatHand2;
 
         public static SlotData slotGameGoatHead;
+
+        public static com.esotericsoftware.spine.Skin skinDefault;
+    }
+
+    public static class SpineGrenade {
+        public static SkeletonData skeletonData;
+
+        public static AnimationStateData animationData;
+
+        public static Animation animationAnimation;
+
+        public static BoneData boneRoot;
+
+        public static SlotData slotGameGrenade;
 
         public static com.esotericsoftware.spine.Skin skinDefault;
     }
@@ -1161,11 +1182,11 @@ public class Resources {
 
         public static com.esotericsoftware.spine.Skin skinTutorial09;
 
-        public static com.esotericsoftware.spine.Skin skinTutorial010;
+        public static com.esotericsoftware.spine.Skin skinTutorial10;
 
-        public static com.esotericsoftware.spine.Skin skinTutorial011;
+        public static com.esotericsoftware.spine.Skin skinTutorial11;
 
-        public static com.esotericsoftware.spine.Skin skinTutorial012;
+        public static com.esotericsoftware.spine.Skin skinTutorial12;
     }
 
     public static class SkinSkinStyles {
@@ -1182,6 +1203,8 @@ public class Resources {
         public static ImageButton.ImageButtonStyle ibDash;
 
         public static Label.LabelStyle lDefault;
+
+        public static Label.LabelStyle lTitle;
 
         public static List.ListStyle lstDefault;
 

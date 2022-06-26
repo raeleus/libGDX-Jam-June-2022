@@ -4,6 +4,7 @@ spine/explosion.json
 spine/flame.json
 spine/glutton.json
 spine/goat.json
+spine/grenade.json
 spine/heaven.json
 spine/imp.json
 spine/lava-bubble.json

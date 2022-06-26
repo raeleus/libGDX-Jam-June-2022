@@ -109,7 +109,7 @@ public class PlayerEntity extends Entity {
                             var thrustGround = (GroundEntity) thrustHex.userObject;
                             for (var enemy : enemies) {
                                 if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
-                                        enemy.y)) {
+                                        enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
                                     thrustGround.skeleton.setColor(Color.RED);
                                     thrustEnemies.add(enemy);
                                     break;
@@ -120,19 +120,17 @@ public class PlayerEntity extends Entity {
                         //check for slash
                         var adjacentHexes = hexUtils.getHexesInRadius(pathHead, 1);
                         var slashHexes = hexUtils.getHexesInRadius(targetHex, 1);
-                        
                         var iter = slashHexes.iterator();
                         while (iter.hasNext()) {
                             var hex = iter.next();
                             if (!adjacentHexes.contains(hex)) iter.remove();
                         }
-                        
                         for (var slashHex : slashHexes) {
                             if (slashHex != null && slashHex.userObject instanceof GroundEntity) {
                                 var slashGround = (GroundEntity) slashHex.userObject;
                                 for (var enemy : enemies) {
                                     if (MathUtils.isEqual(slashGround.x, enemy.x) && MathUtils.isEqual(slashGround.y,
-                                            enemy.y)) {
+                                            enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
                                         slashGround.skeleton.setColor(Color.RED);
                                         slashEnemies.add(enemy);
                                         break;
@@ -234,6 +232,8 @@ public class PlayerEntity extends Entity {
                     moveEnemy(nextEnemy, q + deltaQ, r + deltaR);
                 }
             } else {
+                hexUtils.hexToPixel(targetHex, temp);
+                enemy.setPosition(temp.x, temp.y);
                 enemy.destroy = true;
                 sfx_gameBurn.play(sfx);
                 hexUtils.hexToPixel(targetHex, temp);
@@ -284,7 +284,7 @@ public class PlayerEntity extends Entity {
                         var thrustGround = (GroundEntity) thrustHex.userObject;
                         for (var enemy : enemies) {
                             if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
-                                    enemy.y)) {
+                                    enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
                                 thrustGround.skeleton.setColor(Color.RED);
                                 thrustEnemies.add(enemy);
                                 break;
@@ -295,19 +295,17 @@ public class PlayerEntity extends Entity {
     
                 //check for slash
                 var slashHexes = hexUtils.getHexesInRadius(targetHex, 1);
-    
                 iter = slashHexes.iterator();
                 while (iter.hasNext()) {
                     var hex = iter.next();
                     if (!adjacentHexes.contains(hex)) iter.remove();
                 }
-    
                 for (var slashHex : slashHexes) {
                     if (slashHex != null && slashHex.userObject instanceof GroundEntity) {
                         var slashGround = (GroundEntity) slashHex.userObject;
                         for (var enemy : enemies) {
                             if (MathUtils.isEqual(slashGround.x, enemy.x) && MathUtils.isEqual(slashGround.y,
-                                    enemy.y)) {
+                                    enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
                                 slashGround.skeleton.setColor(Color.RED);
                                 slashEnemies.add(enemy);
                                 break;

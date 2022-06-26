@@ -521,6 +521,13 @@ public class GameScreen extends JamScreen {
                         shrineEntity.setPosition(x, y);
                         entityController.add(shrineEntity);
                         break;
+                    case "grenade_dummy":
+                        var grenadeDummyEntity = new GrenadeDummyEntity();
+                        grenadeDummyEntity.setPosition(x, y);
+                        entityController.add(grenadeDummyEntity);
+                        characters.add(grenadeDummyEntity);
+                        enemies.add(grenadeDummyEntity);
+                        break;
                     default:
                         if (name.startsWith("tutorial")) {
                             var tutorial = new TutorialEntity(name);
