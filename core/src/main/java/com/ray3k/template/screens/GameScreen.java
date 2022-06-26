@@ -407,7 +407,8 @@ public class GameScreen extends JamScreen {
             if (enemies.size == 0) {
                 turn = Turn.PLAYER;
             } else {
-                for (var enemy : enemies) {
+                for (int i = 0; i < enemies.size; i++) {
+                    var enemy = enemies.get(i);
                     enemy.takeTurn();
                 }
                 turn = Turn.ENEMY_MOVING;
@@ -581,6 +582,13 @@ public class GameScreen extends JamScreen {
                         entityController.add(glutton);
                         characters.add(glutton);
                         enemies.add(glutton);
+                        break;
+                    case "skeleton":
+                        var skeleton = new SkeletonEntity();
+                        skeleton.setPosition(x, y);
+                        entityController.add(skeleton);
+                        characters.add(skeleton);
+                        enemies.add(skeleton);
                         break;
                     default:
                         if (name.startsWith("tutorial")) {

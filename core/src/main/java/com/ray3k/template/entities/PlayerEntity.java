@@ -711,6 +711,7 @@ public class PlayerEntity extends Entity {
     }
     
     public void hurt() {
+        sfx_gamePlayerHurt.play(sfx);
         health--;
         refreshHealthTable();
         if (health == 0) {

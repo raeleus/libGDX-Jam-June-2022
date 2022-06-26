@@ -42,9 +42,10 @@
         },
         {"name": "player", "id": 2, "_eid": "99143148", "x": 669, "y": 352, "originX": 12, "originY": 15},
         {"name": "satan_dummy", "id": 3, "_eid": "99682646", "x": 504, "y": 192, "originX": 18.5, "originY": 16.5},
-        {"name": "snake", "id": 4, "_eid": "99142381", "x": 666, "y": 288, "originX": 21, "originY": 25},
-        {"name": "snake", "id": 6, "_eid": "99142381", "x": 666, "y": 224, "originX": 21, "originY": 25},
-        {"name": "snake", "id": 7, "_eid": "99142381", "x": 666, "y": 160, "originX": 21, "originY": 25}
+        {"name": "skeleton", "id": 9, "_eid": "99164618", "x": 288, "y": 256, "originX": 13, "originY": 11.5},
+        {"name": "snake", "id": 11, "_eid": "99142381", "x": 504, "y": 320, "originX": 21, "originY": 25},
+        {"name": "snake", "id": 12, "_eid": "99142381", "x": 342, "y": 352, "originX": 21, "originY": 25},
+        {"name": "snake", "id": 13, "_eid": "99142381", "x": 720, "y": 256, "originX": 21, "originY": 25}
       ]
     },
     {

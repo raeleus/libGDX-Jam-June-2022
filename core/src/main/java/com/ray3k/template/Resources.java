@@ -44,6 +44,8 @@ public class Resources {
 
     public static Sound sfx_gamePlayerDie;
 
+    public static Sound sfx_gamePlayerHurt;
+
     public static Sound sfx_gameSlash;
 
     public static Sound sfx_gameTeleport;
@@ -472,6 +474,7 @@ public class Resources {
         SkinSkinStyles.ibThrow = skin_skin.get("throw", ImageButton.ImageButtonStyle.class);
         SkinSkinStyles.ibWolf = skin_skin.get("wolf", ImageButton.ImageButtonStyle.class);
         SkinSkinStyles.ibStrike = skin_skin.get("strike", ImageButton.ImageButtonStyle.class);
+        SkinSkinStyles.ibWait = skin_skin.get("wait", ImageButton.ImageButtonStyle.class);
         SkinSkinStyles.ibDash = skin_skin.get("dash", ImageButton.ImageButtonStyle.class);
         SkinSkinStyles.lDefault = skin_skin.get("default", Label.LabelStyle.class);
         SkinSkinStyles.lTitle = skin_skin.get("title", Label.LabelStyle.class);
@@ -495,6 +498,7 @@ public class Resources {
         sfx_gameExplosionBig = assetManager.get("sfx/game/explosion-big.mp3");
         sfx_gameExplosion = assetManager.get("sfx/game/explosion.mp3");
         sfx_gamePlayerDie = assetManager.get("sfx/game/player-die.mp3");
+        sfx_gamePlayerHurt = assetManager.get("sfx/game/player-hurt.mp3");
         sfx_gameSlash = assetManager.get("sfx/game/slash.mp3");
         sfx_gameTeleport = assetManager.get("sfx/game/teleport.mp3");
         sfx_gameWalk = assetManager.get("sfx/game/walk.mp3");
@@ -1205,6 +1209,8 @@ public class Resources {
         public static ImageButton.ImageButtonStyle ibWolf;
 
         public static ImageButton.ImageButtonStyle ibStrike;
+
+        public static ImageButton.ImageButtonStyle ibWait;
 
         public static ImageButton.ImageButtonStyle ibDash;
 
