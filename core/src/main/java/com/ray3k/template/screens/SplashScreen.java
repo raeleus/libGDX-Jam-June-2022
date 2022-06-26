@@ -37,13 +37,7 @@ public class SplashScreen extends JamScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.input.setInputProcessor(null);
-    
-                String level = "home";
-                var tutorial = preferences.getInteger("tutorial", 1);
-                if (tutorial <= 6) {
-                    level = "tutorial" + Utils.intToTwoDigit(tutorial);
-                }
-                core.transition(new GameScreen(level));
+                core.transition(new GameScreen("level01"));
             }
         });
     }

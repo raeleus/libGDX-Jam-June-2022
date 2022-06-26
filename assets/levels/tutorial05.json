@@ -31,7 +31,16 @@
       "gridCellsY": 18,
       "entities": [
         {"name": "player", "id": 0, "_eid": "99143148", "x": 234, "y": 288, "originX": 12, "originY": 15},
-        {"name": "pentagram", "id": 2, "_eid": "99180965", "x": 882, "y": 416, "originX": 28, "originY": 27.5},
+        {
+          "name": "pentagram",
+          "id": 2,
+          "_eid": "99180965",
+          "x": 882,
+          "y": 416,
+          "originX": 28,
+          "originY": 27.5,
+          "values": {"nextRoom": "tutorial06"}
+        },
         {"name": "grenade_dummy", "id": 3, "_eid": "04092578", "x": 720, "y": 256, "originX": 12.5, "originY": 11.5},
         {"name": "snake", "id": 5, "_eid": "99142381", "x": 828, "y": 192, "originX": 21, "originY": 25},
         {"name": "snake", "id": 6, "_eid": "99142381", "x": 234, "y": 224, "originX": 21, "originY": 25}

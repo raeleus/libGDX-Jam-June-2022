@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -23,15 +25,35 @@ public class MenuScreen extends JamScreen {
     public void show() {
         super.show();
     
-        final Music bgm = bgm_menu;
-        if (!bgm.isPlaying()) {
-            bgm.play();
-            bgm.setVolume(core.bgm);
-            bgm.setLooping(true);
-        }
-        
         stage = new Stage(new ScreenViewport(), batch);
         Gdx.input.setInputProcessor(stage);
+    
+        if (bgm_game.isPlaying()) {
+            stage.addAction(new Action() {
+                @Override
+                public boolean act(float delta) {
+                    bgm_game.setVolume(Utils.approach(bgm_game.getVolume(), 0, .25f * delta));
+                    if (MathUtils.isZero(bgm_game.getVolume())) {
+                        bgm_game.stop();
+                        return true;
+                    } else return false;
+                }
+            });
+        }
+        
+        if (!bgm_menu.isPlaying()) {
+            bgm_menu.play();
+            bgm_menu.setPosition(bgm_game.getPosition());
+            bgm_menu.setVolume(0);
+            bgm_menu.setLooping(true);
+            stage.addAction(new Action() {
+                @Override
+                public boolean act(float delta) {
+                    bgm_menu.setVolume(Utils.approach(bgm_menu.getVolume(), bgm, .25f * delta));
+                    return MathUtils.isEqual(bgm_menu.getVolume(), bgm);
+                }
+            });
+        }
     
         sceneBuilder.build(stage, skin, Gdx.files.internal("menus/main.json"));
         TextButton textButton = stage.getRoot().findActor("play");
@@ -40,14 +62,12 @@ public class MenuScreen extends JamScreen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.input.setInputProcessor(null);
-                bgm.stop();
-                
-                String level = "home";
-                var tutorial = preferences.getInteger("tutorial", 1);
-                if (tutorial <= 6) {
-                    level = "tutorial" + Utils.intToTwoDigit(tutorial);
+    
+                if (!preferences.getBoolean("completedTutorial", false)) {
+                    core.transition(new GameScreen("tutorial01"));
+                } else {
+                    core.transition(new GameScreen("home"));
                 }
-                core.transition(new GameScreen(level));
             }
         });
     

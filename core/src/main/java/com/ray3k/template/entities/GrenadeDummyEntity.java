@@ -51,6 +51,7 @@ public class GrenadeDummyEntity extends EnemyEntity {
             
             for (var hex : targetHexes) {
                 if (hex != null) {
+                    hexUtils.hexToPixel(hex, temp);
                     var anim = new AnimationEntity(SpineExplosion.skeletonData, SpineExplosion.animationData,
                             SpineExplosion.animationAnimation, temp.x, temp.y);
                     entityController.add(anim);

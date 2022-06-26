@@ -31,7 +31,16 @@
       "entities": [
         {"name": "player", "id": 0, "_eid": "99143148", "x": 234, "y": 288, "originX": 12, "originY": 15},
         {"name": "snake", "id": 1, "_eid": "99142381", "x": 504, "y": 192, "originX": 21, "originY": 25},
-        {"name": "pentagram", "id": 2, "_eid": "99180965", "x": 774, "y": 288, "originX": 28, "originY": 27.5}
+        {
+          "name": "pentagram",
+          "id": 2,
+          "_eid": "99180965",
+          "x": 774,
+          "y": 288,
+          "originX": 28,
+          "originY": 27.5,
+          "values": {"nextRoom": "tutorial04"}
+        }
       ]
     },
     {

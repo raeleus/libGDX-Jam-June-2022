@@ -66,7 +66,7 @@ public class OptionsScreen extends JamScreen {
                 preferences.putInteger("final", 1);
                 preferences.putInteger("second", 1);
                 preferences.putString("achievements", "");
-                preferences.putInteger("tutorial", 1);
+                preferences.putBoolean("completedTutorial", false);
             }
         });
         

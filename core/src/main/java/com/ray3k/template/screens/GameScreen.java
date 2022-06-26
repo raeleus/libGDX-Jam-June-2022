@@ -74,9 +74,14 @@ public class GameScreen extends JamScreen {
     public static int maxEnergy = 6;
     public static boolean hasTrident = true;
     public static TridentEntity tridentEntity;
+    public static String nextLevel;
     
     public GameScreen(String level) {
         this.level = level;
+        if (level.equals("level01")) {
+            preferences.putBoolean("completedTutorial", true);
+            preferences.flush();
+        }
     }
     
     @Override
@@ -93,6 +98,8 @@ public class GameScreen extends JamScreen {
         hexUtils = null;
         hasTrident = true;
         tridentEntity = null;
+        nextLevel = null;
+        blessings.clear();
     
         gameScreen = this;
         BG_COLOR.set(Color.BLACK);
@@ -100,6 +107,33 @@ public class GameScreen extends JamScreen {
         paused = false;
     
         stage = new Stage(new ScreenViewport(), batch);
+    
+        if (bgm_menu.isPlaying()) {
+            stage.addAction(new Action() {
+                @Override
+                public boolean act(float delta) {
+                    bgm_menu.setVolume(Utils.approach(bgm_menu.getVolume(), 0, .25f * delta));
+                    if (MathUtils.isZero(bgm_menu.getVolume())) {
+                        bgm_menu.stop();
+                        return true;
+                    } else return false;
+                }
+            });
+        }
+        
+        if (!bgm_game.isPlaying()) {
+            bgm_game.play();
+            bgm_game.setPosition(bgm_menu.getPosition());
+            bgm_game.setVolume(0);
+            bgm_game.setLooping(true);
+            stage.addAction(new Action() {
+                @Override
+                public boolean act(float delta) {
+                    bgm_game.setVolume(Utils.approach(bgm_game.getVolume(), bgm, .25f * delta));
+                    return MathUtils.isEqual(bgm_game.getVolume(), bgm);
+                }
+            });
+        }
         
         var root = new Table();
         root.setFillParent(true);
@@ -508,6 +542,7 @@ public class GameScreen extends JamScreen {
                         characters.add(satan_dummy);
                         break;
                     case "pentagram":
+                        nextLevel = valuesMap.get("nextRoom").asString();
                         pentagramEntity = new PentagramEntity();
                         pentagramEntity.setPosition(x, y);
                         entityController.add(pentagramEntity);

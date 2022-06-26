@@ -48,7 +48,8 @@ bgm/final06a.mp3
 bgm/final06b.mp3
 bgm/final07a.mp3
 bgm/final07b.mp3
-bgm/menu.mp3
+bgm/game.ogg
+bgm/menu.ogg
 bgm/second01.mp3
 bgm/second02.mp3
 bgm/second03.mp3

@@ -32,7 +32,16 @@
       "gridCellsY": 18,
       "entities": [
         {"name": "shrine", "id": 0, "_eid": "99172887", "x": 666, "y": 288, "originX": 21, "originY": 23.5},
-        {"name": "pentagram", "id": 1, "_eid": "99180965", "x": 990, "y": 224, "originX": 28, "originY": 27.5},
+        {
+          "name": "pentagram",
+          "id": 1,
+          "_eid": "99180965",
+          "x": 990,
+          "y": 224,
+          "originX": 28,
+          "originY": 27.5,
+          "values": {"nextRoom": "tutorial05"}
+        },
         {"name": "snake", "id": 2, "_eid": "99142381", "x": 882, "y": 96, "originX": 21, "originY": 25},
         {"name": "player", "id": 3, "_eid": "99143148", "x": 396, "y": 384, "originX": 12, "originY": 15}
       ]

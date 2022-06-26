@@ -680,7 +680,7 @@ public class Core extends JamGame {
         
         preferences = Gdx.app.getPreferences(PROJECT_NAME);
         
-        bgm = preferences.getFloat("bgm", 1.0f);
+        bgm = preferences.getFloat("bgm", .25f);
         sfx = preferences.getFloat("sfx", 1.0f);
         
         setDefaultBindings();

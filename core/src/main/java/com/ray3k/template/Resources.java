@@ -156,6 +156,8 @@ public class Resources {
 
     public static Music bgm_final07b;
 
+    public static Music bgm_game;
+
     public static Music bgm_menu;
 
     public static Music bgm_second01;
@@ -547,7 +549,8 @@ public class Resources {
         bgm_final06b = assetManager.get("bgm/final06b.mp3");
         bgm_final07a = assetManager.get("bgm/final07a.mp3");
         bgm_final07b = assetManager.get("bgm/final07b.mp3");
-        bgm_menu = assetManager.get("bgm/menu.mp3");
+        bgm_game = assetManager.get("bgm/game.ogg");
+        bgm_menu = assetManager.get("bgm/menu.ogg");
         bgm_second01 = assetManager.get("bgm/second01.mp3");
         bgm_second02 = assetManager.get("bgm/second02.mp3");
         bgm_second03 = assetManager.get("bgm/second03.mp3");

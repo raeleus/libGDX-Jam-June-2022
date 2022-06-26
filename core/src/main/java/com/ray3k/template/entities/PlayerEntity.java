@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -180,7 +181,6 @@ public class PlayerEntity extends Entity {
         var targetHex = hexUtils.pixelToGridHex(temp.set(mouseX, mouseY));
         if (targetHex != null && targetHex.userObject instanceof GroundEntity) {
             if (adjacentHexes.contains(targetHex) && isButtonJustPressed(Buttons.LEFT)) {
-                System.out.println("strike");
                 sfx_gameSlash.play(sfx * .5f);
                 turn = Turn.PLAYER_MOVING;
                 controlsButtonGroup.uncheckAll();
@@ -231,18 +231,34 @@ public class PlayerEntity extends Entity {
                     moveEnemy(nextEnemy, q + deltaQ, r + deltaR);
                 }
             } else {
+                var ghost = new AnimationEntity(enemy.skeleton.getData(), enemy.animationState.getData(),
+                        enemy.animationState.getCurrent(0).getAnimation(), enemy.x, enemy.y);
                 hexUtils.hexToPixel(targetHex, temp);
+                
+                ghost.moveTowardsTarget(300.0f, temp.x, temp.y);
+                entityController.add(ghost);
+                stage.addAction(new Action() {
+                    @Override
+                    public boolean act(float delta) {
+                        if (!ghost.moveTargetActivated) {
+                            ghost.destroy = true;
+                            sfx_gameBurn.play(sfx);
+    
+                            var anim = new AnimationEntity(SpineFlame.skeletonData, SpineFlame.animationData,
+                                    SpineFlame.animationAnimation, ghost.x, ghost.y);
+                            anim.animationState.getCurrent(0).setTimeScale(MathUtils.random(.5f, 1.5f));
+                            anim.animationState.setAnimation(1, SpineFlame.animationFlames, true);
+                            anim.animationState.getCurrent(1).setTrackTime(1.0f);
+                            anim.depth = DEPTH_PARTICLES;
+                            entityController.add(anim);
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                
                 enemy.setPosition(temp.x, temp.y);
                 enemy.destroy = true;
-                sfx_gameBurn.play(sfx);
-                hexUtils.hexToPixel(targetHex, temp);
-                var anim = new AnimationEntity(SpineFlame.skeletonData, SpineFlame.animationData,
-                        SpineFlame.animationAnimation, temp.x, temp.y);
-                anim.animationState.getCurrent(0).setTimeScale(MathUtils.random(.5f, 1.5f));
-                anim.animationState.setAnimation(1, SpineFlame.animationFlames, true);
-                anim.animationState.getCurrent(1).setTrackTime(1.0f);
-                anim.depth = DEPTH_PARTICLES;
-                entityController.add(anim);
             }
         }
     }
@@ -427,20 +443,23 @@ public class PlayerEntity extends Entity {
                 @Override
                 public void destroy() {
                     super.destroy();
-                    stage.addAction(Actions.delay(2.0f, Actions.run(() -> {
-                        String level = "home";
-                        var tutorial = preferences.getInteger("tutorial", 1);
-                        if (tutorial <= 5) {
-                            tutorial++;
-                            preferences.putInteger("tutorial", tutorial);
-                            preferences.flush();
-                            level = "tutorial" + Utils.intToTwoDigit(tutorial);
-                        }
-                        core.transition(new GameScreen(level));
-                    })));
+                    stage.addAction(Actions.delay(2.0f, Actions.run(() -> core.transition(new GameScreen(nextLevel)))));
                 }
             };
             entityController.add(anim);
+            
+            if (tridentEntity != null) {
+                tridentEntity.moveTowardsTarget(600f, player.x, player.y);
+                stage.addAction(new Action() {
+                    @Override
+                    public boolean act(float delta) {
+                        if (!tridentEntity.moveTargetActivated) {
+                            tridentEntity.destroy = true;
+                        }
+                        return false;
+                    }
+                });
+            }
         }
     
         if (tridentEntity != null && MathUtils.isEqual(x, tridentEntity.x) && MathUtils.isEqual(y, tridentEntity.y)) {
