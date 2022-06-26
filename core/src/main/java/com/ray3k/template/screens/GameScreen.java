@@ -22,8 +22,8 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.tommyettinger.textra.TypingLabel;
-import com.lol.fraud.HexUtils;
-import com.lol.fraud.HexUtils.TYPE;
+import com.ray3k.template.HexUtils;
+import com.ray3k.template.HexUtils.TYPE;
 import com.ray3k.stripe.PopTable;
 import com.ray3k.template.*;
 import com.ray3k.template.OgmoReader.*;
@@ -95,7 +95,6 @@ public class GameScreen extends JamScreen {
     @Override
     public void show() {
         super.show();
-        health = maxHealth;
         energy = maxEnergy;
         grounds.clear();
         lavas.clear();
@@ -400,6 +399,22 @@ public class GameScreen extends JamScreen {
         }
         
         if (turn == Turn.PLAYER) {
+            for (var ground : grounds) {
+                var hex = hexUtils.pixelToGridHex(temp.set(ground.x, ground.y));
+                var occupied = false;
+                for (var character : characters) {
+                    if (MathUtils.isEqual(character.x, ground.x) && MathUtils.isEqual(character.y, ground.y)) {
+                        occupied = true;
+                        break;
+                    }
+                }
+                
+                if (occupied) {
+                    hex.weight = 100;
+                } else {
+                    hex.weight = 0;
+                }
+            }
             if (!player.destroy) player.takeTurn();
         } else if (turn == Turn.PLAYER_MOVING) {
             if (!player.destroy) player.completeMoving();
@@ -414,10 +429,12 @@ public class GameScreen extends JamScreen {
                 turn = Turn.ENEMY_MOVING;
             }
         } else if (turn == Turn.ENEMY_MOVING) {
+            boolean done = true;
             for (var enemy : enemies) {
                 enemy.completeMoving();
+                if (enemy.moveTargetActivated) done = false;
             }
-            turn = Turn.PLAYER;
+            if (done)turn = Turn.PLAYER;
         }
     }
     

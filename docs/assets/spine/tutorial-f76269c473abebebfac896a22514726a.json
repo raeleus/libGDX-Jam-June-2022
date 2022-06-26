@@ -1,0 +1,118 @@
+{
+"skeleton": {
+	"hash": "c6Q4QPp2XR0",
+	"spine": "4.0.64",
+	"x": -50.5,
+	"width": 101,
+	"height": 134,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/tutorial01", "bone": "root", "attachment": "sign" }
+],
+"skins": [
+	{
+		"name": "tutorial01",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial01", "y": 67, "width": 101, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial02",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial02", "y": 67, "width": 101, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial03",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial03", "y": 67, "width": 101, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial04",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial04", "y": 67, "width": 101, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial05",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial05", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial06",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial06", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial07",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial07", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial08",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial08", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial09",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial09", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial10",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial10", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial11",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial11", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial12",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial12", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

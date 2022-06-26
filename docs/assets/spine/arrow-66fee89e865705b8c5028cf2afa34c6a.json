@@ -1,0 +1,31 @@
+{
+"skeleton": {
+	"hash": "csjETGLY+70",
+	"spine": "4.0.64",
+	"x": -15,
+	"y": -7,
+	"width": 30,
+	"height": 15,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/arrow", "bone": "root", "attachment": "game/arrow" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/arrow": {
+				"game/arrow": { "y": 0.5, "width": 30, "height": 15 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

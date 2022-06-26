@@ -1,2 +1,0 @@
-spine/logo-libgdx.json
-spine/logo-ray3k.json

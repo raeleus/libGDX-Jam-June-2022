@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response.Result;
-import com.lol.fraud.HexTile;
+import com.ray3k.template.HexTile;
 import com.ray3k.stripe.PopTable;
 import com.ray3k.template.*;
 import com.ray3k.template.screens.*;
@@ -301,6 +301,7 @@ public class PlayerEntity extends Entity {
                 
                 enemy.setPosition(temp.x, temp.y);
                 enemy.destroy = true;
+                startHex.weight = 0;
             }
         }
     }
@@ -728,7 +729,9 @@ public class PlayerEntity extends Entity {
                                         powers.add(Power.BLOOD_OF_THE_LAMB);
                                         health--;
                                         maxHealth--;
-                                        refreshHealthTable();
+                                        energy++;
+                                        maxEnergy++;
+                                        refreshEnergyTable();
                                         break;
                                     case "Parting the Red Sea":
                                         powers.add(Power.PARTING_THE_RED_SEA);

@@ -1,0 +1,31 @@
+{
+"skeleton": {
+	"hash": "v+5q02VTIiQ",
+	"spine": "4.0.64",
+	"x": -36,
+	"y": -32,
+	"width": 72,
+	"height": 64,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/tile-magma", "bone": "root", "attachment": "game/tile-magma" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/tile-magma": {
+				"game/tile-magma": { "width": 72, "height": 64 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

@@ -1,0 +1,31 @@
+{
+"skeleton": {
+	"hash": "dPiMYR0yIYA",
+	"spine": "4.0.64",
+	"x": -21,
+	"y": -15.27,
+	"width": 42,
+	"height": 47,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/shrine", "bone": "root", "attachment": "game/shrine" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/shrine": {
+				"game/shrine": { "y": 8.23, "width": 42, "height": 47 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

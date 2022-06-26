@@ -4,10 +4,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response.Result;
-import com.lol.fraud.HexUtils;
-import com.ray3k.template.*;
-import com.ray3k.template.Resources.*;
-import com.ray3k.template.screens.*;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Resources.*;

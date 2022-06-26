@@ -1,0 +1,9 @@
+{
+"bubbleDelayMin": 0.5,
+"bubbleDelayMax": 1.0,
+"offsetX": 395,
+"offsetY": -425,
+"name": "Raeleus",
+"godMode": true,
+"id": 10
+}

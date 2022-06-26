@@ -1,0 +1,59 @@
+{
+"skeleton": {
+	"hash": "32MQoLQSFOE",
+	"spine": "4.0.64",
+	"x": -7.49,
+	"y": -4.6,
+	"width": 17,
+	"height": 17,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/lava-bubble-01", "bone": "root", "attachment": "game/lava-bubble-01" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/lava-bubble-01": {
+				"game/lava-bubble-01": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-02": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-03": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-04": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-05": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-06": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-07": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-08": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-09": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-10": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 },
+				"game/lava-bubble-11": { "x": 1.01, "y": 3.9, "width": 17, "height": 17 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"game/lava-bubble-01": {
+				"attachment": [
+					{ "time": 0.0667, "name": "game/lava-bubble-02" },
+					{ "time": 0.1333, "name": "game/lava-bubble-03" },
+					{ "time": 0.2, "name": "game/lava-bubble-04" },
+					{ "time": 0.2667, "name": "game/lava-bubble-05" },
+					{ "time": 0.3333, "name": "game/lava-bubble-06" },
+					{ "time": 0.4, "name": "game/lava-bubble-07" },
+					{ "time": 0.4667, "name": "game/lava-bubble-08" },
+					{ "time": 0.5333, "name": "game/lava-bubble-09" },
+					{ "time": 0.6, "name": "game/lava-bubble-10" },
+					{ "time": 0.6667, "name": "game/lava-bubble-11" },
+					{ "time": 0.7333, "name": null }
+				]
+			}
+		}
+	}
+}
+}

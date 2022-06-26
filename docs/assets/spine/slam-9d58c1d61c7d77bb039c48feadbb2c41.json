@@ -1,0 +1,53 @@
+{
+"skeleton": {
+	"hash": "ChqxM/Q96NA",
+	"spine": "4.0.64",
+	"x": -31,
+	"y": -32,
+	"width": 63,
+	"height": 65,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/slam-01", "bone": "root", "attachment": "game/slam-01" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/slam-01": {
+				"game/slam-01": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/slam-02": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/slam-03": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/slam-04": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/slam-05": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/slam-06": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/slam-07": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/slam-08": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"game/slam-01": {
+				"attachment": [
+					{ "time": 0.0333, "name": "game/slam-02" },
+					{ "time": 0.0667, "name": "game/slam-03" },
+					{ "time": 0.1, "name": "game/slam-04" },
+					{ "time": 0.1333, "name": "game/slam-05" },
+					{ "time": 0.1667, "name": "game/slam-06" },
+					{ "time": 0.2, "name": "game/slam-07" },
+					{ "time": 0.2333, "name": "game/slam-08" },
+					{ "time": 0.2667, "name": null }
+				]
+			}
+		}
+	}
+}
+}

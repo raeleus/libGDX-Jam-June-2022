@@ -1,0 +1,31 @@
+{
+"skeleton": {
+	"hash": "8ehrenrY88k",
+	"spine": "4.0.64",
+	"x": -36,
+	"y": -32,
+	"width": 72,
+	"height": 64,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/tile-ground", "bone": "root", "attachment": "game/tile-ground" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/tile-ground": {
+				"game/tile-ground": { "width": 72, "height": 64 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

@@ -1,0 +1,67 @@
+{
+"skeleton": {
+	"hash": "CyxwUcWi1Mo",
+	"spine": "4.0.64",
+	"x": -31.5,
+	"y": -32.5,
+	"width": 63,
+	"height": 65,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/explosion-01", "bone": "root", "attachment": "game/explosion-01" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/explosion-01": {
+				"game/explosion-01": { "width": 63, "height": 65 },
+				"game/explosion-02": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-03": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-04": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-05": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-06": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-07": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-08": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-09": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-10": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-11": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-12": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-13": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-14": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 },
+				"game/explosion-15": { "x": 0.5, "y": 0.5, "width": 63, "height": 65 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"game/explosion-01": {
+				"attachment": [
+					{ "time": 0.0333, "name": "game/explosion-02" },
+					{ "time": 0.0667, "name": "game/explosion-03" },
+					{ "time": 0.1, "name": "game/explosion-04" },
+					{ "time": 0.1333, "name": "game/explosion-05" },
+					{ "time": 0.1667, "name": "game/explosion-06" },
+					{ "time": 0.2, "name": "game/explosion-07" },
+					{ "time": 0.2333, "name": "game/explosion-08" },
+					{ "time": 0.2667, "name": "game/explosion-09" },
+					{ "time": 0.3, "name": "game/explosion-10" },
+					{ "time": 0.3333, "name": "game/explosion-11" },
+					{ "time": 0.3667, "name": "game/explosion-12" },
+					{ "time": 0.4, "name": "game/explosion-13" },
+					{ "time": 0.4333, "name": "game/explosion-14" },
+					{ "time": 0.4667, "name": "game/explosion-15" },
+					{ "time": 0.5, "name": null }
+				]
+			}
+		}
+	}
+}
+}

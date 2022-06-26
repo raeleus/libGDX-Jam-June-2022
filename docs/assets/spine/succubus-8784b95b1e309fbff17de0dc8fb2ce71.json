@@ -1,0 +1,122 @@
+{
+"skeleton": {
+	"hash": "uVuA5RmDeNA",
+	"spine": "4.0.64",
+	"x": -23.6,
+	"y": -2.54,
+	"width": 58.05,
+	"height": 46.57,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "game/succubus-body", "parent": "root", "length": 15.6, "rotation": 1.75, "x": -0.5, "y": 8.83 },
+	{ "name": "game/succubus-hand", "parent": "game/succubus-body", "length": 11.78, "rotation": -0.21, "x": 20.59, "y": 1.6 },
+	{ "name": "game/succubus-hand2", "parent": "game/succubus-body", "length": 7.96, "rotation": -1.75, "x": -18.57, "y": 2 },
+	{ "name": "game/succubus-head", "parent": "game/succubus-body", "length": 13.69, "rotation": -1.09, "x": 3.23, "y": 22.19 },
+	{ "name": "game/succubus-hair", "parent": "game/succubus-body", "length": 18.46, "rotation": -2.74, "x": 1.79, "y": -4.04 }
+],
+"slots": [
+	{ "name": "game/succubus-tail", "bone": "game/succubus-hair", "attachment": "game/succubus-tail" },
+	{ "name": "game/succubus-hair", "bone": "game/succubus-head", "attachment": "game/succubus-hair" },
+	{ "name": "game/succubus-neck", "bone": "game/succubus-body", "attachment": "game/succubus-neck" },
+	{ "name": "game/succubus-body", "bone": "game/succubus-body", "attachment": "game/succubus-body" },
+	{ "name": "game/succubus-hand", "bone": "game/succubus-hand", "attachment": "game/succubus-hand" },
+	{ "name": "game/succubus-hand2", "bone": "game/succubus-hand2", "attachment": "game/succubus-hand" },
+	{ "name": "game/succubus-head", "bone": "game/succubus-head", "attachment": "game/succubus-head" },
+	{ "name": "game/grenade", "bone": "game/succubus-hand" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/grenade": {
+				"game/grenade": { "x": 2.38, "y": 9.91, "rotation": -2.54, "width": 25, "height": 23 }
+			},
+			"game/succubus-body": {
+				"game/succubus-body": { "x": 1.65, "y": 2.08, "rotation": -1.75, "width": 24, "height": 27 }
+			},
+			"game/succubus-hair": {
+				"game/succubus-hair": { "x": 0.26, "y": -8.08, "rotation": -0.67, "width": 27, "height": 42 }
+			},
+			"game/succubus-hand": {
+				"game/succubus-hand": { "x": 0.51, "y": 0.32, "rotation": -1.55, "width": 9, "height": 8 }
+			},
+			"game/succubus-hand2": {
+				"game/succubus-hand": { "x": 0.02, "y": -0.04, "width": 9, "height": 8 }
+			},
+			"game/succubus-head": {
+				"game/succubus-head": { "x": 0.07, "y": 0.65, "rotation": -0.67, "width": 18, "height": 17 }
+			},
+			"game/succubus-neck": {
+				"game/succubus-neck": { "x": 2.56, "y": 12.96, "rotation": -1.75, "width": 19, "height": 17 }
+			},
+			"game/succubus-tail": {
+				"game/succubus-tail": { "x": 15.5, "y": 2.44, "rotation": 0.99, "width": 35, "height": 19 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"game/succubus-hand": {
+				"translate": [
+					{ "x": -6.11, "y": 0.19 },
+					{ "time": 0.1, "x": -6.26, "y": -4.74 },
+					{ "time": 0.2, "x": 2.97, "y": -5.03 },
+					{ "time": 0.3, "x": 3.26, "y": 4.68 },
+					{ "time": 0.4, "x": -6.11, "y": 0.19 }
+				]
+			},
+			"game/succubus-hand2": {
+				"translate": [
+					{ "x": 9.08, "y": -5.21 },
+					{ "time": 0.1, "x": 9.37, "y": 4.49 },
+					{ "time": 0.2 },
+					{ "time": 0.3, "x": -0.15, "y": -4.93 },
+					{ "time": 0.4, "x": 9.08, "y": -5.21 }
+				]
+			},
+			"game/succubus-head": {
+				"translate": [
+					{ "x": -0.08, "y": -2.56 },
+					{ "time": 0.2 },
+					{ "time": 0.4, "x": -0.08, "y": -2.56 }
+				]
+			},
+			"game/succubus-body": {
+				"translate": [
+					{},
+					{ "time": 0.2, "y": 4.62 },
+					{ "time": 0.4 }
+				]
+			},
+			"game/succubus-hair": {
+				"rotate": [
+					{},
+					{ "time": 0.2, "value": 14.67 },
+					{ "time": 0.4 }
+				]
+			}
+		}
+	},
+	"grenade": {
+		"slots": {
+			"game/grenade": {
+				"attachment": [
+					{ "name": "game/grenade" }
+				]
+			}
+		},
+		"bones": {
+			"game/succubus-hand": {
+				"translate": [
+					{ "x": -7.73, "y": 7.16 }
+				]
+			}
+		}
+	}
+}
+}

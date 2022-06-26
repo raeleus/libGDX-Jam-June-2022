@@ -1,0 +1,31 @@
+{
+"skeleton": {
+	"hash": "tdg/7hHsCQM",
+	"spine": "4.0.64",
+	"x": -28,
+	"y": -27,
+	"width": 56,
+	"height": 55,
+	"images": "",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "game/pentagram", "bone": "root", "attachment": "game/pentagram" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"game/pentagram": {
+				"game/pentagram": { "y": 0.5, "width": 56, "height": 55 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {}
+}
+}

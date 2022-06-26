@@ -1,5 +1,0 @@
-sfx/click.mp3
-sfx/logo/crash.mp3
-sfx/logo/land.mp3
-sfx/logo/line.mp3
-sfx/logo/move.mp3

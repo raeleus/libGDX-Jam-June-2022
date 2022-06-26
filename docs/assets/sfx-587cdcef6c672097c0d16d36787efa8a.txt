@@ -1,0 +1,16 @@
+sfx/click.mp3
+sfx/game/blessing.mp3
+sfx/game/bow.mp3
+sfx/game/burn.mp3
+sfx/game/dash.mp3
+sfx/game/explosion-big.mp3
+sfx/game/explosion.mp3
+sfx/game/player-die.mp3
+sfx/game/player-hurt.mp3
+sfx/game/slash.mp3
+sfx/game/teleport.mp3
+sfx/game/walk.mp3
+sfx/logo/crash.mp3
+sfx/logo/land.mp3
+sfx/logo/line.mp3
+sfx/logo/move.mp3
