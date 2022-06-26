@@ -16,6 +16,7 @@ import com.ray3k.template.*;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Resources.*;
+import static com.ray3k.template.screens.GameScreen.*;
 
 public class MenuScreen extends JamScreen {
     private Stage stage;
@@ -63,6 +64,9 @@ public class MenuScreen extends JamScreen {
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.input.setInputProcessor(null);
     
+                powers.clear();
+                maxHealth = 3;
+                
                 if (!preferences.getBoolean("completedTutorial", false)) {
                     core.transition(new GameScreen("tutorial01"));
                 } else {

@@ -61,9 +61,11 @@ public class GameScreen extends JamScreen {
     }
     public static Mode mode;
     public enum Power {
-        CROWN_OF_THORNS, STRENGTH_OF_SAMSON
+        STRENGTH_OF_SAMSON, BLOOD_OF_THE_LAMB, PARTING_THE_RED_SEA, PATIENCE_OF_JOB, FAITH_OF_DAVID, BODY_OF_CHRIST,
+        LANCE_OF_LONGINUS, WINGS_OF_MICHAEL, HOLY_TRINITY, GODSPEED, CROWN_OF_THORNS, HOLY_LIGHT, NOAHS_DOVE,
+        MARK_OF_THE_BEAST, HOLY_GRAIL, ARC_OF_THE_COVENANT, CHRIST_THE_REDEEMER
     }
-    public static Array<Power> powers;
+    public static Array<Power> powers = new Array<>();
     public static Table healthTable;
     public static Table pipTable;
     public static ButtonGroup<Button> controlsButtonGroup;

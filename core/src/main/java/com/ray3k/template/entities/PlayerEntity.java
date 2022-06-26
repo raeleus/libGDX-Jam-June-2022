@@ -202,6 +202,12 @@ public class PlayerEntity extends Entity {
                     }
                 }
                 moveEnemy(enemy, q + deltaQ, r + deltaR);
+                var finalEnemy = enemy;
+                if (powers.contains(Power.STRENGTH_OF_SAMSON, true)) {
+                    stage.addAction(Actions.delay(.5f, Actions.run(() -> {
+                        moveEnemy(finalEnemy, q + 2 * deltaQ, r + 2 * deltaR);
+                    })));
+                }
             }
         }
     }
@@ -433,7 +439,9 @@ public class PlayerEntity extends Entity {
                 slashEnemies.clear();
             }
             
-            turn = Turn.ENEMY;
+            stage.addAction(Actions.delay(enemies.size == 0 ? 0f : .25f, Actions.run(() -> {
+                turn = Turn.ENEMY;
+            })));
         }
         
         if (pentagramEntity != null && MathUtils.isEqual(x, pentagramEntity.x) && MathUtils.isEqual(y, pentagramEntity.y)) {
@@ -510,156 +518,194 @@ public class PlayerEntity extends Entity {
                     case "Strength of Samson":
                         image.setDrawable(skin, "icon-strike");
                         descriptionLabel.setText("+1 strike pushback");
+                        if (powers.contains(Power.STRENGTH_OF_SAMSON, true)) button = null;
                         break;
                     case "Blood of the Lamb":
                         image.setDrawable(skin, "icon-lamb");
                         descriptionLabel.setText("+1 energy pips");
+                        if (powers.contains(Power.BLOOD_OF_THE_LAMB, true)) button = null;
                         break;
                     case "Parting the Red Sea":
                         image.setDrawable(skin, "icon-parting");
                         descriptionLabel.setText("Strike affects enemies to the side as well");
+                        if (powers.contains(Power.PARTING_THE_RED_SEA, true)) button = null;
                         break;
                     case "Patience of Job":
                         image.setDrawable(skin, "icon-patience");
                         descriptionLabel.setText("Ability to wait a turn");
+                        if (powers.contains(Power.PATIENCE_OF_JOB, true)) button = null;
                         break;
                     case "Faith of David":
                         image.setDrawable(skin, "icon-david");
                         descriptionLabel.setText("+1 trident throw range");
+                        if (powers.contains(Power.FAITH_OF_DAVID, true)) button = null;
                         break;
                     case "Body of Christ":
                         image.setDrawable(skin, "icon-body");
                         descriptionLabel.setText("Restore 1 health after 3 consecutive kills");
+                        if (powers.contains(Power.BODY_OF_CHRIST, true)) button = null;
                         break;
                     case "Lance of Longinus":
                         image.setDrawable(skin, "icon-lance");
                         descriptionLabel.setText("Thrust penetrates to the next tile");
+                        if (powers.contains(Power.LANCE_OF_LONGINUS, true)) button = null;
                         break;
                     case "Wings of Michael":
                         image.setDrawable(skin, "icon-wings");
                         descriptionLabel.setText("+1 dash distance");
+                        if (powers.contains(Power.WINGS_OF_MICHAEL, true)) button = null;
                         break;
                     case "Holy Trinity":
                         image.setDrawable(skin, "icon-trinity");
                         descriptionLabel.setText("Restore trident, strike, and energy");
+                        if (powers.contains(Power.HOLY_TRINITY, true)) button = null;
                         break;
                     case "Godspeed":
                         image.setDrawable(skin, "icon-godspeed");
                         descriptionLabel.setText("Additional action after 3 consecutive kills");
+                        if (powers.contains(Power.GODSPEED, true)) button = null;
                         break;
                     case "Crown of Thorns":
                         image.setDrawable(skin, "icon-crown");
                         descriptionLabel.setText("Attacking enemies receive damage");
+                        if (powers.contains(Power.CROWN_OF_THORNS, true)) button = null;
                         break;
                     case "Holy Light":
                         image.setDrawable(skin, "icon-holy-light");
                         descriptionLabel.setText("Shield while striking");
+                        if (powers.contains(Power.HOLY_LIGHT, true)) button = null;
                         break;
                     case "Noah's Dove":
                         image.setDrawable(skin, "icon-dove");
                         descriptionLabel.setText("Recall trident to your hand");
+                        if (powers.contains(Power.NOAHS_DOVE, true)) button = null;
                         break;
                     case "Mark of the Beast":
                         image.setDrawable(skin, "icon-beast");
                         descriptionLabel.setText("Stun surrounding enemies after landing a dash");
+                        if (powers.contains(Power.MARK_OF_THE_BEAST, true)) button = null;
                         break;
                     case "Holy Grail":
                         image.setDrawable(skin, "icon-grail");
                         descriptionLabel.setText("Survive death once");
+                        if (powers.contains(Power.HOLY_GRAIL, true)) button = null;
                         break;
                     case "Arc of the Covenant":
                         image.setDrawable(skin, "icon-arc");
                         descriptionLabel.setText("Use the raw power of God instead of the trident");
+                        if (powers.contains(Power.ARC_OF_THE_COVENANT, true)) button = null;
                         break;
                     case "Christ the Redeemer":
                         image.setDrawable(skin, "icon-redeemer");
                         descriptionLabel.setText("Restore 1 health every level");
+                        if (powers.contains(Power.CHRIST_THE_REDEEMER, true)) button = null;
                         break;
                 }
-                table = new Table();
-                button.add(table);
                 
-                table.defaults().left();
-                var buttonLabel = new Label(blessing, skin, "title");
-                table.add(buttonLabel);
-                
-                table.row();
-                table.add(descriptionLabel);
-                
-                button.addListener(new ClickListener() {
-                    @Override
-                    public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                        super.enter(event,x, y, pointer, fromActor);
-                        button.setColor(Color.RED);
-                        buttonLabel.setColor(Color.RED);
-                        image.setColor(Color.RED);
-                        descriptionLabel.setColor(Color.RED);
-                    }
+                if (button != null) {
+                    table = new Table();
+                    button.add(table);
     
-                    @Override
-                    public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-                        super.exit(event,x, y, pointer, toActor);
-                        button.setColor(Color.WHITE);
-                        buttonLabel.setColor(Color.WHITE);
-                        image.setColor(Color.WHITE);
-                        descriptionLabel.setColor(Color.WHITE);
-                    }
+                    table.defaults().left();
+                    var buttonLabel = new Label(blessing, skin, "title");
+                    table.add(buttonLabel);
     
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        pop.hide();
+                    table.row();
+                    table.add(descriptionLabel);
     
-                        switch (blessing) {
-                            case "Holy Blessing":
-                                health = maxHealth;
-                                refreshHealthTable();
-                                break;
-                            case "Blood of Christ":
-                                health++;
-                                maxHealth++;
-                                refreshHealthTable();
-                                break;
-                            case "Strength of Samson":
-                                break;
-                            case "Blood of the Lamb":
-                                break;
-                            case "Parting the Red Sea":
-                                break;
-                            case "Patience of Job":
-                                break;
-                            case "Faith of David":
-                                break;
-                            case "Body of Christ":
-                                break;
-                            case "Lance of Longinus":
-                                break;
-                            case "Wings of Michael":
-                                break;
-                            case "Holy Trinity":
-                                break;
-                            case "Godspeed":
-                                break;
-                            case "Crown of Thorns":
-                                powers.add(Power.CROWN_OF_THORNS);
-                                break;
-                            case "Holy Light":
-                                break;
-                            case "Noah's Dove":
-                                break;
-                            case "Mark of the Beast":
-                                break;
-                            case "Holy Grail":
-                                break;
-                            case "Arc of the Covenant":
-                                break;
-                            case "Christ the Redeemer":
-                                break;
+                    var finalButton = button;
+                    button.addListener(new ClickListener() {
+                        @Override
+                        public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+                            super.enter(event, x, y, pointer, fromActor);
+                            finalButton.setColor(Color.RED);
+                            buttonLabel.setColor(Color.RED);
+                            image.setColor(Color.RED);
+                            descriptionLabel.setColor(Color.RED);
                         }
-                    }
-                });
-                scrollTable.add(button);
+        
+                        @Override
+                        public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                            super.exit(event, x, y, pointer, toActor);
+                            finalButton.setColor(Color.WHITE);
+                            buttonLabel.setColor(Color.WHITE);
+                            image.setColor(Color.WHITE);
+                            descriptionLabel.setColor(Color.WHITE);
+                        }
+        
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            pop.hide();
+    
+                            switch (blessing) {
+                                case "Holy Blessing":
+                                    health = maxHealth;
+                                    refreshHealthTable();
+                                    break;
+                                case "Blood of Christ":
+                                    health++;
+                                    maxHealth++;
+                                    refreshHealthTable();
+                                    break;
+                                case "Strength of Samson":
+                                    powers.add(Power.STRENGTH_OF_SAMSON);
+                                    break;
+                                case "Blood of the Lamb":
+                                    powers.add(Power.BLOOD_OF_THE_LAMB);
+                                    break;
+                                case "Parting the Red Sea":
+                                    powers.add(Power.PARTING_THE_RED_SEA);
+                                    break;
+                                case "Patience of Job":
+                                    powers.add(Power.PATIENCE_OF_JOB);
+                                    break;
+                                case "Faith of David":
+                                    powers.add(Power.FAITH_OF_DAVID);
+                                    break;
+                                case "Body of Christ":
+                                    powers.add(Power.BODY_OF_CHRIST);
+                                    break;
+                                case "Lance of Longinus":
+                                    powers.add(Power.LANCE_OF_LONGINUS);
+                                    break;
+                                case "Wings of Michael":
+                                    powers.add(Power.WINGS_OF_MICHAEL);
+                                    break;
+                                case "Holy Trinity":
+                                    powers.add(Power.HOLY_TRINITY);
+                                    break;
+                                case "Godspeed":
+                                    powers.add(Power.GODSPEED);
+                                    break;
+                                case "Crown of Thorns":
+                                    powers.add(Power.CROWN_OF_THORNS);
+                                    break;
+                                case "Holy Light":
+                                    powers.add(Power.HOLY_LIGHT);
+                                    break;
+                                case "Noah's Dove":
+                                    powers.add(Power.NOAHS_DOVE);
+                                    break;
+                                case "Mark of the Beast":
+                                    powers.add(Power.MARK_OF_THE_BEAST);
+                                    break;
+                                case "Holy Grail":
+                                    powers.add(Power.HOLY_GRAIL);
+                                    break;
+                                case "Arc of the Covenant":
+                                    powers.add(Power.ARC_OF_THE_COVENANT);
+                                    break;
+                                case "Christ the Redeemer":
+                                    powers.add(Power.CHRIST_THE_REDEEMER);
+                                    break;
+                            }
+                        }
+                    });
+                    scrollTable.add(button);
+                }
             }
             pop.show(stage);
+            stage.setScrollFocus(scroll);
         }
     }
     

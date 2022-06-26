@@ -67,6 +67,7 @@ public class GluttonEntity extends EnemyEntity {
                         targetHex.weight = 100;
                     } else if (MathUtils.isEqual(ground.x, player.x) && MathUtils.isEqual(ground.y, player.y)) {
                         player.hurt();
+                        if (powers.contains(Power.CROWN_OF_THORNS, true)) hurt();
                     }
                 }
             }

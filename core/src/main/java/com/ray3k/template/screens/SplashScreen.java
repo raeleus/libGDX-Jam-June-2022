@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.template.*;
 
 import static com.ray3k.template.Core.*;
+import static com.ray3k.template.screens.GameScreen.*;
 
 public class SplashScreen extends JamScreen {
     private Stage stage;
@@ -37,7 +38,8 @@ public class SplashScreen extends JamScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.input.setInputProcessor(null);
-                core.transition(new GameScreen("level01"));
+                powers.add(Power.STRENGTH_OF_SAMSON);
+                core.transition(new GameScreen("tutorial01"));
             }
         });
     }
