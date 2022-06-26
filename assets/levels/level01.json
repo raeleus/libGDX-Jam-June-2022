@@ -4,7 +4,7 @@
   "height": 576,
   "offsetX": 0,
   "offsetY": 0,
-  "values": {"blessing1": "Holy Blessing", "blessing2": "Blood of Christ", "blessing3": "None", "blessing4": "None", "blessing5": "None", "shrineTitle": "GOD SMILES UPON THEE"},
+  "values": {"blessing1": "Holy Blessing", "blessing2": "Blood of Christ", "blessing3": "Strength of Samson", "blessing4": "Crown of Thorns", "blessing5": "None", "shrineTitle": "GOD SMILES UPON THEE"},
   "layers": [
     {
       "name": "tutorial",

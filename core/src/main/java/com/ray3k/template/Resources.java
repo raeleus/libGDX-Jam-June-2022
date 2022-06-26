@@ -42,6 +42,8 @@ public class Resources {
 
     public static Sound sfx_gameExplosion;
 
+    public static Sound sfx_gamePlayerDie;
+
     public static Sound sfx_gameSlash;
 
     public static Sound sfx_gameTeleport;
@@ -492,6 +494,7 @@ public class Resources {
         sfx_gameDash = assetManager.get("sfx/game/dash.mp3");
         sfx_gameExplosionBig = assetManager.get("sfx/game/explosion-big.mp3");
         sfx_gameExplosion = assetManager.get("sfx/game/explosion.mp3");
+        sfx_gamePlayerDie = assetManager.get("sfx/game/player-die.mp3");
         sfx_gameSlash = assetManager.get("sfx/game/slash.mp3");
         sfx_gameTeleport = assetManager.get("sfx/game/teleport.mp3");
         sfx_gameWalk = assetManager.get("sfx/game/walk.mp3");

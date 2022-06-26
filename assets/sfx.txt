@@ -4,6 +4,7 @@ sfx/game/burn.mp3
 sfx/game/dash.mp3
 sfx/game/explosion-big.mp3
 sfx/game/explosion.mp3
+sfx/game/player-die.mp3
 sfx/game/slash.mp3
 sfx/game/teleport.mp3
 sfx/game/walk.mp3

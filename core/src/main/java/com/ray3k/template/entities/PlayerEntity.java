@@ -640,6 +640,7 @@ public class PlayerEntity extends Entity {
                             case "Godspeed":
                                 break;
                             case "Crown of Thorns":
+                                powers.add(Power.CROWN_OF_THORNS);
                                 break;
                             case "Holy Light":
                                 break;
@@ -659,6 +660,35 @@ public class PlayerEntity extends Entity {
                 scrollTable.add(button);
             }
             pop.show(stage);
+        }
+    }
+    
+    public void hurt() {
+        health--;
+        refreshHealthTable();
+        if (health == 0) {
+            destroy = true;
+            sfx_gamePlayerDie.play(sfx);
+            var anim = new AnimationEntity(skeletonData, animationData, animationDie, x, y);
+            entityController.add(anim);
+    
+            anim = new AnimationEntity(SpineBlood.skeletonData, SpineBlood.animationData, SpineBlood.animationAnimation, x, y);
+            entityController.add(anim);
+            
+            stage.addAction(Actions.delay(5f, Actions.run(() -> core.transition(new MenuScreen()))));
+    
+            if (bgm_game.isPlaying()) {
+                stage.addAction(new Action() {
+                    @Override
+                    public boolean act(float delta) {
+                        bgm_game.setVolume(Utils.approach(bgm_game.getVolume(), 0, .25f * delta));
+                        if (MathUtils.isZero(bgm_game.getVolume())) {
+                            bgm_game.stop();
+                            return true;
+                        } else return false;
+                    }
+                });
+            }
         }
     }
 }

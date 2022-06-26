@@ -60,6 +60,10 @@ public class GameScreen extends JamScreen {
         MOVE, STRIKE, DASH, THROW
     }
     public static Mode mode;
+    public enum Power {
+        CROWN_OF_THORNS, STRENGTH_OF_SAMSON
+    }
+    public static Array<Power> powers;
     public static Table healthTable;
     public static Table pipTable;
     public static ButtonGroup<Button> controlsButtonGroup;
@@ -87,6 +91,7 @@ public class GameScreen extends JamScreen {
     @Override
     public void show() {
         super.show();
+        health = maxHealth;
         energy = maxEnergy;
         grounds.clear();
         lavas.clear();
@@ -107,33 +112,6 @@ public class GameScreen extends JamScreen {
         paused = false;
     
         stage = new Stage(new ScreenViewport(), batch);
-    
-        if (bgm_menu.isPlaying()) {
-            stage.addAction(new Action() {
-                @Override
-                public boolean act(float delta) {
-                    bgm_menu.setVolume(Utils.approach(bgm_menu.getVolume(), 0, .25f * delta));
-                    if (MathUtils.isZero(bgm_menu.getVolume())) {
-                        bgm_menu.stop();
-                        return true;
-                    } else return false;
-                }
-            });
-        }
-        
-        if (!bgm_game.isPlaying()) {
-            bgm_game.play();
-            bgm_game.setPosition(bgm_menu.getPosition());
-            bgm_game.setVolume(0);
-            bgm_game.setLooping(true);
-            stage.addAction(new Action() {
-                @Override
-                public boolean act(float delta) {
-                    bgm_game.setVolume(Utils.approach(bgm_game.getVolume(), bgm, .25f * delta));
-                    return MathUtils.isEqual(bgm_game.getVolume(), bgm);
-                }
-            });
-        }
         
         var root = new Table();
         root.setFillParent(true);
@@ -313,6 +291,33 @@ public class GameScreen extends JamScreen {
     
                         if (currentDialogAudio != null) currentDialogAudio.stop();
                         turn = Turn.PLAYER;
+    
+                        if (bgm_menu.isPlaying()) {
+                            stage.addAction(new Action() {
+                                @Override
+                                public boolean act(float delta) {
+                                    bgm_menu.setVolume(Utils.approach(bgm_menu.getVolume(), 0, .25f * delta));
+                                    if (MathUtils.isZero(bgm_menu.getVolume())) {
+                                        bgm_menu.stop();
+                                        return true;
+                                    } else return false;
+                                }
+                            });
+                        }
+    
+                        if (!bgm_game.isPlaying()) {
+                            bgm_game.play();
+                            bgm_game.setPosition(bgm_menu.getPosition());
+                            bgm_game.setVolume(0);
+                            bgm_game.setLooping(true);
+                            stage.addAction(new Action() {
+                                @Override
+                                public boolean act(float delta) {
+                                    bgm_game.setVolume(Utils.approach(bgm_game.getVolume(), bgm, .25f * delta));
+                                    return MathUtils.isEqual(bgm_game.getVolume(), bgm);
+                                }
+                            });
+                        }
                     }
                     else {
                         clearChildren();
@@ -405,7 +410,7 @@ public class GameScreen extends JamScreen {
             }
         } else if (turn == Turn.ENEMY_MOVING) {
             for (var enemy : enemies) {
-                enemy.takeTurn();
+                enemy.completeMoving();
             }
             turn = Turn.PLAYER;
         }
@@ -565,6 +570,13 @@ public class GameScreen extends JamScreen {
                         entityController.add(grenadeDummyEntity);
                         characters.add(grenadeDummyEntity);
                         enemies.add(grenadeDummyEntity);
+                        break;
+                    case "glutton":
+                        var glutton = new GluttonEntity();
+                        glutton.setPosition(x, y);
+                        entityController.add(glutton);
+                        characters.add(glutton);
+                        enemies.add(glutton);
                         break;
                     default:
                         if (name.startsWith("tutorial")) {
