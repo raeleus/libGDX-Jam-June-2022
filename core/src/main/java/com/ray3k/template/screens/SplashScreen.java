@@ -38,8 +38,8 @@ public class SplashScreen extends JamScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.input.setInputProcessor(null);
-                powers.add(Power.STRENGTH_OF_SAMSON);
-                core.transition(new GameScreen("tutorial01"));
+                powers.add(Power.PATIENCE_OF_JOB);
+                core.transition(new GameScreen("level01"));
             }
         });
     }

@@ -368,7 +368,7 @@ public class PlayerEntity extends Entity {
     
     private void throwTurn() {
         var playerHex = hexUtils.pixelToGridHex(temp.set(player.x, player.y));
-        var throwHexes = hexUtils.getHexesInRadius(playerHex, 2);
+        var throwHexes = hexUtils.getHexesInRadius(playerHex, powers.contains(Power.FAITH_OF_DAVID, true) ? 3 : 2);
         var iter = throwHexes.iterator();
         outerLoop : while (iter.hasNext()) {
             var hex = iter.next();
@@ -439,9 +439,9 @@ public class PlayerEntity extends Entity {
                 slashEnemies.clear();
             }
             
-            stage.addAction(Actions.delay(enemies.size == 0 ? 0f : .25f, Actions.run(() -> {
+//            stage.addAction(Actions.delay(enemies.size == 0 ? 0f : .25f, Actions.run(() -> {
                 turn = Turn.ENEMY;
-            })));
+//            })));
         }
         
         if (pentagramEntity != null && MathUtils.isEqual(x, pentagramEntity.x) && MathUtils.isEqual(y, pentagramEntity.y)) {
@@ -658,6 +658,7 @@ public class PlayerEntity extends Entity {
                                     break;
                                 case "Patience of Job":
                                     powers.add(Power.PATIENCE_OF_JOB);
+                                    refreshControlsTable();
                                     break;
                                 case "Faith of David":
                                     powers.add(Power.FAITH_OF_DAVID);

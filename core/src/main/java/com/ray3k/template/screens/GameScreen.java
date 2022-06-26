@@ -57,7 +57,7 @@ public class GameScreen extends JamScreen {
     }
     public static Turn turn;
     public enum Mode {
-        MOVE, STRIKE, DASH, THROW
+        MOVE, STRIKE, DASH, THROW, WAIT
     }
     public static Mode mode;
     public enum Power {
@@ -68,10 +68,12 @@ public class GameScreen extends JamScreen {
     public static Array<Power> powers = new Array<>();
     public static Table healthTable;
     public static Table pipTable;
+    public static Table controlsTable;
     public static ButtonGroup<Button> controlsButtonGroup;
     public static Button strikeButton;
     public static Button throwButton;
     public static Button dashButton;
+    public static Button waitButton;
     public static Array<String> blessings = new Array<>();
     public static String shrineTitle;
     public static int health = 3;
@@ -651,6 +653,7 @@ public class GameScreen extends JamScreen {
         strikeButton = new ImageButton(skin, "strike");
         dashButton = new ImageButton(skin, "dash");
         throwButton = new ImageButton(skin, "throw");
+        waitButton = new ImageButton(skin, "wait");
         
         var root = (Table) stage.getRoot().getChild(0);
         root.left().bottom();
@@ -666,33 +669,9 @@ public class GameScreen extends JamScreen {
         refreshEnergyTable();
         
         root.row();
-        var table = new Table();
-        table.setBackground(skin.getDrawable("controls-bg"));
-        root.add(table);
-        
-        controlsButtonGroup = new ButtonGroup<>();
-        controlsButtonGroup.setMinCheckCount(0);
-        
-        table.add(strikeButton).size(50, 50);
-        controlsButtonGroup.add(strikeButton);
-        Utils.onChange(strikeButton, () -> {
-            if (strikeButton.isChecked()) mode = Mode.STRIKE;
-            else mode = Mode.MOVE;
-        });
-    
-        table.add(dashButton).size(50, 50);
-        controlsButtonGroup.add(dashButton);
-        Utils.onChange(dashButton, () -> {
-            if (dashButton.isChecked()) mode = Mode.DASH;
-            else mode = Mode.MOVE;
-        });
-    
-        table.add(throwButton).size(50, 50);
-        controlsButtonGroup.add(throwButton);
-        Utils.onChange(throwButton, () -> {
-            if (throwButton.isChecked()) mode = Mode.THROW;
-            else mode = Mode.MOVE;
-        });
+        controlsTable = new Table();
+        root.add(controlsTable);
+        refreshControlsTable();
     }
     
     public static void refreshHealthTable() {
@@ -733,5 +712,46 @@ public class GameScreen extends JamScreen {
         
         dashButton.setDisabled(energy < 2);
         strikeButton.setDisabled(energy < 1);
+    }
+    
+    public static void refreshControlsTable() {
+        controlsTable.clear();
+        controlsTable.setBackground(skin.getDrawable("controls-bg"));
+    
+        controlsButtonGroup = new ButtonGroup<>();
+        controlsButtonGroup.setMinCheckCount(0);
+    
+        controlsTable.add(strikeButton).size(50, 50);
+        controlsButtonGroup.add(strikeButton);
+        Utils.onChange(strikeButton, () -> {
+            if (strikeButton.isChecked()) mode = Mode.STRIKE;
+            else mode = Mode.MOVE;
+        });
+    
+        controlsTable.add(dashButton).size(50, 50);
+        controlsButtonGroup.add(dashButton);
+        Utils.onChange(dashButton, () -> {
+            if (dashButton.isChecked()) mode = Mode.DASH;
+            else mode = Mode.MOVE;
+        });
+    
+        controlsTable.add(throwButton).size(50, 50);
+        controlsButtonGroup.add(throwButton);
+        Utils.onChange(throwButton, () -> {
+            if (throwButton.isChecked()) mode = Mode.THROW;
+            else mode = Mode.MOVE;
+        });
+    
+        if (powers.contains(Power.PATIENCE_OF_JOB, true)) {
+            controlsTable.add(waitButton).size(50, 50);
+            controlsButtonGroup.add(waitButton);
+            Utils.onChange(waitButton, () -> {
+                if (waitButton.isChecked()) {
+                    mode = Mode.WAIT;
+                    turn = Turn.PLAYER_MOVING;
+                    controlsButtonGroup.uncheckAll();
+                } else mode = Mode.MOVE;
+            });
+        }
     }
 }
