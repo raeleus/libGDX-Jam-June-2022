@@ -321,7 +321,9 @@ public class Resources {
         SpinePlayer.skeletonData = assetManager.get("spine/player.json");
         SpinePlayer.animationData = assetManager.get("spine/player.json-animation");
         SpinePlayer.animationAnimation = SpinePlayer.skeletonData.findAnimation("animation");
+        SpinePlayer.animationDeshield = SpinePlayer.skeletonData.findAnimation("deshield");
         SpinePlayer.animationDie = SpinePlayer.skeletonData.findAnimation("die");
+        SpinePlayer.animationShield = SpinePlayer.skeletonData.findAnimation("shield");
         SpinePlayer.animationSlash = SpinePlayer.skeletonData.findAnimation("slash");
         SpinePlayer.animationSmack = SpinePlayer.skeletonData.findAnimation("smack");
         SpinePlayer.animationSpawn = SpinePlayer.skeletonData.findAnimation("spawn");
@@ -343,6 +345,7 @@ public class Resources {
         SpinePlayer.slotGamePlayerHand2 = SpinePlayer.skeletonData.findSlot("game/player-hand2");
         SpinePlayer.slotGamePlayerHead = SpinePlayer.skeletonData.findSlot("game/player-head");
         SpinePlayer.slotGameTeleport01 = SpinePlayer.skeletonData.findSlot("game/teleport-01");
+        SpinePlayer.slotGameShield = SpinePlayer.skeletonData.findSlot("game/shield");
         SpinePlayer.skinDefault = SpinePlayer.skeletonData.findSkin("default");
         SpineSatan.skeletonData = assetManager.get("spine/satan.json");
         SpineSatan.animationData = assetManager.get("spine/satan.json-animation");
@@ -881,7 +884,11 @@ public class Resources {
 
         public static Animation animationAnimation;
 
+        public static Animation animationDeshield;
+
         public static Animation animationDie;
+
+        public static Animation animationShield;
 
         public static Animation animationSlash;
 
@@ -924,6 +931,8 @@ public class Resources {
         public static SlotData slotGamePlayerHead;
 
         public static SlotData slotGameTeleport01;
+
+        public static SlotData slotGameShield;
 
         public static com.esotericsoftware.spine.Skin skinDefault;
     }

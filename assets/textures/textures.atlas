@@ -3,141 +3,139 @@ textures.png
 	filter: Linear, Linear
 	pma: true
 game/arrow
-	bounds: 1001, 1247, 30, 15
+	bounds: 1853, 1259, 30, 15
 	rotate: 90
 game/blood-01
-	bounds: 1031, 1325, 54, 45
+	bounds: 601, 1060, 54, 45
 	offsets: 3, 15, 63, 65
+	rotate: 90
 game/blood-02
-	bounds: 743, 1311, 59, 59
+	bounds: 680, 1249, 59, 59
 	offsets: 1, 5, 63, 65
 game/blood-03
-	bounds: 1850, 1240, 62, 65
+	bounds: 1777, 1213, 62, 65
 	offsets: 0, 0, 63, 65
 	rotate: 90
 game/blood-04
-	bounds: 1982, 1157, 62, 65
+	bounds: 1777, 1149, 62, 65
 	offsets: 1, 0, 63, 65
 	rotate: 90
 game/blood-05
-	bounds: 1777, 1149, 62, 64
+	bounds: 1929, 1025, 62, 64
 	offsets: 1, 0, 63, 65
 	rotate: 90
 game/blood-06
-	bounds: 1850, 1176, 62, 65
+	bounds: 1777, 1085, 62, 65
 	offsets: 1, 0, 63, 65
 	rotate: 90
 game/blood-07
-	bounds: 1917, 1147, 62, 65
-	offsets: 1, 0, 63, 65
-game/blood-08
-	bounds: 1777, 1082, 61, 65
-	offsets: 2, 0, 63, 65
-game/blood-09
-	bounds: 1981, 1093, 62, 65
+	bounds: 1929, 1089, 62, 65
 	offsets: 1, 0, 63, 65
 	rotate: 90
+game/blood-08
+	bounds: 613, 1309, 61, 65
+	offsets: 2, 0, 63, 65
+	rotate: 90
+game/blood-09
+	bounds: 1865, 1073, 62, 65
+	offsets: 1, 0, 63, 65
 game/blood-10
-	bounds: 1843, 1112, 62, 64
+	bounds: 547, 1308, 62, 64
 	offsets: 1, 0, 63, 65
 	rotate: 90
 game/blood-pool
-	bounds: 547, 1159, 49, 32
+	bounds: 2014, 1132, 49, 32
 	offsets: 1, 2, 51, 34
+	rotate: 90
 game/explosion-01
-	bounds: 1838, 1295, 10, 16
+	bounds: 1934, 1295, 10, 16
 	offsets: 28, 25, 63, 65
 game/explosion-02
-	bounds: 780, 1204, 16, 24
+	bounds: 1996, 1127, 16, 24
 	offsets: 25, 21, 63, 65
 game/explosion-03
-	bounds: 734, 1204, 21, 31
+	bounds: 656, 1180, 21, 31
 	offsets: 23, 18, 63, 65
-	rotate: 90
 game/explosion-04
-	bounds: 1019, 1289, 34, 45
+	bounds: 1161, 1247, 34, 45
 	offsets: 18, 11, 63, 65
 	rotate: 90
 game/explosion-05
-	bounds: 972, 1325, 45, 57
+	bounds: 605, 1116, 45, 57
 	offsets: 13, 3, 63, 65
-	rotate: 90
 game/explosion-06
-	bounds: 612, 1313, 57, 64
+	bounds: 878, 1261, 57, 64
 	offsets: 6, 0, 63, 65
 	rotate: 90
 game/explosion-07
-	bounds: 1909, 1085, 60, 64
+	bounds: 1867, 1140, 60, 64
 	offsets: 3, 0, 63, 65
-	rotate: 90
 game/explosion-08
-	bounds: 1975, 1032, 59, 64
+	bounds: 746, 1311, 59, 64
 	offsets: 4, 0, 63, 65
 	rotate: 90
 game/explosion-09
-	bounds: 1840, 1050, 60, 64
+	bounds: 680, 1310, 60, 64
 	offsets: 3, 0, 63, 65
 	rotate: 90
 game/explosion-10
-	bounds: 1906, 1024, 59, 64
+	bounds: 812, 1311, 59, 64
 	offsets: 4, 0, 63, 65
 	rotate: 90
 game/explosion-11
-	bounds: 862, 1318, 54, 52
+	bounds: 680, 1195, 54, 52
 	offsets: 4, 8, 63, 65
 game/explosion-12
-	bounds: 1194, 1323, 47, 48
+	bounds: 1074, 1323, 47, 48
 	offsets: 10, 11, 63, 65
 	rotate: 90
 game/explosion-13
-	bounds: 1192, 1276, 45, 46
+	bounds: 944, 1265, 45, 46
 	offsets: 11, 12, 63, 65
 	rotate: 90
 game/explosion-14
-	bounds: 972, 1279, 44, 45
+	bounds: 1124, 1326, 44, 45
 	offsets: 12, 12, 63, 65
 	rotate: 90
 game/explosion-15
-	bounds: 804, 1270, 43, 43
+	bounds: 1171, 1283, 43, 43
 	offsets: 13, 13, 63, 65
 game/flame-01
-	bounds: 780, 1267, 21, 42
+	bounds: 1844, 1174, 21, 42
 	offsets: 21, 17, 63, 65
 game/flame-02
-	bounds: 1018, 1212, 25, 42
+	bounds: 2021, 1270, 25, 42
 	offsets: 19, 17, 63, 65
 game/flame-03
-	bounds: 882, 1235, 23, 37
+	bounds: 652, 1115, 23, 37
 	offsets: 20, 17, 63, 65
 game/flame-04
-	bounds: 833, 1219, 22, 35
+	bounds: 656, 1213, 22, 35
 	offsets: 20, 17, 63, 65
-	rotate: 90
 game/flame-05
-	bounds: 911, 1250, 24, 39
+	bounds: 1844, 1218, 24, 39
 	offsets: 20, 17, 63, 65
-	rotate: 90
 game/flame-06
-	bounds: 1061, 1207, 25, 41
+	bounds: 2018, 1183, 25, 41
 	offsets: 17, 17, 63, 65
 game/glutton-body
-	bounds: 1140, 1326, 52, 44
+	bounds: 1020, 1326, 52, 44
 game/glutton-hand
-	bounds: 1838, 1232, 10, 11
-game/glutton-head
-	bounds: 1138, 1224, 22, 25
+	bounds: 1929, 1157, 10, 11
 	rotate: 90
+game/glutton-head
+	bounds: 1220, 1345, 22, 25
 game/goat-body
-	bounds: 1107, 1281, 31, 42
+	bounds: 2014, 1088, 31, 42
 game/goat-hand
-	bounds: 1989, 1345, 7, 8
+	bounds: 2007, 1202, 7, 8
 	rotate: 90
 game/goat-head
-	bounds: 668, 1213, 45, 38
+	bounds: 944, 1225, 45, 38
 game/goat-staff
-	bounds: 715, 1206, 17, 45
+	bounds: 1853, 1291, 17, 45
 game/grenade
-	bounds: 1207, 1225, 25, 23
+	bounds: 991, 1227, 25, 23
 game/heaven-city
 	bounds: 1244, 1104, 943, 531
 	rotate: 90
@@ -147,221 +145,221 @@ game/heaven-stairs
 	bounds: 1, 940, 430, 544
 	rotate: 90
 game/imp-body
-	bounds: 1183, 1208, 16, 15
+	bounds: 1929, 1222, 16, 15
+	rotate: 90
 game/imp-head
-	bounds: 1137, 1207, 17, 15
+	bounds: 1929, 1259, 17, 15
+	rotate: 90
 game/imp-wing
-	bounds: 1088, 1224, 24, 21
+	bounds: 656, 1154, 24, 21
+	rotate: 90
 game/lava-bubble-01
-	bounds: 1989, 1322, 5, 4
+	bounds: 2007, 1179, 5, 4
 	offsets: 8, 4, 17, 17
 game/lava-bubble-02
-	bounds: 1989, 1328, 8, 6
+	bounds: 2007, 1185, 8, 6
 	offsets: 7, 4, 17, 17
 game/lava-bubble-03
-	bounds: 1917, 1274, 11, 9
+	bounds: 2007, 1221, 11, 9
 	offsets: 4, 4, 17, 17
 	rotate: 90
 game/lava-bubble-04
-	bounds: 1838, 1245, 14, 9
+	bounds: 2007, 1234, 14, 9
 	offsets: 3, 4, 17, 17
 	rotate: 90
 game/lava-bubble-05
-	bounds: 1838, 1278, 15, 10
+	bounds: 1934, 1278, 15, 10
 	offsets: 2, 3, 17, 17
 	rotate: 90
 game/lava-bubble-06
-	bounds: 1045, 1237, 17, 14
+	bounds: 1929, 1203, 17, 14
 	offsets: 0, 2, 17, 17
 	rotate: 90
 game/lava-bubble-07
-	bounds: 1108, 1205, 17, 15
+	bounds: 1929, 1240, 17, 15
 	offsets: 0, 2, 17, 17
+	rotate: 90
 game/lava-bubble-08
-	bounds: 957, 1300, 16, 13
+	bounds: 1929, 1185, 16, 13
 	offsets: 0, 2, 17, 17
 	rotate: 90
 game/lava-bubble-09
-	bounds: 1838, 1313, 16, 11
+	bounds: 1934, 1313, 16, 11
 	offsets: 0, 1, 17, 17
 	rotate: 90
 game/lava-bubble-10
-	bounds: 1917, 1287, 15, 9
+	bounds: 2007, 1267, 15, 9
 	offsets: 1, 0, 17, 17
 	rotate: 90
 game/lava-bubble-11
-	bounds: 1838, 1261, 15, 9
+	bounds: 2007, 1250, 15, 9
 	offsets: 1, 0, 17, 17
 	rotate: 90
 game/pentagram
-	bounds: 804, 1315, 56, 55
+	bounds: 547, 1132, 56, 55
 game/player-body
-	bounds: 1019, 1256, 31, 40
-	rotate: 90
+	bounds: 1208, 1223, 31, 40
 game/player-hand
-	bounds: 1045, 1221, 14, 14
+	bounds: 1929, 1169, 14, 14
 game/player-head
-	bounds: 801, 1214, 24, 30
-	rotate: 90
+	bounds: 992, 1280, 24, 30
 game/player-sword
-	bounds: 547, 1098, 59, 26
+	bounds: 2021, 1370, 59, 26
 	rotate: 90
 game/player-trident
-	bounds: 575, 1103, 54, 26
+	bounds: 2021, 1314, 54, 26
 	rotate: 90
 game/satan-body
-	bounds: 1999, 1297, 57, 48
-	rotate: 90
+	bounds: 679, 1145, 57, 48
 game/satan-hand
-	bounds: 957, 1286, 12, 13
-	rotate: 90
+	bounds: 2007, 1284, 12, 13
 game/satan-head
-	bounds: 1061, 1250, 37, 33
+	bounds: 1202, 1188, 37, 33
 game/satan-wing
-	bounds: 1999, 1356, 46, 73
+	bounds: 608, 1175, 46, 73
+game/shield
+	bounds: 1777, 1338, 91, 94
+	rotate: 90
 game/shrine
-	bounds: 862, 1274, 42, 47
+	bounds: 1171, 1328, 42, 47
 	rotate: 90
 game/skeleton-body
-	bounds: 803, 1240, 28, 28
+	bounds: 1101, 1178, 28, 28
 game/skeleton-bow
-	bounds: 1838, 1331, 9, 26
+	bounds: 1934, 1331, 9, 26
 game/skeleton-hand
-	bounds: 1989, 1336, 7, 8
+	bounds: 2007, 1193, 7, 8
 	rotate: 90
 game/skeleton-head
-	bounds: 1179, 1225, 26, 23
+	bounds: 992, 1252, 26, 23
+	rotate: 90
 game/slam-01
-	bounds: 1100, 1247, 32, 36
+	bounds: 1063, 1207, 32, 36
 	offsets: 17, 16, 63, 65
 	rotate: 90
 game/slam-02
-	bounds: 1087, 1325, 45, 51
+	bounds: 547, 1031, 45, 51
 	offsets: 10, 7, 63, 65
 	rotate: 90
 game/slam-03
-	bounds: 547, 1312, 58, 63
+	bounds: 955, 1312, 58, 63
 	offsets: 3, 0, 63, 65
 	rotate: 90
 game/slam-04
-	bounds: 547, 1252, 59, 58
+	bounds: 547, 1248, 59, 58
 	offsets: 2, 4, 63, 65
 game/slam-05
-	bounds: 547, 1193, 58, 57
+	bounds: 547, 1189, 58, 57
 	offsets: 3, 5, 63, 65
 game/slam-06
-	bounds: 675, 1253, 58, 58
+	bounds: 811, 1251, 58, 58
 	offsets: 3, 5, 63, 65
 game/slam-07
-	bounds: 608, 1194, 58, 58
+	bounds: 741, 1192, 58, 58
 	offsets: 3, 5, 63, 65
 game/slam-08
-	bounds: 1989, 1318, 2, 3
+	bounds: 2045, 1221, 2, 3
 	offsets: 31, 29, 63, 65
-	rotate: 90
 game/snake
-	bounds: 1140, 1282, 42, 50
+	bounds: 1020, 1282, 42, 50
 	rotate: 90
 game/succubus-body
-	bounds: 1179, 1250, 24, 27
-	rotate: 90
+	bounds: 1216, 1291, 24, 27
 game/succubus-hair
-	bounds: 957, 1250, 27, 42
-	rotate: 90
+	bounds: 2018, 1226, 27, 42
 game/succubus-hand
-	bounds: 1989, 1354, 9, 8
-	rotate: 90
+	bounds: 2007, 1211, 9, 8
 game/succubus-head
-	bounds: 1088, 1205, 18, 17
+	bounds: 1844, 1099, 18, 17
 game/succubus-neck
-	bounds: 712, 1187, 19, 17
+	bounds: 1844, 1118, 19, 17
 game/succubus-tail
-	bounds: 780, 1230, 35, 19
+	bounds: 1844, 1137, 35, 19
 	rotate: 90
 game/teleport-01
-	bounds: 607, 1154, 38, 44
+	bounds: 1063, 1241, 38, 44
 	offsets: 11, 0, 59, 94
 	rotate: 90
 game/teleport-02
-	bounds: 668, 1171, 40, 42
+	bounds: 1117, 1242, 40, 42
 	offsets: 10, 2, 59, 94
 	rotate: 90
 game/teleport-03
-	bounds: 735, 1269, 40, 43
+	bounds: 1072, 1281, 40, 43
 	offsets: 10, 1, 59, 94
 	rotate: 90
 game/teleport-04
-	bounds: 735, 1227, 40, 43
+	bounds: 1018, 1240, 40, 43
 	offsets: 9, 1, 59, 94
 	rotate: 90
 game/teleport-05
-	bounds: 911, 1276, 40, 44
+	bounds: 1124, 1284, 40, 44
 	offsets: 9, 1, 59, 94
 	rotate: 90
 game/teleport-06
-	bounds: 1066, 1285, 38, 39
+	bounds: 1161, 1207, 38, 39
 	offsets: 10, 4, 59, 94
 	rotate: 90
 game/teleport-07
-	bounds: 849, 1243, 29, 31
+	bounds: 1018, 1209, 29, 31
 	offsets: 15, 8, 59, 94
 	rotate: 90
 game/teleport-08
-	bounds: 1208, 1250, 24, 25
+	bounds: 1216, 1265, 24, 25
 	offsets: 17, 11, 59, 94
 	rotate: 90
 game/teleport-09
-	bounds: 1165, 1207, 16, 16
+	bounds: 1996, 1109, 16, 16
 	offsets: 21, 15, 59, 94
 game/teleport-10
-	bounds: 1114, 1222, 23, 21
+	bounds: 1220, 1320, 23, 21
 	offsets: 18, 12, 59, 94
 	rotate: 90
 game/teleport-11
-	bounds: 1140, 1248, 32, 37
+	bounds: 1109, 1208, 32, 37
 	offsets: 14, 6, 59, 94
 	rotate: 90
 game/teleport-12
-	bounds: 918, 1318, 52, 52
+	bounds: 547, 1078, 52, 52
 	offsets: 5, 4, 59, 94
 game/teleport-13
-	bounds: 612, 1254, 57, 61
+	bounds: 613, 1250, 57, 61
 	offsets: 2, 4, 59, 94
 	rotate: 90
 game/teleport-14
-	bounds: 678, 1313, 57, 63
+	bounds: 746, 1252, 57, 63
 	offsets: 2, 6, 59, 94
 	rotate: 90
 game/teleport-15
-	bounds: 1777, 1213, 59, 68
+	bounds: 1946, 1153, 59, 68
 	offsets: 0, 9, 59, 94
 game/teleport-16
-	bounds: 1928, 1289, 59, 74
+	bounds: 1946, 1223, 59, 74
 	offsets: 0, 10, 59, 94
 game/teleport-17
-	bounds: 1851, 1304, 59, 75
+	bounds: 1873, 1282, 59, 75
 	offsets: 0, 13, 59, 94
-	rotate: 90
 game/teleport-18
-	bounds: 1777, 1283, 59, 74
+	bounds: 1777, 1277, 59, 74
 	offsets: 0, 17, 59, 94
+	rotate: 90
 game/teleport-19
-	bounds: 1989, 1221, 57, 74
+	bounds: 1870, 1206, 57, 74
 	offsets: 1, 18, 59, 94
 game/teleport-20
-	bounds: 1928, 1214, 52, 73
+	bounds: 1995, 1013, 52, 73
 	offsets: 5, 19, 59, 94
 game/teleport-21
-	bounds: 1972, 980, 50, 75
+	bounds: 878, 1320, 50, 75
 	offsets: 6, 19, 59, 94
 	rotate: 90
 game/tile-cliff
-	bounds: 1777, 1359, 72, 70
+	bounds: 1873, 1359, 72, 70
 	offsets: 0, 0, 72, 76
 game/tile-ground
-	bounds: 1851, 1365, 72, 64
+	bounds: 1947, 1365, 72, 64
 game/tile-magma
-	bounds: 1925, 1365, 72, 64
+	bounds: 1947, 1299, 72, 64
 game/tutorial01
 	bounds: 1777, 1842, 101, 134
 	rotate: 90
@@ -407,7 +405,7 @@ game/tutorial12
 	offsets: 1, 0, 102, 134
 	rotate: 90
 game/white
-	bounds: 1996, 1325, 1, 1
+	bounds: 2018, 1281, 1, 1
 
 textures_2.png
 	size: 4096, 4096

@@ -590,6 +590,13 @@ public class GameScreen extends JamScreen {
                         characters.add(skeleton);
                         enemies.add(skeleton);
                         break;
+                    case "succubus":
+                        var succubus = new SuccubusEntity();
+                        succubus.setPosition(x, y);
+                        entityController.add(succubus);
+                        characters.add(succubus);
+                        enemies.add(succubus);
+                        break;
                     default:
                         if (name.startsWith("tutorial")) {
                             var tutorial = new TutorialEntity(name);

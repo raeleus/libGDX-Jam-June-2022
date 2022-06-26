@@ -28,11 +28,13 @@ import static com.ray3k.template.screens.GameScreen.*;
 public class PlayerEntity extends Entity {
     private Array<EnemyEntity> thrustEnemies = new Array<>();
     private Array<EnemyEntity> slashEnemies = new Array<>();
+    private boolean shielding = false;
     
     @Override
     public void create() {
         setSkeletonData(skeletonData, animationData);
-        animationState.setAnimation(0, animationAnimation, true);
+        animationState.setAnimation(0, animationSpawn, true);
+        animationState.addAnimation(0, animationAnimation, true, 0);
         depth = DEPTH_PLAYER;
     }
     
@@ -71,6 +73,8 @@ public class PlayerEntity extends Entity {
     public void takeTurn() {
         thrustEnemies.clear();
         slashEnemies.clear();
+        shielding = false;
+        animationState.setAnimation(1, animationDeshield, false);
         
         switch (mode) {
             case MOVE:
@@ -112,7 +116,7 @@ public class PlayerEntity extends Entity {
                             var thrustGround = (GroundEntity) thrustHex.userObject;
                             for (var enemy : enemies) {
                                 if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
-                                        enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
+                                        enemy.y) && !(enemy instanceof GrenadeDummyEntity) && !(enemy instanceof  GrenadeEntity)) {
                                     thrustGround.skeleton.setColor(Color.RED);
                                     thrustEnemies.add(enemy);
                                     break;
@@ -128,7 +132,7 @@ public class PlayerEntity extends Entity {
                                 var thrustGround = (GroundEntity) thrustHex.userObject;
                                 for (var enemy : enemies) {
                                     if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
-                                            enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
+                                            enemy.y) && !(enemy instanceof GrenadeDummyEntity) && !(enemy instanceof  GrenadeEntity)) {
                                         thrustGround.skeleton.setColor(Color.RED);
                                         thrustEnemies.add(enemy);
                                         break;
@@ -150,7 +154,7 @@ public class PlayerEntity extends Entity {
                                 var slashGround = (GroundEntity) slashHex.userObject;
                                 for (var enemy : enemies) {
                                     if (MathUtils.isEqual(slashGround.x, enemy.x) && MathUtils.isEqual(slashGround.y,
-                                            enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
+                                            enemy.y) && !(enemy instanceof GrenadeDummyEntity) && !(enemy instanceof  GrenadeEntity)) {
                                         slashGround.skeleton.setColor(Color.RED);
                                         slashEnemies.add(enemy);
                                         break;
@@ -208,6 +212,13 @@ public class PlayerEntity extends Entity {
                     sfx_gameSlash.play(sfx * .1f);
                     turn = Turn.PLAYER_MOVING;
                     controlsButtonGroup.uncheckAll();
+                    
+                    animationState.setAnimation(0, animationSmack, false);
+                    animationState.addAnimation(0, animationAnimation, true, 0);
+                    if (powers.contains(Power.HOLY_LIGHT, true)) {
+                        animationState.setAnimation(1, animationShield, false);
+                        shielding = true;
+                    }
             
                     var q = hex.q;
                     var r = hex.r;
@@ -330,7 +341,7 @@ public class PlayerEntity extends Entity {
                         var thrustGround = (GroundEntity) thrustHex.userObject;
                         for (var enemy : enemies) {
                             if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
-                                    enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
+                                    enemy.y) && !(enemy instanceof GrenadeDummyEntity) && !(enemy instanceof  GrenadeEntity)) {
                                 thrustGround.skeleton.setColor(Color.RED);
                                 thrustEnemies.add(enemy);
                                 break;
@@ -346,7 +357,7 @@ public class PlayerEntity extends Entity {
                             var thrustGround = (GroundEntity) thrustHex.userObject;
                             for (var enemy : enemies) {
                                 if (MathUtils.isEqual(thrustGround.x, enemy.x) && MathUtils.isEqual(thrustGround.y,
-                                        enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
+                                        enemy.y) && !(enemy instanceof GrenadeDummyEntity) && !(enemy instanceof  GrenadeEntity)) {
                                     thrustGround.skeleton.setColor(Color.RED);
                                     thrustEnemies.add(enemy);
                                     break;
@@ -368,7 +379,7 @@ public class PlayerEntity extends Entity {
                         var slashGround = (GroundEntity) slashHex.userObject;
                         for (var enemy : enemies) {
                             if (MathUtils.isEqual(slashGround.x, enemy.x) && MathUtils.isEqual(slashGround.y,
-                                    enemy.y) && !(enemy instanceof GrenadeDummyEntity)) {
+                                    enemy.y) && !(enemy instanceof GrenadeDummyEntity) && !(enemy instanceof  GrenadeEntity)) {
                                 slashGround.skeleton.setColor(Color.RED);
                                 slashEnemies.add(enemy);
                                 break;
@@ -444,6 +455,7 @@ public class PlayerEntity extends Entity {
                     tridentEntity = new TridentEntity();
                     tridentEntity.setPosition(player.x, player.y);
                     entityController.add(tridentEntity);
+                    tridentEntity.skeleton.getRootBone().setRotation(Utils.pointDirection(player, ground));
                     tridentEntity.moveTowardsTarget(600f, ground.x, ground.y);
                     
                     for (var enemy : enemies) {
@@ -561,7 +573,8 @@ public class PlayerEntity extends Entity {
                         break;
                     case "Blood of the Lamb":
                         image.setDrawable(skin, "icon-lamb");
-                        descriptionLabel.setText("+1 energy pips");
+                        descriptionLabel.setText("+1 energy pips\nCOSTS 1 MAX HEALTH");
+                        if (health <= 1) button.setDisabled(true);
                         if (powers.contains(Power.BLOOD_OF_THE_LAMB, true)) button = null;
                         break;
                     case "Parting the Red Sea":
@@ -581,7 +594,8 @@ public class PlayerEntity extends Entity {
                         break;
                     case "Body of Christ":
                         image.setDrawable(skin, "icon-body");
-                        descriptionLabel.setText("Restore 1 health after 3 consecutive kills");
+                        descriptionLabel.setText("Restore 1 health after 3 consecutive kills\nCOSTS 2 MAX HEALTH");
+                        if (health <= 2) button.setDisabled(true);
                         if (powers.contains(Power.BODY_OF_CHRIST, true)) button = null;
                         break;
                     case "Lance of Longinus":
@@ -596,12 +610,14 @@ public class PlayerEntity extends Entity {
                         break;
                     case "Holy Trinity":
                         image.setDrawable(skin, "icon-trinity");
-                        descriptionLabel.setText("Restore trident, strike, and energy");
+                        descriptionLabel.setText("Restore trident, strike, and energy\nCOSTS 2 MAX HEALTH");
+                        if (health <= 2) button.setDisabled(true);
                         if (powers.contains(Power.HOLY_TRINITY, true)) button = null;
                         break;
                     case "Godspeed":
                         image.setDrawable(skin, "icon-godspeed");
-                        descriptionLabel.setText("Additional action after 3 consecutive kills");
+                        descriptionLabel.setText("Additional action after 3 consecutive kills\nCOSTS 2 MAX HEALTH");
+                        if (health <= 2) button.setDisabled(true);
                         if (powers.contains(Power.GODSPEED, true)) button = null;
                         break;
                     case "Crown of Thorns":
@@ -611,33 +627,38 @@ public class PlayerEntity extends Entity {
                         break;
                     case "Holy Light":
                         image.setDrawable(skin, "icon-holy-light");
-                        descriptionLabel.setText("Shield while striking");
+                        descriptionLabel.setText("Block 1 attack after striking\nCOSTS 1 MAX HEALTH");
+                        if (health <= 1) button.setDisabled(true);
                         if (powers.contains(Power.HOLY_LIGHT, true)) button = null;
                         break;
                     case "Noah's Dove":
                         image.setDrawable(skin, "icon-dove");
-                        descriptionLabel.setText("Recall trident to your hand. COSTS 1 MAX HEALTH");
+                        descriptionLabel.setText("Recall trident to your hand\nCOSTS 1 MAX HEALTH");
                         if (health <= 1) button.setDisabled(true);
                         if (powers.contains(Power.NOAHS_DOVE, true)) button = null;
                         break;
                     case "Mark of the Beast":
                         image.setDrawable(skin, "icon-beast");
-                        descriptionLabel.setText("Stun surrounding enemies after landing a dash");
+                        descriptionLabel.setText("Stun surrounding enemies after landing a dash\nCOSTS 2 MAX HEALTH");
+                        if (health <= 2) button.setDisabled(true);
                         if (powers.contains(Power.MARK_OF_THE_BEAST, true)) button = null;
                         break;
                     case "Holy Grail":
                         image.setDrawable(skin, "icon-grail");
-                        descriptionLabel.setText("Survive death once");
+                        descriptionLabel.setText("Survive death once\nCOSTS 2 MAX HEALTH");
+                        if (health <= 2) button.setDisabled(true);
                         if (powers.contains(Power.HOLY_GRAIL, true)) button = null;
                         break;
                     case "Arc of the Covenant":
                         image.setDrawable(skin, "icon-arc");
-                        descriptionLabel.setText("Use the raw power of God instead of the trident");
+                        descriptionLabel.setText("Use the raw power of God instead of the trident\nCOSTS 2 MAX HEALTH");
+                        if (health <= 2) button.setDisabled(true);
                         if (powers.contains(Power.ARC_OF_THE_COVENANT, true)) button = null;
                         break;
                     case "Christ the Redeemer":
                         image.setDrawable(skin, "icon-redeemer");
-                        descriptionLabel.setText("Restore 1 health every level");
+                        descriptionLabel.setText("Restore 1 health every level\nCOSTS 2 MAX HEALTH");
+                        if (health <= 2) button.setDisabled(true);
                         if (powers.contains(Power.CHRIST_THE_REDEEMER, true)) button = null;
                         break;
                 }
@@ -705,6 +726,9 @@ public class PlayerEntity extends Entity {
                                         break;
                                     case "Blood of the Lamb":
                                         powers.add(Power.BLOOD_OF_THE_LAMB);
+                                        health--;
+                                        maxHealth--;
+                                        refreshHealthTable();
                                         break;
                                     case "Parting the Red Sea":
                                         powers.add(Power.PARTING_THE_RED_SEA);
@@ -718,6 +742,9 @@ public class PlayerEntity extends Entity {
                                         break;
                                     case "Body of Christ":
                                         powers.add(Power.BODY_OF_CHRIST);
+                                        health -= 2;
+                                        maxHealth -= 2;
+                                        refreshHealthTable();
                                         break;
                                     case "Lance of Longinus":
                                         powers.add(Power.LANCE_OF_LONGINUS);
@@ -727,15 +754,24 @@ public class PlayerEntity extends Entity {
                                         break;
                                     case "Holy Trinity":
                                         powers.add(Power.HOLY_TRINITY);
+                                        health -= 2;
+                                        maxHealth -= 2;
+                                        refreshHealthTable();
                                         break;
                                     case "Godspeed":
                                         powers.add(Power.GODSPEED);
+                                        health -= 2;
+                                        maxHealth -= 2;
+                                        refreshHealthTable();
                                         break;
                                     case "Crown of Thorns":
                                         powers.add(Power.CROWN_OF_THORNS);
                                         break;
                                     case "Holy Light":
                                         powers.add(Power.HOLY_LIGHT);
+                                        health--;
+                                        maxHealth--;
+                                        refreshHealthTable();
                                         break;
                                     case "Noah's Dove":
                                         powers.add(Power.NOAHS_DOVE);
@@ -745,15 +781,27 @@ public class PlayerEntity extends Entity {
                                         break;
                                     case "Mark of the Beast":
                                         powers.add(Power.MARK_OF_THE_BEAST);
+                                        health -= 2;
+                                        maxHealth -= 2;
+                                        refreshHealthTable();
                                         break;
                                     case "Holy Grail":
                                         powers.add(Power.HOLY_GRAIL);
+                                        health -= 2;
+                                        maxHealth -= 2;
+                                        refreshHealthTable();
                                         break;
                                     case "Arc of the Covenant":
                                         powers.add(Power.ARC_OF_THE_COVENANT);
+                                        health -= 2;
+                                        maxHealth -= 2;
+                                        refreshHealthTable();
                                         break;
                                     case "Christ the Redeemer":
                                         powers.add(Power.CHRIST_THE_REDEEMER);
+                                        health -= 2;
+                                        maxHealth -= 2;
+                                        refreshHealthTable();
                                         break;
                                 }
                             }
@@ -768,31 +816,37 @@ public class PlayerEntity extends Entity {
     }
     
     public void hurt() {
-        sfx_gamePlayerHurt.play(sfx);
-        health--;
-        refreshHealthTable();
-        if (health == 0) {
-            destroy = true;
-            sfx_gamePlayerDie.play(sfx);
-            var anim = new AnimationEntity(skeletonData, animationData, animationDie, x, y);
-            entityController.add(anim);
+        if (shielding) {
+            shielding = false;
+            animationState.setAnimation(1, animationDeshield, false);
+        } else {
+            sfx_gamePlayerHurt.play(sfx);
+            health--;
+            refreshHealthTable();
+            if (health == 0) {
+                destroy = true;
+                sfx_gamePlayerDie.play(sfx);
+                var anim = new AnimationEntity(skeletonData, animationData, animationDie, x, y);
+                entityController.add(anim);
+        
+                anim = new AnimationEntity(SpineBlood.skeletonData, SpineBlood.animationData,
+                        SpineBlood.animationAnimation, x, y);
+                entityController.add(anim);
     
-            anim = new AnimationEntity(SpineBlood.skeletonData, SpineBlood.animationData, SpineBlood.animationAnimation, x, y);
-            entityController.add(anim);
-            
-            stage.addAction(Actions.delay(5f, Actions.run(() -> core.transition(new MenuScreen()))));
-    
-            if (bgm_game.isPlaying()) {
-                stage.addAction(new Action() {
-                    @Override
-                    public boolean act(float delta) {
-                        bgm_game.setVolume(Utils.approach(bgm_game.getVolume(), 0, .25f * delta));
-                        if (MathUtils.isZero(bgm_game.getVolume())) {
-                            bgm_game.stop();
-                            return true;
-                        } else return false;
-                    }
-                });
+                stage.addAction(Actions.delay(5f, Actions.run(() -> core.transition(new MenuScreen()))));
+        
+                if (bgm_game.isPlaying()) {
+                    stage.addAction(new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            bgm_game.setVolume(Utils.approach(bgm_game.getVolume(), 0, .25f * delta));
+                            if (MathUtils.isZero(bgm_game.getVolume())) {
+                                bgm_game.stop();
+                                return true;
+                            } else return false;
+                        }
+                    });
+                }
             }
         }
     }
