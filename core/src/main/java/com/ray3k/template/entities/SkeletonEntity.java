@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response.Result;
 import com.lol.fraud.HexTile;
@@ -71,7 +72,9 @@ public class SkeletonEntity extends EnemyEntity {
                     HexTile targetHex = path.get(pathHead);
                     var ground = (GroundEntity) targetHex.userObject;
                     if (targetHex.weight == 0) {
-                        moveTowardsTarget(300f, ground.x, ground.y);
+                        stage.addAction(Actions.delay(.25f, Actions.run(() -> {
+                            moveTowardsTarget(300f, ground.x, ground.y);
+                        })));
                         pathHead.weight = 0;
                         targetHex.weight = 100;
                     }
@@ -104,6 +107,7 @@ public class SkeletonEntity extends EnemyEntity {
             }
             
             if (!blocked) {
+                sfx_gameBow.play(sfx);
                 player.hurt();
     
                 var arrow = new ArrowEntity();

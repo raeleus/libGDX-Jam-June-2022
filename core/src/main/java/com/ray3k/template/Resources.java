@@ -34,6 +34,8 @@ public class Resources {
 
     public static Sound sfx_gameBlessing;
 
+    public static Sound sfx_gameBow;
+
     public static Sound sfx_gameBurn;
 
     public static Sound sfx_gameDash;
@@ -493,6 +495,7 @@ public class Resources {
         SkinSkinStyles.wAbility = skin_skin.get("ability", Window.WindowStyle.class);
         sfx_click = assetManager.get("sfx/click.mp3");
         sfx_gameBlessing = assetManager.get("sfx/game/blessing.mp3");
+        sfx_gameBow = assetManager.get("sfx/game/bow.mp3");
         sfx_gameBurn = assetManager.get("sfx/game/burn.mp3");
         sfx_gameDash = assetManager.get("sfx/game/dash.mp3");
         sfx_gameExplosionBig = assetManager.get("sfx/game/explosion-big.mp3");

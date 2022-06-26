@@ -1,5 +1,6 @@
 sfx/click.mp3
 sfx/game/blessing.mp3
+sfx/game/bow.mp3
 sfx/game/burn.mp3
 sfx/game/dash.mp3
 sfx/game/explosion-big.mp3

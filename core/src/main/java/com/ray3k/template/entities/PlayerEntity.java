@@ -205,7 +205,7 @@ public class PlayerEntity extends Entity {
         for (var hex : targetHexes) {
             if (hex != null && hex.userObject instanceof GroundEntity) {
                 if (adjacentHexes.contains(hex) && isButtonJustPressed(Buttons.LEFT)) {
-                    sfx_gameSlash.play(sfx * .5f);
+                    sfx_gameSlash.play(sfx * .1f);
                     turn = Turn.PLAYER_MOVING;
                     controlsButtonGroup.uncheckAll();
             
@@ -297,7 +297,7 @@ public class PlayerEntity extends Entity {
     private void dashTurn() {
         var playerHex = hexUtils.pixelToGridHex(temp.set(player.x, player.y));
         var adjacentHexes = hexUtils.getHexesInRadius(playerHex, 1);
-        var dashHexes = hexUtils.getHexesInRadius(playerHex, 2);
+        var dashHexes = hexUtils.getHexesInRadius(playerHex, powers.contains(Power.WINGS_OF_MICHAEL, true) ? 3 : 2);
         dashHexes.removeAll(adjacentHexes);
         var iter = dashHexes.iterator();
         while (iter.hasNext()) {
@@ -318,13 +318,13 @@ public class PlayerEntity extends Entity {
             if (dashHexes.contains(targetHex)) {
                 var q = playerHex.q;
                 var r = playerHex.r;
-                var deltaQ = MathUtils.clamp(targetHex.q - playerHex.q, -1, 1);
-                var deltaR = MathUtils.clamp(targetHex.r - playerHex.r, -1, 1);
+                var deltaQ = MathUtils.clamp(targetHex.q - q, -1, 1);
+                var deltaR = MathUtils.clamp(targetHex.r - r, -1, 1);
     
                 //check for thrust
                 if (hasTrident && (deltaQ != 0 || deltaR != 0)) {
-                    var thrustQ = playerHex.q + deltaQ * 3;
-                    var thrustR = playerHex.r + deltaR * 3;
+                    var thrustQ = targetHex.q + deltaQ;
+                    var thrustR = targetHex.r + deltaR;
                     var thrustHex = hexUtils.getTile(thrustQ, thrustR, -thrustQ - thrustR);
                     if (thrustHex != null && thrustHex.userObject instanceof GroundEntity) {
                         var thrustGround = (GroundEntity) thrustHex.userObject;
@@ -339,8 +339,8 @@ public class PlayerEntity extends Entity {
                     }
     
                     if (thrustEnemies.size > 0 && powers.contains(Power.LANCE_OF_LONGINUS, true)) {
-                        thrustQ = playerHex.q + deltaQ * 4;
-                        thrustR = playerHex.r + deltaR * 4;
+                        thrustQ = targetHex.q + deltaQ * 2;
+                        thrustR = targetHex.r + deltaR * 2;
                         thrustHex = hexUtils.getTile(thrustQ, thrustR, -thrustQ - thrustR);
                         if (thrustHex != null && thrustHex.userObject instanceof GroundEntity) {
                             var thrustGround = (GroundEntity) thrustHex.userObject;
@@ -439,7 +439,7 @@ public class PlayerEntity extends Entity {
                     turn = Turn.PLAYER_MOVING;
                     controlsButtonGroup.uncheckAll();
                     hasTrident = false;
-                    throwButton.setDisabled(true);
+                    if (!powers.contains(Power.NOAHS_DOVE, true)) throwButton.setDisabled(true);
                     
                     tridentEntity = new TridentEntity();
                     tridentEntity.setPosition(player.x, player.y);
@@ -449,7 +449,7 @@ public class PlayerEntity extends Entity {
                     for (var enemy : enemies) {
                         if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) {
                             enemy.hurt();
-                            sfx_gameSlash.play(sfx * .5f);
+                            sfx_gameSlash.play(sfx * .1f);
                             break;
                         }
                     }
@@ -461,7 +461,7 @@ public class PlayerEntity extends Entity {
     public void completeMoving() {
         if (!moveTargetActivated) {
             if (thrustEnemies.size > 0 || slashEnemies.size > 0) {
-                sfx_gameSlash.play(sfx * .5f);
+                sfx_gameSlash.play(sfx * .1f);
                 
                 if (thrustEnemies.size > 0) {
                     animationState.setAnimation(0, animationTrident, false);
@@ -480,10 +480,7 @@ public class PlayerEntity extends Entity {
                 }
                 slashEnemies.clear();
             }
-            
-//            stage.addAction(Actions.delay(enemies.size == 0 ? 0f : .25f, Actions.run(() -> {
-                turn = Turn.ENEMY;
-//            })));
+            turn = Turn.ENEMY;
         }
         
         if (pentagramEntity != null && MathUtils.isEqual(x, pentagramEntity.x) && MathUtils.isEqual(y, pentagramEntity.y)) {
@@ -619,7 +616,8 @@ public class PlayerEntity extends Entity {
                         break;
                     case "Noah's Dove":
                         image.setDrawable(skin, "icon-dove");
-                        descriptionLabel.setText("Recall trident to your hand");
+                        descriptionLabel.setText("Recall trident to your hand. COSTS 1 MAX HEALTH");
+                        if (health <= 1) button.setDisabled(true);
                         if (powers.contains(Power.NOAHS_DOVE, true)) button = null;
                         break;
                     case "Mark of the Beast":
@@ -651,96 +649,113 @@ public class PlayerEntity extends Entity {
                     table.defaults().left();
                     var buttonLabel = new Label(blessing, skin, "title");
                     table.add(buttonLabel);
-    
+                    
                     table.row();
                     table.add(descriptionLabel);
     
+                    if (button.isDisabled()) {
+                        button.setColor(Color.DARK_GRAY);
+                        buttonLabel.setColor(Color.DARK_GRAY);
+                        image.setColor(Color.DARK_GRAY);
+                        descriptionLabel.setColor(Color.DARK_GRAY);
+                    }
+                    
                     var finalButton = button;
                     button.addListener(new ClickListener() {
                         @Override
                         public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                             super.enter(event, x, y, pointer, fromActor);
-                            finalButton.setColor(Color.RED);
-                            buttonLabel.setColor(Color.RED);
-                            image.setColor(Color.RED);
-                            descriptionLabel.setColor(Color.RED);
+                            if (!finalButton.isDisabled()) {
+                                finalButton.setColor(Color.RED);
+                                buttonLabel.setColor(Color.RED);
+                                image.setColor(Color.RED);
+                                descriptionLabel.setColor(Color.RED);
+                            }
                         }
         
                         @Override
                         public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
                             super.exit(event, x, y, pointer, toActor);
-                            finalButton.setColor(Color.WHITE);
-                            buttonLabel.setColor(Color.WHITE);
-                            image.setColor(Color.WHITE);
-                            descriptionLabel.setColor(Color.WHITE);
+                            if (!finalButton.isDisabled()) {
+                                finalButton.setColor(Color.WHITE);
+                                buttonLabel.setColor(Color.WHITE);
+                                image.setColor(Color.WHITE);
+                                descriptionLabel.setColor(Color.WHITE);
+                            }
                         }
         
                         @Override
                         public void clicked(InputEvent event, float x, float y) {
-                            pop.hide();
+                            if (!finalButton.isDisabled()) {
+                                pop.hide();
+                                sfx_gameBlessing.play(sfx);
     
-                            switch (blessing) {
-                                case "Holy Blessing":
-                                    health = maxHealth;
-                                    refreshHealthTable();
-                                    break;
-                                case "Blood of Christ":
-                                    health++;
-                                    maxHealth++;
-                                    refreshHealthTable();
-                                    break;
-                                case "Strength of Samson":
-                                    powers.add(Power.STRENGTH_OF_SAMSON);
-                                    break;
-                                case "Blood of the Lamb":
-                                    powers.add(Power.BLOOD_OF_THE_LAMB);
-                                    break;
-                                case "Parting the Red Sea":
-                                    powers.add(Power.PARTING_THE_RED_SEA);
-                                    break;
-                                case "Patience of Job":
-                                    powers.add(Power.PATIENCE_OF_JOB);
-                                    refreshControlsTable();
-                                    break;
-                                case "Faith of David":
-                                    powers.add(Power.FAITH_OF_DAVID);
-                                    break;
-                                case "Body of Christ":
-                                    powers.add(Power.BODY_OF_CHRIST);
-                                    break;
-                                case "Lance of Longinus":
-                                    powers.add(Power.LANCE_OF_LONGINUS);
-                                    break;
-                                case "Wings of Michael":
-                                    powers.add(Power.WINGS_OF_MICHAEL);
-                                    break;
-                                case "Holy Trinity":
-                                    powers.add(Power.HOLY_TRINITY);
-                                    break;
-                                case "Godspeed":
-                                    powers.add(Power.GODSPEED);
-                                    break;
-                                case "Crown of Thorns":
-                                    powers.add(Power.CROWN_OF_THORNS);
-                                    break;
-                                case "Holy Light":
-                                    powers.add(Power.HOLY_LIGHT);
-                                    break;
-                                case "Noah's Dove":
-                                    powers.add(Power.NOAHS_DOVE);
-                                    break;
-                                case "Mark of the Beast":
-                                    powers.add(Power.MARK_OF_THE_BEAST);
-                                    break;
-                                case "Holy Grail":
-                                    powers.add(Power.HOLY_GRAIL);
-                                    break;
-                                case "Arc of the Covenant":
-                                    powers.add(Power.ARC_OF_THE_COVENANT);
-                                    break;
-                                case "Christ the Redeemer":
-                                    powers.add(Power.CHRIST_THE_REDEEMER);
-                                    break;
+                                switch (blessing) {
+                                    case "Holy Blessing":
+                                        health = maxHealth;
+                                        refreshHealthTable();
+                                        break;
+                                    case "Blood of Christ":
+                                        health++;
+                                        maxHealth++;
+                                        refreshHealthTable();
+                                        break;
+                                    case "Strength of Samson":
+                                        powers.add(Power.STRENGTH_OF_SAMSON);
+                                        break;
+                                    case "Blood of the Lamb":
+                                        powers.add(Power.BLOOD_OF_THE_LAMB);
+                                        break;
+                                    case "Parting the Red Sea":
+                                        powers.add(Power.PARTING_THE_RED_SEA);
+                                        break;
+                                    case "Patience of Job":
+                                        powers.add(Power.PATIENCE_OF_JOB);
+                                        refreshControlsTable();
+                                        break;
+                                    case "Faith of David":
+                                        powers.add(Power.FAITH_OF_DAVID);
+                                        break;
+                                    case "Body of Christ":
+                                        powers.add(Power.BODY_OF_CHRIST);
+                                        break;
+                                    case "Lance of Longinus":
+                                        powers.add(Power.LANCE_OF_LONGINUS);
+                                        break;
+                                    case "Wings of Michael":
+                                        powers.add(Power.WINGS_OF_MICHAEL);
+                                        break;
+                                    case "Holy Trinity":
+                                        powers.add(Power.HOLY_TRINITY);
+                                        break;
+                                    case "Godspeed":
+                                        powers.add(Power.GODSPEED);
+                                        break;
+                                    case "Crown of Thorns":
+                                        powers.add(Power.CROWN_OF_THORNS);
+                                        break;
+                                    case "Holy Light":
+                                        powers.add(Power.HOLY_LIGHT);
+                                        break;
+                                    case "Noah's Dove":
+                                        powers.add(Power.NOAHS_DOVE);
+                                        health--;
+                                        maxHealth--;
+                                        refreshHealthTable();
+                                        break;
+                                    case "Mark of the Beast":
+                                        powers.add(Power.MARK_OF_THE_BEAST);
+                                        break;
+                                    case "Holy Grail":
+                                        powers.add(Power.HOLY_GRAIL);
+                                        break;
+                                    case "Arc of the Covenant":
+                                        powers.add(Power.ARC_OF_THE_COVENANT);
+                                        break;
+                                    case "Christ the Redeemer":
+                                        powers.add(Power.CHRIST_THE_REDEEMER);
+                                        break;
+                                }
                             }
                         }
                     });

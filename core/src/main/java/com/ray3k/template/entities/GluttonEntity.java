@@ -2,6 +2,7 @@ package com.ray3k.template.entities;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response.Result;
 import com.lol.fraud.HexTile;
@@ -53,21 +54,25 @@ public class GluttonEntity extends EnemyEntity {
     
     @Override
     public void takeTurn() {
-        var pathHead = hexUtils.pixelToGridHex(temp.set(x, y));
-        var pathTail = hexUtils.pixelToGridHex(temp.set(player.x, player.y));
-        if (pathTail != null) {
-            if (pathTail.userObject instanceof GroundEntity) {
-                var path = hexUtils.getPath(pathTail, pathHead);
-                if (path.get(pathHead) != null) {
-                    HexTile targetHex = path.get(pathHead);
-                    var ground = (GroundEntity) targetHex.userObject;
-                    if (targetHex.weight == 0) {
-                        moveTowardsTarget(300f, ground.x, ground.y);
-                        pathHead.weight = 0;
-                        targetHex.weight = 100;
-                    } else if (MathUtils.isEqual(ground.x, player.x) && MathUtils.isEqual(ground.y, player.y)) {
-                        player.hurt();
-                        if (powers.contains(Power.CROWN_OF_THORNS, true)) hurt();
+        if (!moveTargetActivated) {
+            var pathHead = hexUtils.pixelToGridHex(temp.set(x, y));
+            var pathTail = hexUtils.pixelToGridHex(temp.set(player.x, player.y));
+            if (pathTail != null) {
+                if (pathTail.userObject instanceof GroundEntity) {
+                    var path = hexUtils.getPath(pathTail, pathHead);
+                    if (path.get(pathHead) != null) {
+                        HexTile targetHex = path.get(pathHead);
+                        var ground = (GroundEntity) targetHex.userObject;
+                        if (targetHex.weight == 0) {
+                            stage.addAction(Actions.delay(.25f, Actions.run(() -> {
+                                moveTowardsTarget(300f, ground.x, ground.y);
+                            })));
+                            pathHead.weight = 0;
+                            targetHex.weight = 100;
+                        } else if (MathUtils.isEqual(ground.x, player.x) && MathUtils.isEqual(ground.y, player.y)) {
+                            player.hurt();
+                            if (powers.contains(Power.CROWN_OF_THORNS, true)) hurt();
+                        }
                     }
                 }
             }

@@ -10,6 +10,7 @@ import com.esotericsoftware.spine.AnimationStateData;
 import com.esotericsoftware.spine.SkeletonData;
 
 public class AnimationEntity extends Entity {
+    public boolean killOnCompletion = true;
     public AnimationEntity(SkeletonData skeletonData, AnimationStateData animationStateData, Animation animation, float x, float y) {
         setSkeletonData(skeletonData, animationStateData);
         setPosition(x, y);
@@ -17,7 +18,7 @@ public class AnimationEntity extends Entity {
         animationState.addListener(new AnimationStateAdapter() {
             @Override
             public void complete(TrackEntry entry) {
-                if (entry.getTrackIndex() == 0) destroy = true;
+                if (killOnCompletion && entry.getTrackIndex() == 0) destroy = true;
             }
         });
     }

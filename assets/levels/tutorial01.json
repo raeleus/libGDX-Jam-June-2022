@@ -42,11 +42,7 @@
         },
         {"name": "satan_dummy", "id": 3, "_eid": "99682646", "x": 504, "y": 192, "originX": 18.5, "originY": 16.5},
         {"name": "player", "id": 15, "_eid": "99143148", "x": 450, "y": 352, "originX": 12, "originY": 15},
-        {"name": "snake", "id": 16, "_eid": "99142381", "x": 612, "y": 256, "originX": 21, "originY": 25},
-        {"name": "snake", "id": 17, "_eid": "99142381", "x": 666, "y": 224, "originX": 21, "originY": 25},
-        {"name": "snake", "id": 18, "_eid": "99142381", "x": 504, "y": 384, "originX": 21, "originY": 25},
-        {"name": "snake", "id": 19, "_eid": "99142381", "x": 504, "y": 320, "originX": 21, "originY": 25},
-        {"name": "snake", "id": 20, "_eid": "99142381", "x": 450, "y": 288, "originX": 21, "originY": 25}
+        {"name": "glutton", "id": 26, "_eid": "99150998", "x": 612, "y": 256, "originX": 11, "originY": 12.5}
       ]
     },
     {

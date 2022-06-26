@@ -746,8 +746,34 @@ public class GameScreen extends JamScreen {
         controlsTable.add(throwButton).size(50, 50);
         controlsButtonGroup.add(throwButton);
         Utils.onChange(throwButton, () -> {
-            if (throwButton.isChecked()) mode = Mode.THROW;
-            else mode = Mode.MOVE;
+            if (throwButton.isChecked()) {
+                if (hasTrident) mode = Mode.THROW;
+                else {
+                    hasTrident = true;
+                    mode = Mode.WAIT;
+                    turn = Turn.PLAYER_MOVING;
+                    controlsButtonGroup.uncheckAll();
+    
+                    if (tridentEntity != null) {
+                        var anim = new AnimationEntity(SpineTrident.skeletonData, SpineTrident.animationData, SpineTrident.animationAnimation, tridentEntity.x, tridentEntity.y);
+                        entityController.add(anim);
+                        tridentEntity.destroy = true;
+                        tridentEntity = null;
+                        
+                        anim.moveTowardsTarget(600f, player.x, player.y);
+                        anim.killOnCompletion = false;
+                        stage.addAction(new Action() {
+                            @Override
+                            public boolean act(float delta) {
+                                if (!anim.moveTargetActivated) {
+                                    anim.destroy = true;
+                                    return true;
+                                } else return false;
+                            }
+                        });
+                    }
+                }
+            } else mode = Mode.MOVE;
         });
     
         if (powers.contains(Power.PATIENCE_OF_JOB, true)) {
