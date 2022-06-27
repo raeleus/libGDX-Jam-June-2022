@@ -55,7 +55,6 @@ public class GluttonEntity extends EnemyEntity {
     
     @Override
     public void colorIntentTiles() {
-        System.out.println("color");
         var hex = hexUtils.pixelToGridHex(temp.set(x, y));
         var targetHexes = hexUtils.getHexesInRadius(hex, 1);
         for (var targetHex : targetHexes) {

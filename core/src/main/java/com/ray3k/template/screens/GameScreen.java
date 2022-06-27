@@ -85,6 +85,7 @@ public class GameScreen extends JamScreen {
     public static String nextLevel;
     public static int killStreak;
     public static boolean killedThisTurn;
+    public static boolean skipEnemyTurn;
     
     public GameScreen(String level) {
         this.level = level;
@@ -99,6 +100,7 @@ public class GameScreen extends JamScreen {
         super.show();
         killStreak = 0;
         killedThisTurn = false;
+        skipEnemyTurn = false;
         energy = maxEnergy;
         grounds.clear();
         lavas.clear();
@@ -428,7 +430,12 @@ public class GameScreen extends JamScreen {
                     enemy.completeMoving();
                     if (enemy.moveTargetActivated) done = false;
                 }
-                if (done) turn = Turn.ENEMY;
+                if (done) {
+                    if (skipEnemyTurn) {
+                        skipEnemyTurn = false;
+                        turn = Turn.PLAYER;
+                    } else turn = Turn.ENEMY;
+                }
             }
         } else if (turn == Turn.ENEMY) {
             for (int i = 0; i < enemies.size; i++) {
@@ -444,10 +451,33 @@ public class GameScreen extends JamScreen {
             }
             if (done) {
                 turn = Turn.PLAYER;
-                if (killedThisTurn) killStreak++;
-                else killStreak = 0;
+                if (killedThisTurn) {
+                    killStreak++;
+                    if (killStreak >= 3) {
+                        if (powers.contains(Power.BODY_OF_CHRIST, true)) {
+                            health = Utils.approach(health, maxHealth, 1);
+                            refreshHealthTable();
+                        }
+                        
+                        if (powers.contains(Power.HOLY_TRINITY, true)) {
+                            energy = maxEnergy;
+                            refreshEnergyTable();
+                            if (tridentEntity != null) {
+                                tridentEntity.destroy = true;
+                                tridentEntity = null;
+                            }
+                            hasTrident = true;
+                            throwButton.setDisabled(false);
+                        }
+                        
+                        if (powers.contains(Power.GODSPEED, true)) {
+                            skipEnemyTurn = true;
+                        }
+                        
+                        killStreak = 0;
+                    }
+                } else killStreak = 0;
                 killedThisTurn = false;
-                System.out.println("killStreak = " + killStreak);
             }
         }
     }

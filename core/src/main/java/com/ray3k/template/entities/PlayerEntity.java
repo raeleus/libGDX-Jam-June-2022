@@ -614,7 +614,7 @@ public class PlayerEntity extends Entity {
                         break;
                     case "Holy Trinity":
                         image.setDrawable(skin, "icon-trinity");
-                        descriptionLabel.setText("Restore trident, strike, and energy\nCOSTS 2 MAX HEALTH");
+                        descriptionLabel.setText("Restore trident and energy after 3 consecutive kills\nCOSTS 2 MAX HEALTH");
                         if (health <= 2) button.setDisabled(true);
                         if (powers.contains(Power.HOLY_TRINITY, true)) button = null;
                         break;
