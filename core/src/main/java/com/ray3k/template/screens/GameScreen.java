@@ -86,6 +86,7 @@ public class GameScreen extends JamScreen {
     public static int killStreak;
     public static boolean killedThisTurn;
     public static boolean skipEnemyTurn;
+    public static boolean wolfMode;
     
     public GameScreen(String level) {
         this.level = level;
@@ -187,7 +188,7 @@ public class GameScreen extends JamScreen {
             var jsonValue = jsonReader.parse(Gdx.files.internal("dialogs.json"));
             var satanImage = new Image(skin, "portrait-satan");
             satanImage.setScaling(Scaling.fit);
-            var sonImage = new Image(skin, "portrait-son");
+            var sonImage = new Image(skin, wolfMode ? "portrait-son-wolf" : "portrait-son");
             sonImage.setScaling(Scaling.fit);
             switch (index) {
                 case 1:
@@ -333,6 +334,8 @@ public class GameScreen extends JamScreen {
     
                         if (currentDialogAudio != null) currentDialogAudio.stop();
                         currentDialogAudio = audioArray.get(progress);
+                        if (wolfMode && imageArray.get(progress) == sonImage) currentDialogAudio = bgm_woof;
+                        currentDialogAudio.setVolume(sfx);
                         currentDialogAudio.play();
     
                         var stack = new Stack();

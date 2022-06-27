@@ -41,11 +41,7 @@
           "values": {"nextRoom": "tutorial02"}
         },
         {"name": "satan_dummy", "id": 3, "_eid": "99682646", "x": 504, "y": 192, "originX": 18.5, "originY": 16.5},
-        {"name": "player", "id": 15, "_eid": "99143148", "x": 450, "y": 352, "originX": 12, "originY": 15},
-        {"name": "snake", "id": 31, "_eid": "99142381", "x": 450, "y": 288, "originX": 21, "originY": 25},
-        {"name": "snake", "id": 32, "_eid": "99142381", "x": 504, "y": 256, "originX": 21, "originY": 25},
-        {"name": "snake", "id": 33, "_eid": "99142381", "x": 558, "y": 224, "originX": 21, "originY": 25},
-        {"name": "glutton", "id": 34, "_eid": "99150998", "x": 396, "y": 384, "originX": 11, "originY": 12.5}
+        {"name": "player", "id": 15, "_eid": "99143148", "x": 450, "y": 352, "originX": 12, "originY": 15}
       ]
     },
     {

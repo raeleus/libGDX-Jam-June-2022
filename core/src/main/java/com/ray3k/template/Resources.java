@@ -178,6 +178,8 @@ public class Resources {
 
     public static Music bgm_second05;
 
+    public static Music bgm_woof;
+
     public static void loadResources(AssetManager assetManager) {
         textures_textures = assetManager.get("textures/textures.atlas");
         SpineArrow.skeletonData = assetManager.get("spine/arrow.json");
@@ -355,6 +357,8 @@ public class Resources {
         SpinePlayer.slotGameTeleport01 = SpinePlayer.skeletonData.findSlot("game/teleport-01");
         SpinePlayer.slotGameShield = SpinePlayer.skeletonData.findSlot("game/shield");
         SpinePlayer.skinDefault = SpinePlayer.skeletonData.findSkin("default");
+        SpinePlayer.skinAntichrist = SpinePlayer.skeletonData.findSkin("antichrist");
+        SpinePlayer.skinWolf = SpinePlayer.skeletonData.findSkin("wolf");
         SpineSatan.skeletonData = assetManager.get("spine/satan.json");
         SpineSatan.animationData = assetManager.get("spine/satan.json-animation");
         SpineSatan.animationAnimation = SpineSatan.skeletonData.findAnimation("animation");
@@ -481,6 +485,7 @@ public class Resources {
         SpineTutorial.skinTutorial10 = SpineTutorial.skeletonData.findSkin("tutorial10");
         SpineTutorial.skinTutorial11 = SpineTutorial.skeletonData.findSkin("tutorial11");
         SpineTutorial.skinTutorial12 = SpineTutorial.skeletonData.findSkin("tutorial12");
+        SpineTutorial.skinTutorial13 = SpineTutorial.skeletonData.findSkin("tutorial13");
         skin_skin = assetManager.get("skin/skin.json");
         SkinSkinStyles.bDefault = skin_skin.get("default", Button.ButtonStyle.class);
         SkinSkinStyles.ibDefault = skin_skin.get("default", ImageButton.ImageButtonStyle.class);
@@ -578,6 +583,7 @@ public class Resources {
         bgm_second03 = assetManager.get("bgm/second03.mp3");
         bgm_second04 = assetManager.get("bgm/second04.mp3");
         bgm_second05 = assetManager.get("bgm/second05.mp3");
+        bgm_woof = assetManager.get("bgm/woof.mp3");
     }
 
     public static class SpineArrow {
@@ -958,6 +964,10 @@ public class Resources {
         public static SlotData slotGameShield;
 
         public static com.esotericsoftware.spine.Skin skinDefault;
+
+        public static com.esotericsoftware.spine.Skin skinAntichrist;
+
+        public static com.esotericsoftware.spine.Skin skinWolf;
     }
 
     public static class SpineSatan {
@@ -1232,6 +1242,8 @@ public class Resources {
         public static com.esotericsoftware.spine.Skin skinTutorial11;
 
         public static com.esotericsoftware.spine.Skin skinTutorial12;
+
+        public static com.esotericsoftware.spine.Skin skinTutorial13;
     }
 
     public static class SkinSkinStyles {

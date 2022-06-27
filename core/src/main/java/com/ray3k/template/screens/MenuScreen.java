@@ -98,13 +98,12 @@ public class MenuScreen extends JamScreen {
         });
     
         var wolfButton = (ImageButton) stage.getRoot().findActor("wolf");
-        wolfButton.setChecked(preferences.getBoolean("wolf", false));
+        wolfButton.setChecked(wolfMode);
         wolfButton.addListener(sndChangeListener);
         wolfButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                preferences.putBoolean("wolf", wolfButton.isChecked());
-                preferences.flush();
+                wolfMode = wolfButton.isChecked();
             }
         });
     }

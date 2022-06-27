@@ -55,3 +55,4 @@ bgm/second02.mp3
 bgm/second03.mp3
 bgm/second04.mp3
 bgm/second05.mp3
+bgm/woof.mp3

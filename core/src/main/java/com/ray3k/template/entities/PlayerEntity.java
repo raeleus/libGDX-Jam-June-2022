@@ -33,6 +33,7 @@ public class PlayerEntity extends Entity {
     @Override
     public void create() {
         setSkeletonData(skeletonData, animationData);
+        skeleton.setSkin(wolfMode ? skinWolf : skinAntichrist);
         animationState.setAnimation(0, animationSpawn, true);
         animationState.addAnimation(0, animationAnimation, true, 0);
         depth = DEPTH_PLAYER;
@@ -195,7 +196,11 @@ public class PlayerEntity extends Entity {
                 var ground = (GroundEntity) hex.userObject;
                 for (var enemy : enemies) {
                     if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) {
-                        ground.skeleton.setColor(Color.RED);
+                        if (enemy instanceof SatanEntity) {
+                            iter.remove();
+                        } else {
+                            ground.skeleton.setColor(Color.RED);
+                        }
                         continue outerLoop;
                     }
                 }

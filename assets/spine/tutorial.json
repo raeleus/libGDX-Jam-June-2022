@@ -1,9 +1,9 @@
 {
 "skeleton": {
-	"hash": "c6Q4QPp2XR0",
+	"hash": "gGhm2nsWcqU",
 	"spine": "4.0.64",
-	"x": -50.5,
-	"width": 101,
+	"x": -51,
+	"width": 102,
 	"height": 134,
 	"images": "",
 	"audio": ""
@@ -108,6 +108,14 @@
 		"attachments": {
 			"game/tutorial01": {
 				"sign": { "name": "game/tutorial12", "y": 67, "width": 102, "height": 134 }
+			}
+		}
+	},
+	{
+		"name": "tutorial13",
+		"attachments": {
+			"game/tutorial01": {
+				"sign": { "name": "game/tutorial13", "y": 67, "width": 102, "height": 134 }
 			}
 		}
 	}
