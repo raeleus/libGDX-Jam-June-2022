@@ -1,5 +1,6 @@
 package com.ray3k.template.entities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -50,6 +51,19 @@ public class GluttonEntity extends EnemyEntity {
     @Override
     public void collision(Collisions collisions) {
     
+    }
+    
+    @Override
+    public void colorIntentTiles() {
+        System.out.println("color");
+        var hex = hexUtils.pixelToGridHex(temp.set(x, y));
+        var targetHexes = hexUtils.getHexesInRadius(hex, 1);
+        for (var targetHex : targetHexes) {
+            if (targetHex != null && targetHex.userObject instanceof  GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                ground.skeleton.setColor(Color.YELLOW);
+            }
+        }
     }
     
     @Override

@@ -83,6 +83,8 @@ public class GameScreen extends JamScreen {
     public static boolean hasTrident = true;
     public static TridentEntity tridentEntity;
     public static String nextLevel;
+    public static int killStreak;
+    public static boolean killedThisTurn;
     
     public GameScreen(String level) {
         this.level = level;
@@ -95,6 +97,8 @@ public class GameScreen extends JamScreen {
     @Override
     public void show() {
         super.show();
+        killStreak = 0;
+        killedThisTurn = false;
         energy = maxEnergy;
         grounds.clear();
         lavas.clear();
@@ -415,26 +419,36 @@ public class GameScreen extends JamScreen {
                     hex.weight = 0;
                 }
             }
+            
             if (!player.destroy) player.takeTurn();
         } else if (turn == Turn.PLAYER_MOVING) {
-            if (!player.destroy) player.completeMoving();
-        } else if (turn == Turn.ENEMY) {
-            if (enemies.size == 0) {
-                turn = Turn.PLAYER;
-            } else {
-                for (int i = 0; i < enemies.size; i++) {
-                    var enemy = enemies.get(i);
-                    if (!enemy.destroy) enemy.takeTurn();
+            if (!player.destroy) {
+                boolean done = player.completeMoving();
+                if (done) for (var enemy : enemies) {
+                    enemy.completeMoving();
+                    if (enemy.moveTargetActivated) done = false;
                 }
-                turn = Turn.ENEMY_MOVING;
+                if (done) turn = Turn.ENEMY;
             }
+        } else if (turn == Turn.ENEMY) {
+            for (int i = 0; i < enemies.size; i++) {
+                var enemy = enemies.get(i);
+                if (!enemy.destroy) enemy.takeTurn();
+            }
+            turn = Turn.ENEMY_MOVING;
         } else if (turn == Turn.ENEMY_MOVING) {
             boolean done = true;
             for (var enemy : enemies) {
                 enemy.completeMoving();
                 if (enemy.moveTargetActivated) done = false;
             }
-            if (done)turn = Turn.PLAYER;
+            if (done) {
+                turn = Turn.PLAYER;
+                if (killedThisTurn) killStreak++;
+                else killStreak = 0;
+                killedThisTurn = false;
+                System.out.println("killStreak = " + killStreak);
+            }
         }
     }
     
@@ -780,6 +794,7 @@ public class GameScreen extends JamScreen {
     
                     if (tridentEntity != null) {
                         var anim = new AnimationEntity(SpineTrident.skeletonData, SpineTrident.animationData, SpineTrident.animationAnimation, tridentEntity.x, tridentEntity.y);
+                        anim.depth = DEPTH_PARTICLES;
                         entityController.add(anim);
                         tridentEntity.destroy = true;
                         tridentEntity = null;

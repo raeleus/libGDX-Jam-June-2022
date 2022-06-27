@@ -6,6 +6,7 @@ import com.ray3k.template.*;
 import static com.ray3k.template.screens.GameScreen.*;
 
 public abstract class EnemyEntity extends Entity {
+    public abstract void colorIntentTiles();
     public abstract void takeTurn();
     public abstract void completeMoving();
     public abstract void hurt();
@@ -22,5 +23,6 @@ public abstract class EnemyEntity extends Entity {
             energy = Utils.approach(energy, maxEnergy, 1);
             refreshEnergyTable();
         }
+        killedThisTurn = true;
     }
 }

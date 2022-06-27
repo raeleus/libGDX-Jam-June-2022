@@ -93,24 +93,32 @@ public class PlayerEntity extends Entity {
     }
     
     private void moveTurn() {
-        temp.set(player.x, player.y);
-        var pathHead = hexUtils.pixelToGridHex(temp);
-        temp.set(mouseX, mouseY);
-        var pathTail = hexUtils.pixelToGridHex(temp);
-        if (pathTail != null && pathTail.weight == 0) {
-            var obj = pathTail.userObject;
-            if (obj instanceof GroundEntity) {
-                var path = hexUtils.getPath(pathTail, pathHead);
-                
-                if (path.get(pathHead) != null) {
-                    HexTile targetHex = path.get(pathHead);
+        var playerHex = hexUtils.pixelToGridHex(temp.set(player.x, player.y));
+        var mouseHex = hexUtils.pixelToGridHex(temp.set(mouseX, mouseY));
+    
+        //enemy intent highlights
+        if (mouseHex != null && mouseHex.userObject instanceof GroundEntity) {
+            var ground = (GroundEntity) mouseHex.userObject;
+            for (var enemy : enemies) {
+                if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) {
+                    enemy.colorIntentTiles();
+                    break;
+                }
+            }
+        }
+        
+        if (mouseHex != null && mouseHex.weight == 0) {
+            if (mouseHex.userObject instanceof GroundEntity) {
+                var path = hexUtils.getPath(mouseHex, playerHex);
+                if (path.get(playerHex) != null) {
+                    HexTile targetHex = path.get(playerHex);
                     if (targetHex.weight == 0) {
                         var ground = (GroundEntity) targetHex.userObject;
                         ground.skeleton.setColor(Color.GREEN);
                         
                         //check for thrust
-                        var thrustQ = pathHead.q + (targetHex.q - pathHead.q) * 2;
-                        var thrustR = pathHead.r + (targetHex.r - pathHead.r) * 2;
+                        var thrustQ = playerHex.q + (targetHex.q - playerHex.q) * 2;
+                        var thrustR = playerHex.r + (targetHex.r - playerHex.r) * 2;
                         var thrustHex = hexUtils.getTile(thrustQ, thrustR, -thrustQ - thrustR);
                         if (hasTrident && thrustHex != null && thrustHex.userObject instanceof GroundEntity) {
                             var thrustGround = (GroundEntity) thrustHex.userObject;
@@ -125,8 +133,8 @@ public class PlayerEntity extends Entity {
                         }
                         
                         if (thrustEnemies.size > 0 && powers.contains(Power.LANCE_OF_LONGINUS, true)) {
-                            thrustQ = pathHead.q + (targetHex.q - pathHead.q) * 3;
-                            thrustR = pathHead.r + (targetHex.r - pathHead.r) * 3;
+                            thrustQ = playerHex.q + (targetHex.q - playerHex.q) * 3;
+                            thrustR = playerHex.r + (targetHex.r - playerHex.r) * 3;
                             thrustHex = hexUtils.getTile(thrustQ, thrustR, -thrustQ - thrustR);
                             if (hasTrident && thrustHex != null && thrustHex.userObject instanceof GroundEntity) {
                                 var thrustGround = (GroundEntity) thrustHex.userObject;
@@ -142,7 +150,7 @@ public class PlayerEntity extends Entity {
                         }
                         
                         //check for slash
-                        var adjacentHexes = hexUtils.getHexesInRadius(pathHead, 1);
+                        var adjacentHexes = hexUtils.getHexesInRadius(playerHex, 1);
                         var slashHexes = hexUtils.getHexesInRadius(targetHex, 1);
                         var iter = slashHexes.iterator();
                         while (iter.hasNext()) {
@@ -164,18 +172,12 @@ public class PlayerEntity extends Entity {
                         }
                         
                         if (isButtonJustPressed(Buttons.LEFT)) {
-//                            System.out.println("pathHead = " + pathHead.q + " " + pathHead.r + " " + pathHead.s);
-//                            System.out.println("current = " + current.q + " " + current.r + " " + current.s);
-                            
                             player.moveTowardsTarget(300f, ground.x, ground.y);
                             sfx_gameWalk.play(sfx);
-                            pathHead.weight = 0;
+                            playerHex.weight = 0;
                             targetHex.weight = 100;
                             turn = Turn.PLAYER_MOVING;
                         }
-                        //                        for (int i = 1; i < path.size() && current != pathTail; i++) {
-                        //                            current = path.get(current);
-                        //                        }
                     }
                 }
             }
@@ -471,7 +473,8 @@ public class PlayerEntity extends Entity {
         }
     }
     
-    public void completeMoving() {
+    public boolean completeMoving() {
+        boolean done = false;
         if (!moveTargetActivated) {
             if (thrustEnemies.size > 0 || slashEnemies.size > 0) {
                 sfx_gameSlash.play(sfx * .1f);
@@ -493,7 +496,7 @@ public class PlayerEntity extends Entity {
                 }
                 slashEnemies.clear();
             }
-            turn = Turn.ENEMY;
+            done = true;
         }
         
         if (pentagramEntity != null && MathUtils.isEqual(x, pentagramEntity.x) && MathUtils.isEqual(y, pentagramEntity.y)) {
@@ -816,6 +819,7 @@ public class PlayerEntity extends Entity {
             pop.show(stage);
             stage.setScrollFocus(scroll);
         }
+        return done;
     }
     
     public void hurt() {

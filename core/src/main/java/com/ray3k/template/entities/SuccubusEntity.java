@@ -1,5 +1,6 @@
 package com.ray3k.template.entities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.dongbat.jbump.Collisions;
@@ -54,6 +55,18 @@ public class SuccubusEntity extends EnemyEntity {
     @Override
     public void collision(Collisions collisions) {
     
+    }
+    
+    @Override
+    public void colorIntentTiles() {
+        var hex = hexUtils.pixelToGridHex(temp.set(x, y));
+        var targetHexes = hexUtils.getHexesInRadius(hex, 3);
+        for (var targetHex : targetHexes) {
+            if (targetHex != null && targetHex.userObject instanceof  GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                ground.skeleton.setColor(Color.YELLOW);
+            }
+        }
     }
     
     @Override

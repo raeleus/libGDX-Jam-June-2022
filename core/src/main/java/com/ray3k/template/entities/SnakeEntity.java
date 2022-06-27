@@ -46,6 +46,11 @@ public class SnakeEntity extends EnemyEntity {
     }
     
     @Override
+    public void colorIntentTiles() {
+    
+    }
+    
+    @Override
     public void takeTurn() {
     
     }

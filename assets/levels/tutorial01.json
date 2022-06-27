@@ -42,7 +42,8 @@
         },
         {"name": "satan_dummy", "id": 3, "_eid": "99682646", "x": 504, "y": 192, "originX": 18.5, "originY": 16.5},
         {"name": "player", "id": 15, "_eid": "99143148", "x": 450, "y": 352, "originX": 12, "originY": 15},
-        {"name": "succubus", "id": 28, "_eid": "99157741", "x": 234, "y": 224, "originX": 9, "originY": 8.5}
+        {"name": "skeleton", "id": 30, "_eid": "99164618", "x": 558, "y": 352, "originX": 13, "originY": 11.5},
+        {"name": "snake", "id": 31, "_eid": "99142381", "x": 450, "y": 288, "originX": 21, "originY": 25}
       ]
     },
     {

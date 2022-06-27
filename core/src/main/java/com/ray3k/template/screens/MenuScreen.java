@@ -66,6 +66,8 @@ public class MenuScreen extends JamScreen {
     
                 powers.clear();
                 maxHealth = 3;
+                health = maxHealth;
+                maxEnergy = 6;
                 
                 if (!preferences.getBoolean("completedTutorial", false)) {
                     core.transition(new GameScreen("tutorial01"));

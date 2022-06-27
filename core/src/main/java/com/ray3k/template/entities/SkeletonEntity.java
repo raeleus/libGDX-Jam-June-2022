@@ -1,9 +1,11 @@
 package com.ray3k.template.entities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.Array;
 import com.dongbat.jbump.Collisions;
 import com.dongbat.jbump.Response.Result;
 import com.ray3k.template.HexTile;
@@ -52,6 +54,100 @@ public class SkeletonEntity extends EnemyEntity {
     @Override
     public void collision(Collisions collisions) {
     
+    }
+    
+    @Override
+    public void colorIntentTiles() {
+        var hex = hexUtils.pixelToGridHex(temp.set(x, y));
+        outer : for (int delta = 1; delta <= 5; delta++) {
+            var q = hex.q + delta;
+            var r = hex.r;
+            var s = -q-r;
+            var targetHex = hexUtils.getTile(q, r, s);
+            if (targetHex != null && targetHex.userObject instanceof  GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                for (int i = 0; i < enemies.size; i++) {
+                    var enemy = enemies.get(i);
+                    if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) break outer;
+                }
+                ground.skeleton.setColor(Color.YELLOW);
+            }
+        }
+    
+        outer : for (int delta = 1; delta <= 5; delta++) {
+            var q = hex.q - delta;
+            var r = hex.r;
+            var s = -q-r;
+            var targetHex = hexUtils.getTile(q, r, s);
+            if (targetHex != null && targetHex.userObject instanceof  GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                for (int i = 0; i < enemies.size; i++) {
+                    var enemy = enemies.get(i);
+                    if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) break outer;
+                }
+                ground.skeleton.setColor(Color.YELLOW);
+            }
+        }
+    
+        outer : for (int delta = 1; delta <= 5; delta++) {
+            var q = hex.q;
+            var r = hex.r + delta;
+            var s = -q-r;
+            var targetHex = hexUtils.getTile(q, r, s);
+            if (targetHex != null && targetHex.userObject instanceof  GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                for (int i = 0; i < enemies.size; i++) {
+                    var enemy = enemies.get(i);
+                    if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) break outer;
+                }
+                ground.skeleton.setColor(Color.YELLOW);
+            }
+        }
+    
+        outer : for (int delta = 1; delta <= 5; delta++) {
+            var q = hex.q;
+            var r = hex.r - delta;
+            var s = -q-r;
+            var targetHex = hexUtils.getTile(q, r, s);
+            if (targetHex != null && targetHex.userObject instanceof  GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                for (int i = 0; i < enemies.size; i++) {
+                    var enemy = enemies.get(i);
+                    if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) break outer;
+                }
+                ground.skeleton.setColor(Color.YELLOW);
+            }
+        }
+    
+        outer : for (int delta = 1; delta <= 5; delta++) {
+            var q = hex.q - delta;
+            var r = hex.r + delta;
+            var s = -q-r;
+            var targetHex = hexUtils.getTile(q, r, s);
+            if (targetHex != null && targetHex.userObject instanceof  GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                for (int i = 0; i < enemies.size; i++) {
+                    var enemy = enemies.get(i);
+                    if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) break outer;
+                }
+                ground.skeleton.setColor(Color.YELLOW);
+            }
+        }
+        
+        outer : for (int delta = 1; delta <= 5; delta++) {
+            var q = hex.q + delta;
+            var r = hex.r - delta;
+            var s = -q-r;
+            var targetHex = hexUtils.getTile(q, r, s);
+            if (targetHex != null && targetHex.userObject instanceof  GroundEntity) {
+                var ground = (GroundEntity) targetHex.userObject;
+                for (int i = 0; i < enemies.size; i++) {
+                    var enemy = enemies.get(i);
+                    if (MathUtils.isEqual(enemy.x, ground.x) && MathUtils.isEqual(enemy.y, ground.y)) break outer;
+                }
+                ground.skeleton.setColor(Color.YELLOW);
+            }
+        }
     }
     
     @Override
