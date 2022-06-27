@@ -312,6 +312,12 @@ public class Resources {
         SpineLogoRay3k.slotCompany = SpineLogoRay3k.skeletonData.findSlot("company");
         SpineLogoRay3k.slotLogo = SpineLogoRay3k.skeletonData.findSlot("logo");
         SpineLogoRay3k.skinDefault = SpineLogoRay3k.skeletonData.findSkin("default");
+        SpineOrb.skeletonData = assetManager.get("spine/orb.json");
+        SpineOrb.animationData = assetManager.get("spine/orb.json-animation");
+        SpineOrb.animationAnimation = SpineOrb.skeletonData.findAnimation("animation");
+        SpineOrb.boneRoot = SpineOrb.skeletonData.findBone("root");
+        SpineOrb.slotGameOrb = SpineOrb.skeletonData.findSlot("game/orb");
+        SpineOrb.skinDefault = SpineOrb.skeletonData.findSkin("default");
         SpinePentagram.skeletonData = assetManager.get("spine/pentagram.json");
         SpinePentagram.animationData = assetManager.get("spine/pentagram.json-animation");
         SpinePentagram.animationAnimation = SpinePentagram.skeletonData.findAnimation("animation");
@@ -859,6 +865,20 @@ public class Resources {
         public static SlotData slotCompany;
 
         public static SlotData slotLogo;
+
+        public static com.esotericsoftware.spine.Skin skinDefault;
+    }
+
+    public static class SpineOrb {
+        public static SkeletonData skeletonData;
+
+        public static AnimationStateData animationData;
+
+        public static Animation animationAnimation;
+
+        public static BoneData boneRoot;
+
+        public static SlotData slotGameOrb;
 
         public static com.esotericsoftware.spine.Skin skinDefault;
     }

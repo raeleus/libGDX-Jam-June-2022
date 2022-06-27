@@ -44,8 +44,8 @@ public class SplashScreen extends JamScreen {
 //                powers.add(Power.WINGS_OF_MICHAEL);
 //                powers.add(Power.NOAHS_DOVE);
 //                powers.add(Power.HOLY_LIGHT);
-                powers.add(Power.GODSPEED);
-                core.transition(new GameScreen("tutorial01"));
+//                powers.add(Power.GODSPEED);
+                core.transition(new GameScreen("level10"));
             }
         });
     }
