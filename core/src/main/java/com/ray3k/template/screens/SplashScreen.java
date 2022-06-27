@@ -37,15 +37,16 @@ public class SplashScreen extends JamScreen {
         stage.addListener(new ClickListener(Input.Buttons.RIGHT) {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Gdx.input.setInputProcessor(null);
-                powers.add(Power.PATIENCE_OF_JOB);
+//                Gdx.input.setInputProcessor(null);
+//                powers.add(Power.PATIENCE_OF_JOB);
 //                powers.add(Power.LANCE_OF_LONGINUS);
 //                powers.add(Power.PARTING_THE_RED_SEA);
 //                powers.add(Power.WINGS_OF_MICHAEL);
 //                powers.add(Power.NOAHS_DOVE);
 //                powers.add(Power.HOLY_LIGHT);
 //                powers.add(Power.GODSPEED);
-                core.transition(new GameScreen("level12"));
+//                core.transition(new GameScreen("level13"));
+//                core.transition(new HeavenScreen());
             }
         });
     }

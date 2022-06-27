@@ -10,6 +10,7 @@ spine/imp.json
 spine/lava-bubble.json
 spine/logo-libgdx.json
 spine/logo-ray3k.json
+spine/orb.json
 spine/pentagram.json
 spine/player.json
 spine/satan.json

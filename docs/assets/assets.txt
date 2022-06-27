@@ -70,10 +70,14 @@ t:levels/level04.json:levels/level04-3681dfa4b0ab6ae01a28b6014845e08b.json:37637
 t:levels/level05.json:levels/level05-5657cafb61fa97917f46cb9a11488a20.json:30390:application/unknown:1
 t:levels/level06.json:levels/level06-2222f4fd16f4040111e1f75246fef560.json:34487:application/unknown:1
 t:levels/level07.json:levels/level07-9e68868aa1c080c356b3889abe05c2c4.json:33305:application/unknown:1
-t:levels/level08.json:levels/level08-99d371bfd0edac3115dada2765cd5715.json:33517:application/unknown:1
-t:levels/level09.json:levels/level09-b1de4a2448ad6207238508b8e6c23fa4.json:35162:application/unknown:1
+t:levels/level08.json:levels/level08-9591c75e411c3bb68de526bc88cdbd12.json:33637:application/unknown:1
+t:levels/level09.json:levels/level09-832207ea9033bd6fedc99e0d5011e356.json:35163:application/unknown:1
+t:levels/level10.json:levels/level10-ae9b27414231c6a3d0bc22f130cb0b47.json:32788:application/unknown:1
+t:levels/level11.json:levels/level11-9ecef0b75fb6619277423dcea108c614.json:33511:application/unknown:1
+t:levels/level12.json:levels/level12-438b48575fe5220c0adaebbffe2d72f6.json:35054:application/unknown:1
+t:levels/level13.json:levels/level13-f6acdd458b47fe338a6c7de731059961.json:38877:application/unknown:1
 t:levels/template.json:levels/template-57499494b35d970b8377dd31ec75a549.json:21611:application/unknown:1
-t:levels/tutorial01.json:levels/tutorial01-5325b5e3deef079455197f5b00b2a9ac.json:32202:application/unknown:1
+t:levels/tutorial01.json:levels/tutorial01-33dea21d6926b1f6cf28303eea6a3356.json:32524:application/unknown:1
 t:levels/tutorial02.json:levels/tutorial02-a011a2215d1d8a99f02ead35b0608226.json:28628:application/unknown:1
 t:levels/tutorial03.json:levels/tutorial03-6c83b27c97d4b4d2db962d52f64f127b.json:24742:application/unknown:1
 t:levels/tutorial04.json:levels/tutorial04-a19bea2348f454ca8d600fe2977e1120.json:27030:application/unknown:1
@@ -95,6 +99,7 @@ a:sfx/game/explosion-big.mp3:sfx/game/explosion-big-7b7d0b02365199287573fc30829c
 a:sfx/game/explosion.mp3:sfx/game/explosion-51dd360985b1f8c0d12c2cf829a0c13d.mp3:7092:audio/mpeg:1
 a:sfx/game/player-die.mp3:sfx/game/player-die-6d3b2a0dfd3b679b1d7138f49327e16b.mp3:4464:audio/mpeg:1
 a:sfx/game/player-hurt.mp3:sfx/game/player-hurt-b88d2f2529795922aea4014e7fd11585.mp3:2016:audio/mpeg:1
+a:sfx/game/satan-hurt.mp3:sfx/game/satan-hurt-54eaba6dd8f00546d9513a8da9f26e8f.mp3:27860:audio/mpeg:1
 a:sfx/game/slash.mp3:sfx/game/slash-c1ca46f7fecc8acc47d5c83e8300c203.mp3:3528:audio/mpeg:1
 a:sfx/game/teleport.mp3:sfx/game/teleport-e536c3fd1b108c0faf50c0b3fd382ade.mp3:56410:audio/mpeg:1
 a:sfx/game/walk.mp3:sfx/game/walk-bd6c8ed16bb83c6758b0203ed36ee339.mp3:7008:audio/mpeg:1
@@ -103,7 +108,7 @@ a:sfx/logo/crash.mp3:sfx/logo/crash-fc5e8cc37e95b0a6507b937e3ea63adf.mp3:35861:a
 a:sfx/logo/land.mp3:sfx/logo/land-30676a03f2f8a210fbae5199742f2abf.mp3:7879:audio/mpeg:1
 a:sfx/logo/line.mp3:sfx/logo/line-f97a89e5f66fde3a2bf15a1248a5adcd.mp3:13901:audio/mpeg:1
 a:sfx/logo/move.mp3:sfx/logo/move-d8c37b52ffb8e65066720296b09180a7.mp3:1800:audio/mpeg:1
-t:sfx.txt:sfx-587cdcef6c672097c0d16d36787efa8a.txt:319:text/plain:1
+t:sfx.txt:sfx-de3beb9181190b85acde3cf172679cb3.txt:343:text/plain:1
 d:shaders:shaders:0:application/unknown:1
 b:shaders/earthquake.frag:shaders/earthquake-f29a45e220949fd734e27f0df2b1eab7.frag:2145:application/unknown:1
 b:shaders/glitch.frag:shaders/glitch-b05e1156ad9e43cd1b014f3e2f29fedd.frag:2033:application/unknown:1
@@ -128,6 +133,7 @@ t:spine/imp.json:spine/imp-7c0ea373bcaeac81486b195b697302a6.json:2213:applicatio
 t:spine/lava-bubble.json:spine/lava-bubble-1f6a23ee909cd328b4172d4e8dddba2a.json:1949:application/unknown:1
 t:spine/logo-libgdx.json:spine/logo-libgdx-7ee482f78af005bc63759817191cd9a5.json:18934:application/unknown:1
 t:spine/logo-ray3k.json:spine/logo-ray3k-f2c71abdca6e99ff3ea5a1f5b72a82c2.json:3351:application/unknown:1
+t:spine/orb.json:spine/orb-f2634a3e5c241f24e001c4969b474e0f.json:434:application/unknown:1
 t:spine/pentagram.json:spine/pentagram-95aac481137440c4ad4c78bbd8d292fa.json:458:application/unknown:1
 t:spine/player.json:spine/player-f898082abeaecb552430aeea9206c869.json:11012:application/unknown:1
 t:spine/satan.json:spine/satan-d4308cb8376e490a763fa7f34a51a1ea.json:7005:application/unknown:1
@@ -141,10 +147,10 @@ t:spine/tile-ground.json:spine/tile-ground-a6b464a336fc330e054b2a6922ca3437.json
 t:spine/tile-magma.json:spine/tile-magma-bbb8f896876c6ede6450d7ef38a57566.json:452:application/unknown:1
 t:spine/trident.json:spine/trident-7399c3c61517a2222ed545c7ac239824.json:468:application/unknown:1
 t:spine/tutorial.json:spine/tutorial-f76269c473abebebfac896a22514726a.json:2257:application/unknown:1
-t:spine.txt:spine-1fea22bd1f8c2f1e4c4b458013a687a4.txt:479:text/plain:1
+t:spine.txt:spine-37f91735747baf431a8f7a1f0327ac2a.txt:494:text/plain:1
 d:textures:textures:0:application/unknown:1
-t:textures/textures.atlas:textures/textures-b8efff4d4aa358d273f66fee5a1e4e86.atlas:11618:application/unknown:1
-i:textures/textures.png:textures/textures-2e16cebead6dcc24c169a2dede22042b.png:259038:image/png:1
+t:textures/textures.atlas:textures/textures-593aad216dda413566bcbd1431883689.atlas:11717:application/unknown:1
+i:textures/textures.png:textures/textures-f79825587514b7631b6f15ab6018f7e0.png:265266:image/png:1
 i:textures/textures_2.png:textures/textures_2-103a162606bfe645a1b6ae915ee372ff.png:336220:image/png:1
 i:textures/textures_3.png:textures/textures_3-bdc287b0ff80f46e34450ca11eef6da7.png:390272:image/png:1
 t:textures.txt:textures-f6d3c7a9061fb4611a983454b065b048.txt:23:text/plain:1

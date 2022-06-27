@@ -4,7 +4,7 @@
   "height": 576,
   "offsetX": 0,
   "offsetY": 0,
-  "values": {"blessing1": "None", "blessing2": "None", "blessing3": "None", "blessing4": "None", "blessing5": "None", "shrineTitle": "GOD SMILES UPON THEE"},
+  "values": {"blessing1": "Holy Blessing", "blessing2": "Blood of Christ", "blessing3": "Patience of Job", "blessing4": "Crown of Thorns", "blessing5": "Strength of Samson", "shrineTitle": "GOD SMILES UPON THEE"},
   "layers": [
     {
       "name": "tutorial",
@@ -15,10 +15,7 @@
       "gridCellHeight": 1,
       "gridCellsX": 1024,
       "gridCellsY": 576,
-      "entities": [
-        {"name": "tutorial01", "id": 0, "_eid": "99398315", "x": 665, "y": 523, "originX": 50.5, "originY": 134},
-        {"name": "tutorial03", "id": 1, "_eid": "99670976", "x": 947, "y": 449, "originX": 50.5, "originY": 134}
-      ]
+      "entities": []
     },
     {
       "name": "entities",
@@ -38,10 +35,18 @@
           "y": 288,
           "originX": 28,
           "originY": 27.5,
-          "values": {"nextRoom": "tutorial02"}
+          "values": {"nextRoom": "level11"}
         },
-        {"name": "satan_dummy", "id": 3, "_eid": "99682646", "x": 504, "y": 192, "originX": 18.5, "originY": 16.5},
-        {"name": "player", "id": 15, "_eid": "99143148", "x": 450, "y": 352, "originX": 12, "originY": 15}
+        {"name": "player", "id": 15, "_eid": "99143148", "x": 126, "y": 288, "originX": 12, "originY": 15},
+        {"name": "glutton", "id": 35, "_eid": "99150998", "x": 450, "y": 352, "originX": 11, "originY": 12.5},
+        {"name": "glutton", "id": 36, "_eid": "99150998", "x": 450, "y": 288, "originX": 11, "originY": 12.5},
+        {"name": "glutton", "id": 37, "_eid": "99150998", "x": 450, "y": 224, "originX": 11, "originY": 12.5},
+        {"name": "goat", "id": 38, "_eid": "99158414", "x": 504, "y": 384, "originX": 22.5, "originY": 16},
+        {"name": "goat", "id": 39, "_eid": "99158414", "x": 504, "y": 192, "originX": 22.5, "originY": 16},
+        {"name": "glutton", "id": 40, "_eid": "99150998", "x": 126, "y": 160, "originX": 11, "originY": 12.5},
+        {"name": "glutton", "id": 41, "_eid": "99150998", "x": 126, "y": 416, "originX": 11, "originY": 12.5},
+        {"name": "glutton", "id": 42, "_eid": "99150998", "x": 882, "y": 160, "originX": 11, "originY": 12.5},
+        {"name": "glutton", "id": 43, "_eid": "99150998", "x": 882, "y": 416, "originX": 11, "originY": 12.5}
       ]
     },
     {

@@ -33,8 +33,8 @@ import com.ray3k.template.screens.DialogPause.*;
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
 import static com.ray3k.template.Core.*;
-import static com.ray3k.template.Resources.Values.*;
 import static com.ray3k.template.Resources.*;
+import static com.ray3k.template.Resources.Values.*;
 
 public class GameScreen extends JamScreen {
     public static GameScreen gameScreen;
@@ -367,6 +367,171 @@ public class GameScreen extends JamScreen {
                 }
             });
             popTable.show(stage);
+        } else if (level.equals("level13")) {
+            turn = Turn.STORY;
+            var index = preferences.getInteger("final", 1);
+            if (index > 7) {
+                index = 1;
+                preferences.putInteger("final", index);
+                preferences.flush();
+            }
+            var audioArray = new Array<Music>();
+            var textArray = new Array<String>();
+            var imageArray = new Array<Image>();
+            var jsonReader = new JsonReader();
+            var jsonValue = jsonReader.parse(Gdx.files.internal("dialogs.json"));
+            var satanImage = new Image(skin, "portrait-satan");
+            satanImage.setScaling(Scaling.fit);
+            var sonImage = new Image(skin, "portrait-son");
+            sonImage.setScaling(Scaling.fit);
+            switch (index) {
+                case 1:
+                    audioArray.add(bgm_final01a);
+                    audioArray.add(bgm_final01b);
+                    audioArray.add(bgm_final01c);
+                    textArray.add(jsonValue.getString("final01a"));
+                    textArray.add(jsonValue.getString("final01b"));
+                    textArray.add(jsonValue.getString("final01c"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    break;
+                case 2:
+                    audioArray.add(bgm_final02a);
+                    audioArray.add(bgm_final02b);
+                    textArray.add(jsonValue.getString("final02a"));
+                    textArray.add(jsonValue.getString("final02b"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    break;
+                case 3:
+                    audioArray.add(bgm_final03a);
+                    audioArray.add(bgm_final03b);
+                    textArray.add(jsonValue.getString("final03a"));
+                    textArray.add(jsonValue.getString("final03b"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    break;
+                case 4:
+                    audioArray.add(bgm_final04a);
+                    audioArray.add(bgm_final04b);
+                    textArray.add(jsonValue.getString("final04a"));
+                    textArray.add(jsonValue.getString("final04b"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    break;
+                case 5:
+                    audioArray.add(bgm_final05a);
+                    audioArray.add(bgm_final05b);
+                    textArray.add(jsonValue.getString("final05a"));
+                    textArray.add(jsonValue.getString("final05b"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    break;
+                case 6:
+                    audioArray.add(bgm_final06a);
+                    audioArray.add(bgm_final06b);
+                    textArray.add(jsonValue.getString("final06a"));
+                    textArray.add(jsonValue.getString("final06b"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    imageArray.add(satanImage);
+                    break;
+                case 7:
+                    audioArray.add(bgm_final07a);
+                    audioArray.add(bgm_final07b);
+                    textArray.add(jsonValue.getString("final07a"));
+                    textArray.add(jsonValue.getString("final07b"));
+                    imageArray.add(satanImage);
+                    imageArray.add(sonImage);
+                    break;
+            }
+    
+            var finalIndex = index;
+            var popTable = new PopTable() {
+                int progress = 0;
+        
+                @Override
+                public void show(Stage stage, Action action) {
+                    refresh();
+                    super.show(stage, action);
+                }
+        
+                public void refresh() {
+                    if (progress >= audioArray.size) {
+                        hide();
+                        preferences.putInteger("final", finalIndex + 1);
+                        preferences.flush();
+                
+                        if (currentDialogAudio != null) currentDialogAudio.stop();
+                        turn = Turn.PLAYER;
+                
+                        if (bgm_menu.isPlaying()) {
+                            stage.addAction(new Action() {
+                                @Override
+                                public boolean act(float delta) {
+                                    bgm_menu.setVolume(Utils.approach(bgm_menu.getVolume(), 0, .25f * delta));
+                                    if (MathUtils.isZero(bgm_menu.getVolume())) {
+                                        bgm_menu.stop();
+                                        return true;
+                                    } else return false;
+                                }
+                            });
+                        }
+                
+                        if (!bgm_game.isPlaying()) {
+                            bgm_game.play();
+                            bgm_game.setPosition(bgm_menu.getPosition());
+                            bgm_game.setVolume(0);
+                            bgm_game.setLooping(true);
+                            stage.addAction(new Action() {
+                                @Override
+                                public boolean act(float delta) {
+                                    bgm_game.setVolume(Utils.approach(bgm_game.getVolume(), bgm, .25f * delta));
+                                    return MathUtils.isEqual(bgm_game.getVolume(), bgm);
+                                }
+                            });
+                        }
+                    }
+                    else {
+                        clearChildren();
+                
+                        if (currentDialogAudio != null) currentDialogAudio.stop();
+                        currentDialogAudio = audioArray.get(progress);
+                        currentDialogAudio.play();
+                
+                        var stack = new Stack();
+                        add(stack).grow();
+                
+                        var table = new Table();
+                        stack.add(table);
+                
+                        table.add(imageArray.get(progress)).bottom().left().size(500, 500).expand();
+                
+                        table = new Table();
+                        stack.add(table);
+                
+                        var subTable = new Table();
+                        subTable.setBackground(skin.getDrawable("dialog-10"));
+                        table.add(subTable).bottom().right().expand();
+                
+                        var typingLabel = new TypingLabel(textArray.get(progress) + "\n{NORMAL}Click to continue...", skin);
+                        typingLabel.setWrap(true);
+                        subTable.add(typingLabel).grow();
+                    }
+                }
+            };
+    
+            popTable.setModal(true);
+            popTable.setFillParent(true);
+            popTable.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    popTable.progress++;
+                    popTable.refresh();
+                }
+            });
+            popTable.show(stage);
         }
     }
     
@@ -664,6 +829,13 @@ public class GameScreen extends JamScreen {
                         entityController.add(goat);
                         characters.add(goat);
                         enemies.add(goat);
+                        break;
+                    case "satan":
+                        var satan = new SatanEntity();
+                        satan.setPosition(x, y);
+                        entityController.add(satan);
+                        characters.add(satan);
+                        enemies.add(satan);
                         break;
                     default:
                         if (name.startsWith("tutorial")) {

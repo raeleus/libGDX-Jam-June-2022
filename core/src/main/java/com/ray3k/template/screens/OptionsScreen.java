@@ -62,7 +62,6 @@ public class OptionsScreen extends JamScreen {
             public void changed(ChangeEvent event, Actor actor) {
                 preferences.putBoolean("wolf", false);
                 preferences.putInteger("dialog", 1);
-                preferences.putInteger("ending", 1);
                 preferences.putInteger("final", 1);
                 preferences.putInteger("second", 1);
                 preferences.putString("achievements", "");
