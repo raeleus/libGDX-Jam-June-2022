@@ -106,6 +106,16 @@ public class MenuScreen extends JamScreen {
                 wolfMode = wolfButton.isChecked();
             }
         });
+    
+        var pizzaButton = (ImageButton) stage.getRoot().findActor("pizza");
+        pizzaButton.setChecked(pizzaMode);
+        pizzaButton.addListener(sndChangeListener);
+        pizzaButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                pizzaMode = pizzaButton.isChecked();
+            }
+        });
     }
     
     @Override

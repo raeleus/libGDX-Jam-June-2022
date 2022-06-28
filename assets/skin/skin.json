@@ -759,6 +759,11 @@
 		"imageChecked": "icon-patience-checked",
 		"imageCheckedOver": "icon-patience-checked",
 		"pressedOffsetY": -1
+	},
+	"pizza": {
+		"imageUp": "button-egg",
+		"imageChecked": "button-egg-checked",
+		"pressedOffsetY": -3
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {

@@ -87,6 +87,7 @@ public class GameScreen extends JamScreen {
     public static boolean killedThisTurn;
     public static boolean skipEnemyTurn;
     public static boolean wolfMode;
+    public static boolean pizzaMode;
     
     public GameScreen(String level) {
         this.level = level;
@@ -1006,6 +1007,7 @@ public class GameScreen extends JamScreen {
     
                     if (tridentEntity != null) {
                         var anim = new AnimationEntity(SpineTrident.skeletonData, SpineTrident.animationData, SpineTrident.animationAnimation, tridentEntity.x, tridentEntity.y);
+                        anim.skeleton.setSkin(pizzaMode ? SpineTrident.skinPizza : SpineTrident.skinTrident);
                         anim.depth = DEPTH_PARTICLES;
                         entityController.add(anim);
                         tridentEntity.destroy = true;

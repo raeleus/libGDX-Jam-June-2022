@@ -5,12 +5,14 @@ import com.dongbat.jbump.Response.Result;
 
 import static com.ray3k.template.Core.*;
 import static com.ray3k.template.Resources.SpineTrident.*;
+import static com.ray3k.template.screens.GameScreen.*;
 
 public class TridentEntity extends Entity {
     @Override
     public void create() {
         setSkeletonData(skeletonData, animationData);
         animationState.setAnimation(0, animationAnimation, true);
+        skeleton.setSkin(pizzaMode ? skinPizza : skinTrident);
         depth = DEPTH_ENEMY;
     }
     

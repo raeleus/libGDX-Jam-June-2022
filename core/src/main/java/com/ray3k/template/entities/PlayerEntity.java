@@ -34,6 +34,7 @@ public class PlayerEntity extends Entity {
     public void create() {
         setSkeletonData(skeletonData, animationData);
         skeleton.setSkin(wolfMode ? skinWolf : skinAntichrist);
+        skeleton.setSkin(pizzaMode ? skinPizza : skinTrident);
         animationState.setAnimation(0, animationSpawn, true);
         animationState.addAnimation(0, animationAnimation, true, 0);
         depth = DEPTH_PLAYER;
@@ -839,6 +840,7 @@ public class PlayerEntity extends Entity {
                 destroy = true;
                 sfx_gamePlayerDie.play(sfx);
                 var anim = new AnimationEntity(skeletonData, animationData, animationDie, x, y);
+                anim.skeleton.setSkin(skeleton.getSkin());
                 entityController.add(anim);
         
                 anim = new AnimationEntity(SpineBlood.skeletonData, SpineBlood.animationData,

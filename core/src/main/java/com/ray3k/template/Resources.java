@@ -358,6 +358,8 @@ public class Resources {
         SpinePlayer.slotGameShield = SpinePlayer.skeletonData.findSlot("game/shield");
         SpinePlayer.skinDefault = SpinePlayer.skeletonData.findSkin("default");
         SpinePlayer.skinAntichrist = SpinePlayer.skeletonData.findSkin("antichrist");
+        SpinePlayer.skinPizza = SpinePlayer.skeletonData.findSkin("pizza");
+        SpinePlayer.skinTrident = SpinePlayer.skeletonData.findSkin("trident");
         SpinePlayer.skinWolf = SpinePlayer.skeletonData.findSkin("wolf");
         SpineSatan.skeletonData = assetManager.get("spine/satan.json");
         SpineSatan.animationData = assetManager.get("spine/satan.json-animation");
@@ -467,7 +469,8 @@ public class Resources {
         SpineTrident.animationAnimation = SpineTrident.skeletonData.findAnimation("animation");
         SpineTrident.boneRoot = SpineTrident.skeletonData.findBone("root");
         SpineTrident.slotGamePlayerTrident = SpineTrident.skeletonData.findSlot("game/player-trident");
-        SpineTrident.skinDefault = SpineTrident.skeletonData.findSkin("default");
+        SpineTrident.skinPizza = SpineTrident.skeletonData.findSkin("pizza");
+        SpineTrident.skinTrident = SpineTrident.skeletonData.findSkin("trident");
         SpineTutorial.skeletonData = assetManager.get("spine/tutorial.json");
         SpineTutorial.animationData = assetManager.get("spine/tutorial.json-animation");
         SpineTutorial.animationAnimation = SpineTutorial.skeletonData.findAnimation("animation");
@@ -967,6 +970,10 @@ public class Resources {
 
         public static com.esotericsoftware.spine.Skin skinAntichrist;
 
+        public static com.esotericsoftware.spine.Skin skinPizza;
+
+        public static com.esotericsoftware.spine.Skin skinTrident;
+
         public static com.esotericsoftware.spine.Skin skinWolf;
     }
 
@@ -1205,7 +1212,9 @@ public class Resources {
 
         public static SlotData slotGamePlayerTrident;
 
-        public static com.esotericsoftware.spine.Skin skinDefault;
+        public static com.esotericsoftware.spine.Skin skinPizza;
+
+        public static com.esotericsoftware.spine.Skin skinTrident;
     }
 
     public static class SpineTutorial {

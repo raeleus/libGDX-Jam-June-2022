@@ -1,11 +1,11 @@
 {
 "skeleton": {
-	"hash": "DafcY/J3zU8",
+	"hash": "1N4fzXTIjhI",
 	"spine": "4.0.64",
 	"x": -36.45,
 	"y": -5.73,
 	"width": 78.03,
-	"height": 63.14,
+	"height": 40,
 	"images": "",
 	"audio": ""
 },
@@ -26,7 +26,7 @@
 	{ "name": "game/player-trident", "bone": "game/player-hand" },
 	{ "name": "game/player-hand", "bone": "game/player-hand", "attachment": "game/player-hand" },
 	{ "name": "game/player-hand2", "bone": "game/player-hand2", "attachment": "game/player-hand" },
-	{ "name": "game/player-head", "bone": "game/player-head", "attachment": "game/player-head" },
+	{ "name": "game/player-head", "bone": "game/player-head", "attachment": "game/player-head2" },
 	{ "name": "game/teleport-01", "bone": "game/teleport-01" },
 	{ "name": "game/shield", "bone": "root" }
 ],
@@ -55,15 +55,6 @@
 			"game/player-hand2": {
 				"game/player-hand": { "x": 0.76, "y": -0.09, "width": 14, "height": 14 }
 			},
-			"game/player-head": {
-				"game/player-head": { "x": 0.54, "y": 5.31, "rotation": -2.29, "width": 24, "height": 30 }
-			},
-			"game/player-sword": {
-				"game/player-sword": { "x": -11.64, "y": 21.89, "rotation": 119.91, "width": 59, "height": 26 }
-			},
-			"game/player-trident": {
-				"game/player-trident": { "x": 1.15, "y": 8.09, "rotation": 88.96, "width": 54, "height": 26 }
-			},
 			"game/shield": {
 				"game/shield": { "x": 1, "y": 20, "width": 91, "height": 94 }
 			},
@@ -89,6 +80,44 @@
 				"game/teleport-19": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
 				"game/teleport-20": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 },
 				"game/teleport-21": { "x": -0.38, "y": 23.47, "width": 59, "height": 94 }
+			}
+		}
+	},
+	{
+		"name": "antichrist",
+		"attachments": {
+			"game/player-head": {
+				"game/player-head2": { "name": "game/player-head", "x": 0.54, "y": 5.31, "rotation": -2.29, "width": 24, "height": 30 }
+			}
+		}
+	},
+	{
+		"name": "pizza",
+		"attachments": {
+			"game/player-sword": {
+				"player-sword": { "name": "game/player-sword-pizza", "x": -7.55, "y": 15.07, "rotation": 119.91, "width": 61, "height": 30 }
+			},
+			"game/player-trident": {
+				"player-trident": { "name": "game/player-trident-pizza", "x": 0.5, "rotation": -90.47, "width": 51, "height": 52 }
+			}
+		}
+	},
+	{
+		"name": "trident",
+		"attachments": {
+			"game/player-sword": {
+				"player-sword": { "name": "game/player-sword", "x": -11.64, "y": 21.89, "rotation": 119.91, "width": 59, "height": 26 }
+			},
+			"game/player-trident": {
+				"player-trident": { "name": "game/player-trident", "x": 1.15, "y": 8.09, "rotation": 88.96, "width": 54, "height": 26 }
+			}
+		}
+	},
+	{
+		"name": "wolf",
+		"attachments": {
+			"game/player-head": {
+				"game/player-head2": { "name": "game/player-head-wolf", "x": 0.71, "y": 5.21, "rotation": -2.29, "width": 33, "height": 31 }
 			}
 		}
 	}
@@ -187,7 +216,7 @@
 		"slots": {
 			"game/player-sword": {
 				"attachment": [
-					{ "name": "game/player-sword" },
+					{ "name": "player-sword" },
 					{ "time": 0.5667, "name": null }
 				]
 			}
@@ -376,7 +405,7 @@
 		"slots": {
 			"game/player-trident": {
 				"attachment": [
-					{ "name": "game/player-trident" },
+					{ "name": "player-trident" },
 					{ "time": 0.6667, "name": null }
 				]
 			}
